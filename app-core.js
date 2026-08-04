@@ -1013,68 +1013,60 @@ async function saveSettings(settings) {
 let firebaseDB = null;
 let firebaseInitialized = false;
 
-// Deadlock-free Firebase initializer that does not await global settings promise
-function initFirebaseWithSettings(settings) {
-    if (firebaseInitialized) return firebaseDB;
-    if (!settings || !settings.firebaseEnabled || !settings.firebaseConfig) {
-        return null;
+async function waitForFirebaseInstance() {
+    if (window.firebase && typeof window.firebase.firestore === 'function') {
+        return window.firebase;
     }
+    
+    // Wait up to 5 seconds for window.firebase to finish loading from head script or dynamic inject
+    for (let i = 0; i < 25; i++) {
+        if (window.firebase && typeof window.firebase.firestore === 'function') {
+            return window.firebase;
+        }
+        await new Promise(r => setTimeout(r, 200));
+    }
+    
+    // Fallback: Manually inject if missing
+    if (!window.firebase || typeof window.firebase.firestore !== 'function') {
+        await new Promise((resolve) => {
+            const s1 = document.createElement('script');
+            s1.src = "https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js";
+            s1.onload = () => {
+                const s2 = document.createElement('script');
+                s2.src = "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js";
+                s2.onload = resolve;
+                document.head.appendChild(s2);
+            };
+            document.head.appendChild(s1);
+        });
+    }
+    return window.firebase;
+}
+
+async function initFirebaseWithSettings(settings) {
+    if (firebaseInitialized && firebaseDB) return firebaseDB;
+    if (!settings || !settings.firebaseEnabled) return null;
+
+    let config = settings.firebaseConfig;
+    if (typeof config === 'string') {
+        try { config = JSON.parse(config); } catch(e){}
+    }
+    if (!config || !config.apiKey || !config.projectId) return null;
 
     try {
-        let config;
-        if (typeof settings.firebaseConfig === 'string') {
-            try {
-                config = JSON.parse(settings.firebaseConfig);
-            } catch (err) {
-                try {
-                    config = Function("return (" + settings.firebaseConfig + ")")();
-                } catch (err2) {
-                    console.error("Failed to parse Firebase config:", err2);
-                    return null;
-                }
+        const fb = await waitForFirebaseInstance();
+        if (fb && typeof fb.firestore === 'function') {
+            let app;
+            if (!fb.apps.length) {
+                app = fb.initializeApp(config);
+            } else {
+                app = fb.app();
             }
-        } else {
-            config = settings.firebaseConfig;
+            firebaseDB = fb.firestore(app);
+            firebaseInitialized = true;
+            console.log("🔥 Firebase Firestore connected successfully!");
+            return firebaseDB;
         }
-
-        if (!config || !config.apiKey || !config.projectId) {
-            return null;
-        }
-
-        // Helper to load dynamic scripts sequentially
-        const loadScript = (src) => {
-            return new Promise((resolve, reject) => {
-                if (document.querySelector(`script[src="${src}"]`)) {
-                    resolve();
-                    return;
-                }
-                const s = document.createElement('script');
-                s.src = src;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-            });
-        };
-
-        // Load compatibility packages to avoid ESM refactoring overhead
-        return (async () => {
-            await loadScript("https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js");
-            await loadScript("https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js");
-
-            if (window.firebase) {
-                let app;
-                if (!window.firebase.apps.length) {
-                    app = window.firebase.initializeApp(config);
-                } else {
-                    app = window.firebase.app();
-                }
-                firebaseDB = window.firebase.firestore(app);
-                firebaseInitialized = true;
-                console.log("🔥 Firebase Firestore connected successfully!");
-                return firebaseDB;
-            }
-            return null;
-        })();
     } catch (e) {
         console.error("Error initializing Firebase:", e);
     }
@@ -1082,10 +1074,10 @@ function initFirebaseWithSettings(settings) {
 }
 
 async function initFirebase() {
-    if (firebaseInitialized) return firebaseDB;
+    if (firebaseInitialized && firebaseDB) return firebaseDB;
 
     if (window.settingsLoadingPromise) {
-        await window.settingsLoadingPromise;
+        try { await window.settingsLoadingPromise; } catch(e){}
     }
 
     const settings = getSettings();
@@ -1437,6 +1429,48 @@ function getOrders() {
     return JSON.parse(localStorage.getItem('ikko_orders'));
 }
 
+function toFirestoreRestValue(val) {
+    if (val === null || val === undefined) return { nullValue: null };
+    if (typeof val === 'boolean') return { booleanValue: val };
+    if (typeof val === 'number') return Number.isInteger(val) ? { integerValue: val.toString() } : { doubleValue: val };
+    if (typeof val === 'string') return { stringValue: val };
+    if (Array.isArray(val)) {
+        return { arrayValue: { values: val.map(toFirestoreRestValue) } };
+    }
+    if (typeof val === 'object') {
+        const fields = {};
+        for (const k in val) {
+            if (val[k] !== undefined) fields[k] = toFirestoreRestValue(val[k]);
+        }
+        return { mapValue: { fields } };
+    }
+    return { stringValue: String(val) };
+}
+
+async function syncOrderToFirestoreRest(order) {
+    try {
+        const fields = {};
+        const cleanObj = cleanUndefinedFields(order);
+        for (const key in cleanObj) {
+            fields[key] = toFirestoreRestValue(cleanObj[key]);
+        }
+        const url = `https://firestore.googleapis.com/v1/projects/upichirahpersonal/databases/(default)/documents/orders/${encodeURIComponent(order.id)}?key=AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs`;
+        
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fields })
+        });
+        if (response.ok) {
+            console.log("⚡ REST API: Order synced to Firestore successfully!", order.id);
+        } else {
+            console.warn("⚠️ REST API sync response:", response.status, await response.text());
+        }
+    } catch(err) {
+        console.error("❌ REST API Order Sync error:", err);
+    }
+}
+
 async function saveOrder(order) {
     dbInit();
     const orders = JSON.parse(localStorage.getItem('ikko_orders')) || [];
@@ -1448,18 +1482,21 @@ async function saveOrder(order) {
     }
     localStorage.setItem('ikko_orders', JSON.stringify(orders));
     
-    // Sync to Firestore immediately
+    // 1. Instant REST API Sync (Guaranteed 0-ms SDK delay fallback for mobile)
+    syncOrderToFirestoreRest(order);
+
+    // 2. Firebase JS SDK Sync (Triggers realtime listeners)
     try {
         const db = await initFirebase();
         if (db) {
             const cleanObj = cleanUndefinedFields(order);
             await db.collection('orders').doc(order.id).set(cleanObj, { merge: true });
-            console.log("🔥 Order synced to Firestore successfully:", order.id);
+            console.log("🔥 JS SDK: Order synced to Firestore successfully:", order.id);
         } else {
             console.warn("⚠️ initFirebase returned null during saveOrder for ID:", order.id);
         }
     } catch (e) {
-        console.error("❌ Failed to sync order to Firestore:", e);
+        console.error("❌ JS SDK sync error:", e);
     }
 }
 
