@@ -802,6 +802,7 @@ function dbInit() {
     if (!localStorage.getItem('ikko_orders')) {
         localStorage.setItem('ikko_orders', JSON.stringify([]));
     }
+    if (!localStorage.getItem('ikko_settings')) {
         const defaultFirebaseConfig = {
             apiKey: "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs",
             authDomain: "upichirahpersonal.firebaseapp.com",
