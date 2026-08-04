@@ -444,28 +444,29 @@
                 <div class="section-subtitle">Pay via UPI for instant cashback</div>
             </div>
 
-            <!-- Option 1: PhonePe -->
-            <div class="payment-option-row selected" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
-                <div class="option-left-content">
-                    <div class="app-logo-box">
-                        <img src="Image/phonepe-logo.svg" alt="PhonePe">
-                    </div>
-                    <div class="app-title-text">
-                        PhonePe
-                        <span class="fastest-pill">⚡ Fastest</span>
-                    </div>
-                </div>
-                <div class="custom-radio-circle"></div>
-            </div>
-
-            <!-- Option 2: Paytm UPI -->
-            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm')">
+            <!-- Option 1: Paytm UPI (Default & Recommended) -->
+            <div class="payment-option-row selected" id="opt-paytm" onclick="selectPaymentOption('paytm')">
                 <div class="option-left-content">
                     <div class="app-logo-box">
                         <img src="Image/paytm-logo.svg" alt="Paytm">
                     </div>
                     <div class="app-title-text">
                         Paytm UPI
+                        <span class="fastest-pill">⚡ Fastest & Recommended</span>
+                    </div>
+                </div>
+                <div class="custom-radio-circle"></div>
+            </div>
+
+            <!-- Option 2: PhonePe / GPay (Server Down) -->
+            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
+                <div class="option-left-content">
+                    <div class="app-logo-box">
+                        <img src="Image/phonepe-logo.svg" alt="PhonePe">
+                    </div>
+                    <div class="app-title-text">
+                        PhonePe / GPay
+                        <span style="background: #fffbebf5; color: #d97706; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; border: 1px solid #fef3c7;">⚠️ Server Down</span>
                     </div>
                 </div>
                 <div class="custom-radio-circle"></div>
@@ -559,6 +560,11 @@
         }
 
         function selectPaymentOption(method) {
+            if (method === 'phonepe' || method === 'gpay') {
+                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Please use Paytm for instant payment.');
+                method = 'paytm';
+            }
+
             selectedMethod = method;
             document.querySelectorAll('.payment-option-row').forEach(el => el.classList.remove('selected'));
             
@@ -569,6 +575,12 @@
         }
 
         async function executePayment() {
+            if (selectedMethod === 'phonepe' || selectedMethod === 'gpay') {
+                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Switching to Paytm for instant payment.');
+                selectPaymentOption('paytm');
+                return;
+            }
+
             const settings = getSettings();
             const upiId = settings.phonepeMerchantId || '8888817766@ibl';
             const payeeName = settings.phonepeClientId || 'PhonePe';
@@ -585,7 +597,7 @@
                 currentOrder = {
                     id: currentOrderId,
                     date: new Date().toISOString(),
-                    status: 'pending_payment',
+                    status: 'pending_verification',
                     paymentMethod: selectedMethod,
                     utr: 'Pending Payment',
                     customer: {
@@ -601,6 +613,7 @@
                 };
             } else {
                 currentOrder.paymentMethod = selectedMethod;
+                currentOrder.status = 'pending_verification';
             }
 
             // Await saveOrder so Firestore receives mobile order data BEFORE redirecting!
@@ -626,20 +639,13 @@
                 return;
             }
 
-            let appUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
+            // ONLY Paytm redirects to app directly
+            const paytmUri = isAndroid 
+                ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
 
-            if (selectedMethod === 'phonepe') {
-                appUri = isAndroid
-                    ? `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}#Intent;scheme=upi;end`
-                    : `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
-            } else if (selectedMethod === 'paytm') {
-                appUri = isAndroid 
-                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
-            }
-
-            // Launch app directly and redirect to confirmation after 800ms
-            window.location.href = appUri;
+            // Launch Paytm app directly and redirect to confirmation after 800ms
+            window.location.href = paytmUri;
             setTimeout(() => {
                 window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
             }, 800);
@@ -714,7 +720,7 @@
             document.getElementById('top-payment-total').innerText = `₹${currentTotal.toFixed(2)}`;
             document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
 
-            selectPaymentOption('phonepe');
+            selectPaymentOption('paytm');
         });
     </script>
 </body>
