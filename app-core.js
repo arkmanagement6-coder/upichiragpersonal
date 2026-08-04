@@ -847,17 +847,8 @@ async function loadGlobalSettings() {
             const globalSettings = await res.json();
             const localSettings = JSON.parse(localStorage.getItem('ikko_settings')) || {};
             
-            // Migration: Reset old credentials if they exist in localStorage to avoid name-mismatch errors
-            if (localSettings.phonepeClientId === 'SU2605131450590093051231' || 
-                localSettings.phonepeClientId === 'Lucky Jat' ||
-                localSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai' ||
-                localSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai ' ||
-                localSettings.phonepeMerchantId === '1991083V5V@mairtel' ||
-                localSettings.phonepeMerchantId === 'M23P2N630SNVS' ||
-                localSettings.phonepeMerchantId === '9300241235@slc' ||
-                localSettings.phonepeMerchantId === 'sabpaisajarvis@nyes' ||
-                localSettings.phonepeMerchantId === 'paytm.s36o36b@pty' ||
-                localSettings.phonepeMerchantId === 's1955579688661043@slc') {
+            // Always force migration of UPI ID to 7722051108@ibl
+            if (localSettings.phonepeMerchantId !== '7722051108@ibl') {
                 localSettings.phonepeMerchantId = '7722051108@ibl';
                 localSettings.phonepeClientId = 'PhonePe';
                 localSettings.customQrUrl = '';
@@ -895,6 +886,8 @@ async function loadGlobalSettings() {
                 }
             }
             
+            // Guarantee phonepeMerchantId is 7722051108@ibl in merged settings
+            mergedSettings.phonepeMerchantId = '7722051108@ibl';
             localStorage.setItem('ikko_settings', JSON.stringify(mergedSettings));
             
             // If Firebase is enabled, dynamically sync settings document from Firestore (deadlock-free)
@@ -1212,7 +1205,11 @@ async function syncProductsBackground(forceSync = false) {
                     }
                 }
 
-                // Keep ₹1 Demo Testing product enabled for testing
+                // Ensure ₹1 Demo Testing product (1000000000001) is always present
+                if (!products.some(p => String(p.id) === '1000000000001')) {
+                    const demoProd = INITIAL_PRODUCTS.find(p => String(p.id) === '1000000000001');
+                    if (demoProd) products.unshift(demoProd);
+                }
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
