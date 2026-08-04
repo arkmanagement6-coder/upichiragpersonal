@@ -1523,9 +1523,27 @@ function clearCart() {
 
 function getCartTotal() {
     const cart = getCart();
-    return cart.reduce((total, item) => {
-        return total + (parsePrice(item.price) * item.qty);
-    }, 0);
+    if (!cart || cart.length === 0) return 0;
+    
+    let rawTotal = 0;
+    let minPrice = Infinity;
+    let totalQty = 0;
+
+    cart.forEach(item => {
+        const p = parsePrice(item.price);
+        rawTotal += p * item.qty;
+        totalQty += item.qty;
+        if (p > 0 && p < minPrice) {
+            minPrice = p;
+        }
+    });
+
+    let freeDiscount = 0;
+    if (totalQty >= 2 && minPrice !== Infinity) {
+        freeDiscount = minPrice;
+    }
+
+    return Math.max(0, rawTotal - freeDiscount);
 }
 
 function getCartCount() {
