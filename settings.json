@@ -7,12 +7,12 @@
   "customQrUrl": "",
   "firebaseEnabled": true,
   "firebaseConfig": {
-    "apiKey": "AIzaSyDho73txGBvPYPAkcaWcz3eV0nwEN4EK84",
-    "authDomain": "ikkochira.firebaseapp.com",
-    "projectId": "ikkochira",
-    "storageBucket": "ikkochira.firebasestorage.app",
-    "messagingSenderId": "704785555671",
-    "appId": "1:704785555671:web:3cfb4238d8aa6cd4a11092",
-    "measurementId": "G-8L7SY6BD3Y"
+    "apiKey": "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs",
+    "authDomain": "upichirahpersonal.firebaseapp.com",
+    "projectId": "upichirahpersonal",
+    "storageBucket": "upichirahpersonal.firebasestorage.app",
+    "messagingSenderId": "216570904039",
+    "appId": "1:216570904039:web:e21bb467fbea0495181142",
+    "measurementId": "G-ZGCX3LKTHQ"
   }
 }
