@@ -1435,6 +1435,7 @@ function toFirestoreRestValue(val) {
     if (typeof val === 'number') return Number.isInteger(val) ? { integerValue: val.toString() } : { doubleValue: val };
     if (typeof val === 'string') return { stringValue: val };
     if (Array.isArray(val)) {
+        if (val.length === 0) return { arrayValue: {} };
         return { arrayValue: { values: val.map(toFirestoreRestValue) } };
     }
     if (typeof val === 'object') {
