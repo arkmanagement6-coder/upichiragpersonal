@@ -347,11 +347,6 @@
             font-weight: 800;
             color: var(--text-heading);
         }
-        .item-original-price {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            text-decoration: line-through;
-        }
         .qty-stepper {
             display: flex;
             align-items: center;
@@ -415,18 +410,6 @@
             color: var(--text-muted);
         }
         .bill-val {
-            font-weight: 700;
-        }
-        .discount-row-box {
-            background: var(--green-bg);
-            color: var(--green-text);
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.88rem;
             font-weight: 700;
         }
         .free-pill {
@@ -650,7 +633,7 @@
                     Address Snippet
                 </div>
                 <div class="delivery-time-badge">
-                    ⚡ Delivery in 10 MINS to <span id="summary-name-text">Customer</span>
+                    🚚 Delivery in 3 to 7 DAYS to <span id="summary-name-text">Customer</span>
                 </div>
             </div>
 
@@ -680,13 +663,8 @@
                 <h2 class="bill-title">Bill Details</h2>
                 
                 <div class="bill-row">
-                    <span class="bill-label">Item Total (MRP)</span>
+                    <span class="bill-label">Item Total</span>
                     <span class="bill-val" id="summary-mrp-total">₹999.00</span>
-                </div>
-
-                <div class="discount-row-box">
-                    <span>Product Discount</span>
-                    <span id="summary-discount-val">-₹900.00</span>
                 </div>
 
                 <div class="bill-row">
@@ -701,14 +679,14 @@
 
                 <div class="bill-total-row">
                     <span>To Pay</span>
-                    <span id="summary-to-pay-price">₹99.00</span>
+                    <span id="summary-to-pay-price">₹999.00</span>
                 </div>
             </div>
 
             <!-- Bottom Fixed Bar for Step 2 -->
             <div class="bottom-action-fixed-bar">
                 <div class="bottom-price-info">
-                    <span class="bottom-total-price" id="bottom-bar-price">₹99.00</span>
+                    <span class="bottom-total-price" id="bottom-bar-price">₹999.00</span>
                     <span class="bottom-bill-link">DETAILED BILL ▲</span>
                 </div>
                 <button class="proceed-btn-theme" id="btn-proceed-to-pay" onclick="proceedToPaymentOptions()">
@@ -816,16 +794,14 @@
             const container = document.getElementById('cart-items-list-container');
             container.innerHTML = cart.map((item, idx) => {
                 const priceNum = parsePrice(item.price);
-                const compareNum = item.comparePrice ? parsePrice(item.comparePrice) : (priceNum * 10);
                 return `
                     <div class="item-row">
                         <img src="${item.image}" alt="${item.title}" class="item-img">
                         <div class="item-info">
                             <div class="item-title-text">${item.title}</div>
-                            <div class="item-variant-text">5 kg / Standard Pack</div>
+                            <div class="item-variant-text">Qty: ${item.qty} Unit</div>
                             <div class="item-price-wrap">
                                 <span class="item-current-price">₹${priceNum.toFixed(2)}</span>
-                                <span class="item-original-price">₹${compareNum.toFixed(2)}</span>
                             </div>
                         </div>
                         <div class="qty-stepper">
@@ -838,20 +814,13 @@
             }).join('');
 
             // Calculate Totals
-            let mrpTotal = 0;
             let finalTotal = 0;
-
             cart.forEach(item => {
                 const priceNum = parsePrice(item.price);
-                const compareNum = item.comparePrice ? parsePrice(item.comparePrice) : (priceNum * 10);
-                mrpTotal += compareNum * item.qty;
                 finalTotal += priceNum * item.qty;
             });
 
-            const discount = mrpTotal - finalTotal;
-
-            document.getElementById('summary-mrp-total').innerText = `₹${mrpTotal.toFixed(2)}`;
-            document.getElementById('summary-discount-val').innerText = `-₹${discount.toFixed(2)}`;
+            document.getElementById('summary-mrp-total').innerText = `₹${finalTotal.toFixed(2)}`;
             document.getElementById('summary-to-pay-price').innerText = `₹${finalTotal.toFixed(2)}`;
             document.getElementById('bottom-bar-price').innerText = `₹${finalTotal.toFixed(2)}`;
 
