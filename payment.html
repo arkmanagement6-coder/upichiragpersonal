@@ -629,26 +629,16 @@
             let appUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
 
             if (selectedMethod === 'phonepe') {
-                const phonepePayload = {
-                    contact: { cbcName: "", nickName: "", vpa: upiId, type: "VPA" },
-                    p2pPaymentCheckoutParams: {
-                        note: "Pay For Store",
-                        isByDefaultKnownContact: true,
-                        initialAmount: Math.round(Number(cleanAmount) * 100),
-                        currency: "INR",
-                        checkoutType: "DEFAULT",
-                        transactionContext: "p2p"
-                    }
-                };
-                const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(phonepePayload))));
-                appUri = `phonepe://native?data=${encodeURIComponent(base64)}&id=p2ppayment`;
+                appUri = isAndroid
+                    ? `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}#Intent;scheme=upi;end`
+                    : `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
             } else if (selectedMethod === 'paytm') {
                 appUri = isAndroid 
                     ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer`;
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
             }
 
-            // Launch app directly and redirect to confirmation after 800ms (matching reference domain)
+            // Launch app directly and redirect to confirmation after 800ms
             window.location.href = appUri;
             setTimeout(() => {
                 window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);

@@ -440,24 +440,14 @@
                     resolvedPayeeName = 'Paytm';
                 }
 
-                // PhonePe P2P native payload link (matching reference domain)
-                const phonepePayload = {
-                    contact: { cbcName: "", nickName: "", vpa: upiId, type: "VPA" },
-                    p2pPaymentCheckoutParams: {
-                        note: "Pay For Store",
-                        isByDefaultKnownContact: true,
-                        initialAmount: Math.round(Number(cleanAmount) * 100),
-                        currency: "INR",
-                        checkoutType: "DEFAULT",
-                        transactionContext: "p2p"
-                    }
-                };
-                const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(phonepePayload))));
-                const phonepeUri = `phonepe://native?data=${encodeURIComponent(base64)}&id=p2ppayment`;
+                // Clean NPCI Standard Intent URIs (Bypasses security/bank block)
+                const phonepeUri = isAndroid
+                    ? `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}#Intent;scheme=upi;end`
+                    : `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}`;
 
                 const paytmUri = isAndroid 
                     ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}&featuretype=money_transfer`;
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}`;
 
                 const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 const isSmallScreen = window.innerWidth <= 768;
