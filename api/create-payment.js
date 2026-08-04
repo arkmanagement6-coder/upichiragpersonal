@@ -2,44 +2,82 @@ const https = require('https');
 const path = require('path');
 const fs = require('fs');
 
-// Helper to make HTTPS requests
-function makeRequest(url, method, headers, postData = null) {
-    return new Promise((resolve, reject) => {
-        const urlObj = new URL(url);
+function toFirestoreRestValue(val) {
+    if (val === null || val === undefined) return { nullValue: null };
+    if (typeof val === 'boolean') return { booleanValue: val };
+    if (typeof val === 'number') return Number.isInteger(val) ? { integerValue: val.toString() } : { doubleValue: val };
+    if (typeof val === 'string') return { stringValue: val };
+    if (Array.isArray(val)) {
+        return { arrayValue: { values: val.map(toFirestoreRestValue) } };
+    }
+    if (typeof val === 'object') {
+        const fields = {};
+        for (const k in val) {
+            if (val[k] !== undefined) fields[k] = toFirestoreRestValue(val[k]);
+        }
+        return { mapValue: { fields } };
+    }
+    return { stringValue: String(val) };
+}
+
+function cleanUndefined(obj) {
+    if (Array.isArray(obj)) {
+        return obj.map(cleanUndefined);
+    } else if (obj !== null && typeof obj === 'object') {
+        const newObj = {};
+        for (const k in obj) {
+            if (obj[k] !== undefined) {
+                newObj[k] = cleanUndefined(obj[k]);
+            }
+        }
+        return newObj;
+    }
+    return obj;
+}
+
+async function saveOrderToFirestore(order) {
+    try {
+        const cleanObj = cleanUndefined(order);
+        const fields = {};
+        for (const key in cleanObj) {
+            fields[key] = toFirestoreRestValue(cleanObj[key]);
+        }
+
+        const payload = JSON.stringify({ fields });
+        const apiKey = "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs";
+        const projectId = "upichirahpersonal";
+        const urlPath = `/v1/projects/${projectId}/databases/(default)/documents/orders/${encodeURIComponent(order.id)}?key=${apiKey}`;
+
         const options = {
-            hostname: urlObj.hostname,
-            path: urlObj.pathname + urlObj.search,
-            method: method,
-            headers: headers
+            hostname: 'firestore.googleapis.com',
+            port: 443,
+            path: urlPath,
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(payload)
+            }
         };
 
-        const req = https.request(options, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
+        await new Promise((resolve) => {
+            const request = https.request(options, (response) => {
+                let body = '';
+                response.on('data', chunk => body += chunk);
+                response.on('end', () => resolve(body));
             });
-            res.on('end', () => {
-                resolve({
-                    statusCode: res.statusCode,
-                    headers: res.headers,
-                    body: data
-                });
+            request.on('error', (err) => {
+                console.error('[Create-Payment API] Firestore REST request error:', err);
+                resolve(null);
             });
+            request.write(payload);
+            request.end();
         });
-
-        req.on('error', (e) => {
-            reject(e);
-        });
-
-        if (postData) {
-            req.write(postData);
-        }
-        req.end();
-    });
+    } catch(e) {
+        console.error('[Create-Payment API] Error saving order to Firestore:', e);
+    }
 }
 
 module.exports = async (req, res) => {
-    // Enable CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -52,41 +90,48 @@ module.exports = async (req, res) => {
 
     async function processPayment(data) {
         try {
-            const orderId = data.orderId;
-            const amount = data.amount;
-            const redirectUrl = data.redirectUrl;
+            const orderId = data.orderId || `IKKO-${Math.floor(100000 + Math.random() * 900000)}`;
+            const amount = parseFloat(data.amount) || 1.00;
             const method = data.method || 'phonepe';
 
-            if (!orderId || !amount || !redirectUrl) {
-                res.statusCode = 400;
-                res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ success: false, message: 'Missing required parameters: orderId, amount, redirectUrl' }));
-                return;
-            }
-
-            // Read settings from settings.json to get custom UPI config if stored there
             let settings = {};
             try {
                 const settingsPath = path.join(process.cwd(), 'settings.json');
                 if (fs.existsSync(settingsPath)) {
                     settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
                 }
-            } catch (err) {
-                console.error('Error reading settings.json:', err);
-            }
+            } catch (err) {}
 
-            // We repurpose phonepeMerchantId as UPI ID and phonepeClientId as Payee Name, with request body overrides
             const upiId = data.upi || settings.phonepeMerchantId || '8888817766@ibl';
             const payeeName = data.name || settings.phonepeClientId || 'PhonePe';
 
-            console.log(`[UPI Checkout] Initiating checkout for order ${orderId}, amount: ${amount}, method: ${method}`);
-            
-            // Generate redirect URL to our premium local payment page
-            const customRedirectUrl = `/payment.html?orderId=${encodeURIComponent(orderId)}&method=${encodeURIComponent(method)}&upi=${encodeURIComponent(upiId)}&name=${encodeURIComponent(payeeName)}`;
+            // Construct full order object to guarantee it exists in Firestore
+            const orderObject = {
+                id: orderId,
+                date: new Date().toISOString(),
+                status: 'pending_verification',
+                paymentMethod: method,
+                utr: 'Pending Payment',
+                customer: {
+                    name: data.custName || data.name || (data.customer ? data.customer.name : 'Customer'),
+                    phone: data.custPhone || data.phone || (data.customer ? data.customer.phone : ''),
+                    address: data.custAddress || data.address || (data.customer ? data.customer.address : ''),
+                    city: data.city || (data.customer ? data.customer.city : ''),
+                    state: data.state || (data.customer ? data.customer.state : ''),
+                    pin: data.pin || (data.customer ? data.customer.pin : '')
+                },
+                items: data.items || [{ title: data.productTitle || 'Demo Testing Product', price: amount, qty: 1 }],
+                total: amount
+            };
+
+            // Save order to Firestore server-side
+            await saveOrderToFirestore(orderObject);
+
+            const customRedirectUrl = `/payment.html?orderId=${encodeURIComponent(orderId)}&method=${encodeURIComponent(method)}&upi=${encodeURIComponent(upiId)}&name=${encodeURIComponent(payeeName)}&total=${encodeURIComponent(amount)}`;
 
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({ success: true, redirectUrl: customRedirectUrl }));
+            res.end(JSON.stringify({ success: true, redirectUrl: customRedirectUrl, orderId: orderId }));
 
         } catch (err) {
             console.error('[UPI Checkout] Internal server error:', err);
@@ -115,4 +160,3 @@ module.exports = async (req, res) => {
         });
     }
 };
-
