@@ -1458,6 +1458,7 @@ async function syncOrderToFirestoreRest(order) {
         
         const response = await fetch(url, {
             method: 'PATCH',
+            keepalive: true,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fields })
         });
@@ -1482,10 +1483,20 @@ async function saveOrder(order) {
     }
     localStorage.setItem('ikko_orders', JSON.stringify(orders));
     
-    // 1. Instant REST API Sync (Guaranteed 0-ms SDK delay fallback for mobile)
-    syncOrderToFirestoreRest(order);
+    // 1. Serverless Endpoint Sync (Runs on Vercel Node.js backend with keepalive)
+    try {
+        fetch('/api/save-order', {
+            method: 'POST',
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(order)
+        }).catch(e => console.warn("Server API sync warning:", e));
+    } catch(e){}
 
-    // 2. Firebase JS SDK Sync (Triggers realtime listeners)
+    // 2. Direct REST API Sync (Guaranteed 0-ms SDK delay fallback for mobile)
+    await syncOrderToFirestoreRest(order);
+
+    // 3. Firebase JS SDK Sync (Triggers realtime listeners)
     try {
         const db = await initFirebase();
         if (db) {
