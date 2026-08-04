@@ -76,62 +76,42 @@
 window.trackPurchaseEvent = function(order) {
     if (!order) return;
     
-    // Check if pixel was already fired (on the order object or in local storage) to avoid double tracking
-    const orders = JSON.parse(localStorage.getItem('ikko_orders')) || [];
-    const localOrder = orders.find(o => o.id === order.id);
-    
-    if (order.pixelFired || (localOrder && localOrder.pixelFired)) {
-        console.log(`[Pixel] Purchase event already fired for order ${order.id}. Skipping.`);
-        order.pixelFired = true;
-        // Make sure local storage is also marked
-        if (localOrder && !localOrder.pixelFired) {
-            localOrder.pixelFired = true;
-            localStorage.setItem('ikko_orders', JSON.stringify(orders));
-        }
+    // Check session storage per order ID so that when customer views their confirmed/approved order, browser pixel fires
+    const sessionKey = 'pixel_purchase_fired_' + order.id;
+    if (sessionStorage.getItem(sessionKey)) {
+        console.log(`[Pixel] Purchase event already fired for order ${order.id} in this session.`);
         return;
     }
 
-    if (typeof fbq === 'function') {
-        let totalVal = 999;
-        if (order.total) {
-            const cleaned = String(order.total).replace(/[^\d.]/g, '');
-            const parsed = parseFloat(cleaned);
-            if (!isNaN(parsed)) totalVal = parsed;
-        }
-        
-        console.log(`[Pixel] Firing Purchase event for order ${order.id} with value Rs. ${totalVal}`);
-        fbq('track', 'Purchase', {
-            value: totalVal,
-            currency: 'INR',
-            content_type: 'product',
-            content_ids: order.items.map(item => String(item.id))
-        }, { eventID: order.id });
-        
-        // Mark order as tracked in localStorage
-        order.pixelFired = true;
-        const idx = orders.findIndex(o => o.id === order.id);
-        if (idx !== -1) {
-            orders[idx] = order;
-            localStorage.setItem('ikko_orders', JSON.stringify(orders));
+    const firePurchase = () => {
+        if (typeof fbq === 'function') {
+            let totalVal = 1.00;
+            if (order.total) {
+                const cleaned = String(order.total).replace(/[^\d.]/g, '');
+                const parsed = parseFloat(cleaned);
+                if (!isNaN(parsed) && parsed > 0) totalVal = parsed;
+            }
+            
+            const contentIds = (order.items && Array.isArray(order.items) && order.items.length > 0)
+                ? order.items.map(item => String(item.id))
+                : ['1000000000001'];
+
+            console.log(`[Pixel] Firing Purchase event for order ${order.id} with value Rs. ${totalVal}`);
+            fbq('track', 'Purchase', {
+                value: totalVal,
+                currency: 'INR',
+                content_type: 'product',
+                content_ids: contentIds
+            }, { eventID: order.id });
+            
+            sessionStorage.setItem(sessionKey, 'true');
         } else {
-            orders.push(order);
-            localStorage.setItem('ikko_orders', JSON.stringify(orders));
+            console.warn('[Pixel] fbq function not found yet. Retrying in 300ms...');
+            setTimeout(firePurchase, 300);
         }
-        
-        // Sync pixelFired: true to Firestore to prevent duplicate tracking on other devices/sessions
-        const settings = getSettings();
-        if (settings.firebaseEnabled) {
-            initFirebase().then(db => {
-                if (db) {
-                    db.collection('orders').doc(order.id).update({ pixelFired: true })
-                      .then(() => console.log(`[Pixel] Synced pixelFired=true to Firestore for order ${order.id}`))
-                      .catch(e => console.error("Failed to sync pixelFired to Firestore:", e));
-                }
-            });
-        }
-    } else {
-        console.warn('[Pixel] fbq function not found. Could not track Purchase.');
-    }
+    };
+
+    firePurchase();
 };
 
 const INITIAL_PRODUCTS = [
