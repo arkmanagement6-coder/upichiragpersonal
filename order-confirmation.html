@@ -583,30 +583,43 @@
 
                 let screenshotBase64 = '';
 
-                // Update in local storage
+                // Update in local storage & sync complete order object to Firestore
                 const idx = orders.findIndex(o => o.id === orderId);
+                let targetOrder = null;
                 if (idx !== -1) {
                     orders[idx].status = 'pending_verification';
                     orders[idx].utr = utr;
                     orders[idx].screenshot = screenshotBase64;
-                    localStorage.setItem('ikko_orders', JSON.stringify(orders));
+                    targetOrder = orders[idx];
+                } else {
+                    let cust = {};
+                    try { cust = JSON.parse(localStorage.getItem('ikko_customer')) || {}; } catch(e){}
+                    const cart = getCart();
+                    targetOrder = {
+                        id: orderId,
+                        date: new Date().toISOString(),
+                        status: 'pending_verification',
+                        paymentMethod: 'paytm',
+                        utr: utr,
+                        customer: {
+                            name: cust.name || 'Customer',
+                            phone: cust.phone || '',
+                            address: cust.fullAddressText || `${cust.address || ''}, ${cust.city || ''}`,
+                            city: cust.city || '',
+                            state: cust.state || '',
+                            pin: cust.pin || ''
+                        },
+                        items: cart.length > 0 ? cart : [{ title: 'Demo Testing Product', price: 1.00, qty: 1 }],
+                        total: getCartTotal() > 0 ? getCartTotal() : 1.00
+                    };
                 }
 
-                // Sync to Firestore
-                if (settings.firebaseEnabled) {
-                    const db = await initFirebase();
-                    if (db) {
-                        try {
-                            await db.collection('orders').doc(orderId).set({
-                                status: 'pending_verification',
-                                utr: utr,
-                                screenshot: screenshotBase64
-                            }, { merge: true });
-                            console.log("[Confirmation] Order UTR synced to Firestore successfully.");
-                        } catch (e) {
-                            console.error("[Confirmation] Failed to sync UTR to Firestore:", e);
-                        }
-                    }
+                // Guaranteed full sync to Firestore via saveOrder (Serverless + REST + SDK)
+                try {
+                    await saveOrder(targetOrder);
+                    console.log("[Confirmation] Full order object synced to Firestore via saveOrder:", orderId);
+                } catch(e) {
+                    console.error("[Confirmation] Error calling saveOrder:", e);
                 }
 
                 // Reload page to reflect updated state and start listener
