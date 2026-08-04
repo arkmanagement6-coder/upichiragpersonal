@@ -697,18 +697,30 @@
             }
 
             const sortedRecent = [...orders]
-                .sort((a,b) => new Date(b.date) - new Date(a.date))
-                .slice(0, 5);
+                .filter(o => o && o.id)
+                .sort((a,b) => {
+                    const timeA = a.date ? new Date(a.date).getTime() : (parseInt(String(a.id).replace(/\D/g,'')) || 0);
+                    const timeB = b.date ? new Date(b.date).getTime() : (parseInt(String(b.id).replace(/\D/g,'')) || 0);
+                    return timeB - timeA;
+                })
+                .slice(0, 10);
 
-            recentContainer.innerHTML = sortedRecent.map(o => `
-                <tr>
-                    <td><strong>${o.id}</strong></td>
-                    <td>${o.customer.name}</td>
-                    <td>${formatPrice(o.total)}</td>
-                    <td><span class="badge badge-${o.status}">${o.status}</span></td>
-                    <td>${new Date(o.date).toLocaleDateString()}</td>
-                </tr>
-            `).join('');
+            recentContainer.innerHTML = sortedRecent.map(o => {
+                const cust = o.customer || {};
+                const name = cust.name || (o.name || 'Customer');
+                const totalVal = parseFloat(o.total) || 1.00;
+                const status = o.status || 'pending_payment';
+                const dateStr = o.date ? new Date(o.date).toLocaleDateString() : 'Today';
+                return `
+                    <tr>
+                        <td><strong>${o.id}</strong></td>
+                        <td>${name}</td>
+                        <td>${formatPrice(totalVal)}</td>
+                        <td><span class="badge badge-${status}">${status}</span></td>
+                        <td>${dateStr}</td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         function renderOrders() {
@@ -1464,6 +1476,9 @@
             if (!order.id && doc.name) {
                 const parts = doc.name.split('/');
                 order.id = parts[parts.length - 1];
+            }
+            if (!order.date) {
+                order.date = doc.createTime || doc.updateTime || new Date().toISOString();
             }
             return order;
         }
