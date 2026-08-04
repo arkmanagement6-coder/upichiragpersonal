@@ -3,450 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure UPI Payment Gateway | IKKO DIGITAL</title>
-    <link rel="stylesheet" href="style.css?v=2.7">
-    <style>
-        .payment-wrapper {
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: var(--font-body);
-        }
-        .payment-card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            text-align: center;
-        }
-        .gateway-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-        .gateway-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .gateway-logo span {
-            color: var(--accent);
-        }
-        .secure-badge {
-            background-color: #ebf8ff;
-            color: #2b6cb0;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .timer-container {
-            background-color: #fffaf0;
-            border: 1px solid #feebc8;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-            color: #dd6b20;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .timer-clock {
-            font-size: 1.1rem;
-            font-weight: 800;
-        }
-        .amount-display-box {
-            background-color: var(--bg-main);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border: 1px dashed rgba(0, 0, 0, 0.1);
-        }
-        .amount-display-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .amount-display-value {
-            font-family: var(--font-heading);
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .order-meta-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: #4a5568;
-            margin-top: 15px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-        .qr-code-box {
-            margin: 25px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .qr-code-image-wrapper {
-            padding: 15px;
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            display: inline-block;
-            position: relative;
-        }
-        .qr-code-image-wrapper img {
-            display: block;
-            width: 220px;
-            height: 220px;
-        }
-        .qr-instruction {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            max-width: 320px;
-            line-height: 1.5;
-        }
-        
-        /* PhonePe stand styling */
-        .phonepe-qr-card {
-            background-color: #0b0c10;
-            border-radius: 16px;
-            padding: 30px 20px;
-            margin: 25px auto;
-            max-width: 380px;
-            text-align: center;
-            border: 2px solid #5f259f;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
-        .phonepe-qr-header {
-            margin-bottom: 25px;
-        }
-        .phonepe-qr-logo-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .phonepe-qr-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-        }
-        .phonepe-accepted-badge {
-            background-color: #5f259f;
-            color: white;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .phonepe-scan-instruction {
-            font-size: 0.9rem;
-            color: #a0aec0;
-            margin-bottom: 5px;
-        }
-        .phonepe-qr-image-wrapper {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            display: inline-block;
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .phonepe-qr-image-wrapper img {
-            display: block;
-            width: 200px;
-            height: 200px;
-        }
-        .phonepe-qr-center-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 36px;
-            height: 36px;
-            background: white;
-            border-radius: 50%;
-            padding: 2px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .phonepe-qr-center-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .phonepe-qr-payee-name {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: white;
-            text-transform: uppercase;
-            margin-top: 10px;
-            margin-bottom: 25px;
-        }
-        .phonepe-qr-footer {
-            font-size: 0.72rem;
-            color: #718096;
-            border-top: 1px solid #2d3748;
-            padding-top: 15px;
-            line-height: 1.4;
-        }
-        .mobile-apps-container {
-            margin: 25px 0;
-            display: none; /* Shown dynamically on mobile */
-            flex-direction: column;
-            gap: 12px;
-        }
-        .mobile-instruction {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .upi-app-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            text-decoration: none;
-            color: var(--primary);
-            background: white;
-        }
-        .upi-app-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        .upi-app-btn.phonepe {
-            background-color: #5f259f;
-            color: white;
-            border-color: #5f259f;
-        }
-        .upi-app-btn.paytm {
-            background-color: #00b9f5;
-            color: white;
-            border-color: #00b9f5;
-        }
-        .upi-app-btn.gpay {
-            background-color: #fff;
-            color: #3c4043;
-            border-color: #dadce0;
-        }
-        .upi-app-btn.generic {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        .app-icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            border-radius: 4px;
-            background: white;
-            padding: 2px;
-        }
-        .action-confirm-btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 16px 30px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            width: 100%;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            box-shadow: var(--shadow-glow);
-            margin-top: 15px;
-        }
-        .action-confirm-btn:hover {
-            background-color: #c42424;
-            transform: translateY(-2px);
-        }
-        
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 480px;
-            width: 100%;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-        }
-        @keyframes modalFadeIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-        .modal-title {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-        .modal-label {
-            display: block;
-            text-align: left;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        .modal-input {
-            width: 100%;
-            padding: 12px;
-            border: 1.5px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            box-sizing: border-box;
-            outline: none;
-            transition: var(--transition-fast);
-        }
-        .modal-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(229, 46, 46, 0.1);
-        }
-        .warning-box {
-            background-color: #fff5f5;
-            border: 1px solid #fed7d7;
-            border-radius: 6px;
-            padding: 12px;
-            font-size: 0.82rem;
-            color: #c53030;
-            text-align: left;
-            line-height: 1.45;
-            margin-bottom: 20px;
-        }
-        .modal-submit-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 6px;
-            width: 100%;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-        .modal-submit-btn:hover {
-            background-color: var(--primary-light);
-        }
-
-        /* Simulation Screen Styles */
-        .simulation-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary);
-            color: white;
-            z-index: 2000;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-        }
-        .simulation-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--accent);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 25px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .simulation-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .simulation-status {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            height: 24px;
-        }
-        
-        .payment-notes {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 20px;
-            line-height: 1.45;
-            text-align: left;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-    </style>
+    <title>Payment Options | Online Store</title>
+    <link rel="stylesheet" href="style.css?v=3.0">
     <!-- Firebase SDKs for fast parallel loading and caching -->
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -467,482 +25,645 @@
     src="https://www.facebook.com/tr?id=1039324625032380&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+    <style>
+        :root {
+            --brand-blue: #0090d0;
+            --brand-blue-hover: #007bb5;
+            --bg-page: #f2f5f8;
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+            --green-bg: #e8f8ee;
+            --green-border: #bbf7d0;
+            --green-text: #16a34a;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-body);
+            padding-bottom: 110px;
+        }
+
+        /* Top Brand Header Bar */
+        .brand-header-bar {
+            background-color: var(--brand-blue);
+            color: white;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 144, 208, 0.2);
+        }
+        .header-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-back-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            text-decoration: none;
+        }
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            margin: 0;
+        }
+        .secure-badge-pill {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .payment-wrapper {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 14px;
+            box-sizing: border-box;
+        }
+
+        .ui-card {
+            background: white;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Top View Details & Price Card */
+        .price-summary-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+        }
+        .view-details-link {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .top-total-amount {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-heading);
+        }
+
+        /* Cashback Green Box */
+        .cashback-offer-box {
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .cashback-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .cashback-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: var(--green-text);
+        }
+        .cashback-subtext {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #15803d;
+        }
+        .bank-logos-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .bank-logo-circle {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Section Headings */
+        .section-header-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 14px;
+        }
+        .section-main-title {
+            font-size: 1rem;
+            font-weight: 900;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+        .section-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Payment Option Items */
+        .payment-option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--border-light);
+            cursor: pointer;
+        }
+        .payment-option-row:last-child {
+            border-bottom: none;
+        }
+        .option-left-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .app-logo-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            flex-shrink: 0;
+        }
+        .app-logo-box img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        .app-title-text {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fastest-pill {
+            background: var(--green-bg);
+            color: var(--green-text);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .custom-radio-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .payment-option-row.selected .custom-radio-circle {
+            border-color: var(--brand-blue);
+            background: var(--brand-blue);
+        }
+        .payment-option-row.selected .custom-radio-circle::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        /* Disabled Payment Items */
+        .disabled-option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px dashed var(--border-light);
+            opacity: 0.65;
+        }
+        .disabled-option-row:last-child {
+            border-bottom: none;
+        }
+        .unavailable-pill {
+            background: #f1f5f9;
+            color: #94a3b8;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bottom Fixed Payment Action Bar */
+        .bottom-pay-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 12px 16px 14px 16px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+            border-top: 1px solid var(--border-light);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            box-sizing: border-box;
+        }
+        .pay-securely-btn {
+            width: 100%;
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: 900;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 144, 208, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .pay-securely-btn:hover {
+            background: var(--brand-blue-hover);
+        }
+        .secure-subtext {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Modal Overlay for UTR / QR */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .modal-box {
+            background: white;
+            border-radius: 16px;
+            max-width: 420px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+        }
+        .modal-close-x {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .utr-input {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 14px 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .utr-submit-btn {
+            width: 100%;
+            background: var(--brand-blue);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header placeholder -->
-    <div id="header-placeholder"></div>
-
-    <div class="payment-wrapper">
-        <div class="payment-card">
-            
-            <div class="gateway-header">
-                <div class="gateway-logo">IKKO <span>PAY</span></div>
-                <div class="secure-badge">
-                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    Secure UPI Payment
-                </div>
-            </div>
-
-            <!-- Countdown Timer -->
-            <div class="timer-container">
-                <span>Time remaining to complete payment:</span>
-                <span class="timer-clock" id="countdown-timer">05:00</span>
-            </div>
-
-            <!-- Amount Box -->
-            <div class="amount-display-box">
-                <div class="amount-display-label">Amount to Pay</div>
-                <div class="amount-display-value" id="payment-amount">Rs. 0.00</div>
-                
-                <div class="order-meta-info">
-                    <div>Order ID: <strong id="payment-order-id">IKKO-000000</strong></div>
-                    <div>Payee Name: <strong id="payment-payee">Bhalani Nandlal Madhavajibhai</strong></div>
-                </div>
-            </div>
-
-            <!-- Desktop View: PhonePe Style Dynamic QR Card -->
-            <div id="desktop-payment-view" style="margin: 25px 0;">
-                <div class="phonepe-qr-card">
-                    <div class="phonepe-qr-header">
-                        <div class="phonepe-qr-logo-wrap">
-                            <img src="Image/phonepe-logo.svg" alt="PhonePe" style="height: 30px; background: white; padding: 2px; border-radius: 6px;">
-                            <span class="phonepe-qr-logo-text">PhonePe</span>
-                        </div>
-                        <div class="phonepe-accepted-badge">ACCEPTED HERE</div>
-                        <div class="phonepe-scan-instruction">Scan & Pay Using PhonePe App</div>
-                    </div>
-                    
-                    <div class="phonepe-qr-image-wrapper">
-                        <img id="dynamic-qr-image" src="" alt="Scan to Pay">
-                        <div class="phonepe-qr-center-logo">
-                            <img src="Image/phonepe-logo.svg" alt="pe" style="width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                    </div>
-                    
-                    <div class="phonepe-qr-payee-name" id="payment-qr-payee">Bhalani Nandlal Madhavajibhai</div>
-                    
-                    <div class="phonepe-qr-footer">
-                        © 2026, All rights reserved, PhonePe Ltd (Formerly known as 'PhonePe Private Ltd')
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile View: App Launch Buttons -->
-            <div class="mobile-apps-container" id="mobile-payment-view">
-                <div class="mobile-instruction" id="mobile-payment-instruction">Choose UPI App to Pay:</div>
-                
-                <!-- PhonePe Redirect -->
-                <a href="#" class="upi-app-btn phonepe" id="link-phonepe">
-                    <img src="Image/phonepe-logo.svg" alt="PhonePe" class="app-icon">
-                    Pay via PhonePe
-                </a>
-
-                <!-- GPay Redirect -->
-                <a href="#" class="upi-app-btn gpay" id="link-gpay">
-                    <img src="Image/google-pay-logo.svg" alt="Google Pay" class="app-icon">
-                    Pay via Google Pay
-                </a>
-
-                <!-- Paytm Redirect -->
-                <a href="#" class="upi-app-btn paytm" id="link-paytm">
-                    <img src="Image/paytm-logo.svg" alt="Paytm" class="app-icon">
-                    Pay via Paytm
-                </a>
-
-                <!-- Generic Chooser -->
-                <a href="#" class="upi-app-btn generic" id="link-generic">
-                    Pay via Any UPI App
-                </a>
-
-                <!-- Manual Payment Fallbacks -->
-                <div class="manual-payment-info" style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px; text-align: center;">
-                    <div style="font-size: 0.95rem; color: #feebc8; margin-bottom: 8px; font-weight: bold;">
-                        💡 app-redirect not working? (सिक्योरिटी ब्लॉक एरर आने पर)
-                    </div>
-                    <div style="font-size: 0.85rem; color: #e2e8f0; margin-bottom: 12px; line-height: 1.4;">
-                        If PhonePe/GPay shows a security error, take a screenshot of this QR and scan it from gallery inside PhonePe/GPay / अगर ऐप बटन काम न करे, तो इसका स्क्रीनशॉट लेकर ऐप में स्कैन करें:
-                    </div>
-                    <div style="margin-bottom: 15px; display: flex; justify-content: center;">
-                        <img id="mobile-qr-image" src="" alt="UPI QR Code" style="width: 180px; height: 180px; border: 4px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 8px; background: white;">
-                    </div>
-                    <div style="font-size: 0.85rem; color: #e2e8f0; margin-bottom: 12px; line-height: 1.4;">
-                        Or copy the UPI ID below, transfer the money manually, and paste the UTR.
-                    </div>
-                    <div style="display: flex; gap: 8px; justify-content: center; align-items: center; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #fff; margin-bottom: 10px;">
-                        <span id="manual-upi-id-text">1991083V5V@mairtel</span>
-                        <button onclick="copyManualUpiId()" style="background: var(--accent); color: white; border: none; padding: 4px 10px; border-radius: 3px; cursor: pointer; font-size: 0.75rem; font-weight: bold;">Copy ID</button>
-                    </div>
-                    <div style="font-size: 0.8rem; color: var(--accent-green); display: none; margin-bottom: 12px;" id="upi-copied-alert">✓ UPI ID Copied! / कॉपी हो गया!</div>
-
-                    <div style="margin-top: 15px; text-align: center;">
-                        <button onclick="toggleMobileQr()" type="button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; font-weight: bold;">
-                            🖼️ Show QR Code for Screenshot / क्यूआर कोड देखें
-                        </button>
-                    </div>
-                    
-                    <div id="mobile-qr-wrapper" style="display: none; margin-top: 15px; padding: 15px; background: white; border-radius: 8px; text-align: center;">
-                        <img id="mobile-qr-image" src="" alt="Scan QR" style="width: 200px; height: 200px; margin: 0 auto; display: block;">
-                        <p style="color: #333; font-size: 0.8rem; margin-top: 8px; font-weight: bold;">Screenshot this QR and Scan in PhonePe / GPay</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <button class="action-confirm-btn" onclick="openUtrModal()">I Have Paid / मैंने पेमेंट कर दी है</button>
-
-            <!-- Warnings/Notes -->
-            <div class="payment-notes">
-                <strong>Important Instructions:</strong>
-                <ul>
-                    <li>Do not close this page or click back until payment is confirmed.</li>
-                    <li>Ensure you make the payment for the exact amount shown above.</li>
-                    <li>Copy and save the <strong>12-digit UTR/Reference number</strong> from your payment success receipt; you will need it to confirm the order.</li>
-                </ul>
-            </div>
-
+    <!-- Top Brand Header Bar -->
+    <div class="brand-header-bar">
+        <div class="header-title-wrap">
+            <a href="checkout.html" class="header-back-btn">←</a>
+            <h1 class="header-title">Payment Options</h1>
+        </div>
+        <div class="secure-badge-pill">
+            🛡️ 100% Secure
         </div>
     </div>
 
-    <!-- UTR Input Modal -->
-    <div class="modal-overlay" id="utr-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeUtrModal()">&times;</button>
-            <h3 class="modal-title">Confirm Payment</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.4;">
-                Please enter the 12-digit UTR/Reference number from your UPI payment success screen to verify your order.
+    <main class="payment-wrapper">
+
+        <!-- Top Price Summary Card -->
+        <div class="ui-card price-summary-card">
+            <div class="view-details-link">
+                View Details <span>∨</span>
+            </div>
+            <div class="top-total-amount" id="top-payment-total">
+                ₹1.00
+            </div>
+        </div>
+
+        <!-- Cashback Offer Banner -->
+        <div class="cashback-offer-box">
+            <div class="cashback-info">
+                <div class="cashback-title">70% Cashback Applied</div>
+                <div class="cashback-subtext">Instant cashback on UPI payment</div>
+            </div>
+            <div class="bank-logos-wrap">
+                <div class="bank-logo-circle" style="color: #a855f7;">A</div>
+                <div class="bank-logo-circle" style="color: #0284c7;">S</div>
+            </div>
+        </div>
+
+        <!-- Recommended Section -->
+        <div class="ui-card">
+            <div class="section-header-wrap">
+                <h2 class="section-main-title">
+                    <span>📱</span> Recommended
+                </h2>
+                <div class="section-subtitle">Pay via UPI for instant cashback</div>
+            </div>
+
+            <!-- Option 1: PhonePe -->
+            <div class="payment-option-row selected" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
+                <div class="option-left-content">
+                    <div class="app-logo-box">
+                        <img src="Image/phonepe-logo.svg" alt="PhonePe">
+                    </div>
+                    <div class="app-title-text">
+                        PhonePe
+                        <span class="fastest-pill">⚡ Fastest</span>
+                    </div>
+                </div>
+                <div class="custom-radio-circle"></div>
+            </div>
+
+            <!-- Option 2: Paytm UPI -->
+            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm')">
+                <div class="option-left-content">
+                    <div class="app-logo-box">
+                        <img src="Image/paytm-logo.svg" alt="Paytm">
+                    </div>
+                    <div class="app-title-text">
+                        Paytm UPI
+                    </div>
+                </div>
+                <div class="custom-radio-circle"></div>
+            </div>
+
+            <!-- Option 3: Scan QR Code -->
+            <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr')">
+                <div class="option-left-content">
+                    <div class="app-logo-box" style="background: #e0f2fe; color: var(--brand-blue); font-size: 1.2rem; font-weight: 800;">
+                        ☴
+                    </div>
+                    <div class="app-title-text">
+                        Scan QR Code
+                    </div>
+                </div>
+                <div class="custom-radio-circle"></div>
+            </div>
+
+        </div>
+
+        <!-- Unavailable Payment Methods Section -->
+        <div class="ui-card">
+            
+            <div class="disabled-option-row">
+                <div class="option-left-content">
+                    <div class="app-logo-box">💳</div>
+                    <div class="app-title-text">Credit / Debit Card</div>
+                </div>
+                <span class="unavailable-pill">UNAVAILABLE</span>
+            </div>
+
+            <div class="disabled-option-row">
+                <div class="option-left-content">
+                    <div class="app-logo-box">🏦</div>
+                    <div class="app-title-text">Net Banking</div>
+                </div>
+                <span class="unavailable-pill">UNAVAILABLE</span>
+            </div>
+
+            <div class="disabled-option-row">
+                <div class="option-left-content">
+                    <div class="app-logo-box">💵</div>
+                    <div class="app-title-text">Cash on Delivery</div>
+                </div>
+                <span class="unavailable-pill">UNAVAILABLE</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Bottom Fixed Pay Action Bar -->
+    <div class="bottom-pay-bar">
+        <button type="button" class="pay-securely-btn" onclick="executePayment()">
+            Pay Securely <span id="btn-pay-price">₹1.00</span> <span>›</span>
+        </button>
+        <div class="secure-subtext">
+            <span>🔒</span> 100% Safe & Secure Payment
+        </div>
+    </div>
+
+    <!-- QR & UTR Confirmation Modal -->
+    <div class="modal-overlay" id="qr-utr-modal">
+        <div class="modal-box">
+            <button class="modal-close-x" onclick="closeUtrModal()">×</button>
+            <h3 style="margin-top: 0; color: var(--text-heading); font-size: 1.2rem; font-weight: 800;">Complete UPI Payment</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                Scan QR below or enter UTR Number after completing payment in PhonePe/Paytm.
             </p>
-            
-            <form onsubmit="handleUtrSubmit(event)">
-                <label for="utr-input" class="modal-label">12-Digit UTR Number / UPI Ref No *</label>
-                <input type="text" id="utr-input" class="modal-input" placeholder="e.g. 604512984512" 
-                       pattern="[0-9]{12}" maxlength="12" required autocomplete="off"
-                       title="Please enter a valid 12-digit numeric UPI reference number.">
-                
-                <div class="warning-box">
-                    <strong>⚠️ Warning / चेतावनी:</strong><br>
-                    Entering a fake or incorrect UTR number will result in <strong>automatic cancellation of your order</strong> and permanent blacklisting of your details from our store.<br>
-                    (गलत UTR नंबर डालने पर आर्डर निरस्त कर दिया जायेगा।)
-                </div>
-                
-                <button type="submit" class="modal-submit-btn">Verify & Confirm Order</button>
-            </form>
+            <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1.5px dashed var(--brand-blue); display: inline-block; margin-bottom: 14px;">
+                <img id="modal-qr-img" src="Image/phonepe_qr.png" alt="Scan QR" style="width: 180px; height: 180px; display: block;">
+            </div>
+            <div style="font-size: 0.85rem; font-weight: bold; color: var(--brand-blue); margin-bottom: 12px;">
+                UPI VPA: <span style="font-family: monospace;">8888817766@ibl</span>
+            </div>
+            <input type="text" id="input-utr-number" class="utr-input" placeholder="Enter 12-digit UTR / Ref No." maxlength="12">
+            <button type="button" class="utr-submit-btn" onclick="submitUtrAndConfirm()">Submit & Confirm Order</button>
         </div>
     </div>
-
-    <!-- Full-screen simulated validation spinner overlay -->
-    <div class="simulation-overlay" id="simulation-overlay">
-        <div class="simulation-spinner"></div>
-        <div class="simulation-title">Verifying Payment</div>
-        <div class="simulation-status" id="simulation-status">Connecting to secure UPI gateway...</div>
-    </div>
-
-    <!-- Footer placeholder -->
-    <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=31.0"></script>
+    <script src="app-core.js?v=35.0"></script>
     <script>
-        let orderId = '';
-        let amount = 0;
-        let upiId = '1991083V5V@mairtel';
-        let payeeName = 'Bhalani Nandlal Madhavajibhai';
-        let selectedMethod = '';
+        let selectedMethod = 'phonepe'; // 'phonepe', 'paytm', 'qr'
+        let currentOrderId = '';
+        let currentTotal = 1.00;
 
-        // Load Order Details
-        window.addEventListener('load', () => {
-            // Render Header and Footer dynamically via app-core
-            renderHeaderAndFooter();
-
+        function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
-            orderId = urlParams.get('orderId');
-            selectedMethod = urlParams.get('method') || 'phonepe';
+            return urlParams.get(param);
+        }
+
+        function selectPaymentOption(method) {
+            selectedMethod = method;
+            document.querySelectorAll('.payment-option-row').forEach(el => el.classList.remove('selected'));
             
-            // Check dynamic settings passed via client-side settings
+            const selectedRow = document.getElementById('opt-' + method);
+            if (selectedRow) {
+                selectedRow.classList.add('selected');
+            }
+        }
+
+        function executePayment() {
             const settings = getSettings();
-            if (settings) {
-                upiId = settings.phonepeMerchantId || upiId;
-                payeeName = settings.phonepeClientId || payeeName;
-            }
+            const upiId = settings.phonepeMerchantId || '8888817766@ibl';
+            const payeeName = settings.phonepeClientId || 'PhonePe';
+            const cleanAmount = currentTotal.toFixed(2);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-            // URL params take precedence over settings (so specific checkout configurations win)
-            upiId = urlParams.get('upi') || upiId;
-            payeeName = urlParams.get('name') || payeeName;
-            
+            // Track Meta Pixel Purchase / InitiateCheckout event
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Purchase', {
+                        value: currentTotal,
+                        currency: 'INR'
+                    });
+                }
+            } catch(e){}
 
-            
-            // Clean up name if it contains a client ID instead of a valid name
-            if (/^SU\d+/i.test(payeeName) || payeeName === 'SU2605131450590093051231') {
-                payeeName = 'Bhalani Nandlal Madhavajibhai';
-            }
-
-            if (!orderId) {
-                alert('Order information not found. Redirecting to storefront.');
-                window.location.href = 'index.html';
+            if (selectedMethod === 'qr' || !isMobile) {
+                // Show QR & UTR Modal
+                openUtrModal();
                 return;
             }
 
-            // Find order in local storage
-            const orders = getOrders();
-            const order = orders.find(o => o.id === orderId);
+            let appUri = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&mam=${cleanAmount}&cu=INR`;
 
-            if (!order) {
-                alert('Order not found. Redirecting to storefront.');
-                window.location.href = 'index.html';
-                return;
-            }
-
-            amount = parseFloat(order.total);
-
-            // Populate UI Elements
-            document.getElementById('payment-order-id').innerText = orderId;
-            document.getElementById('payment-amount').innerText = formatPrice(amount);
-            document.getElementById('payment-payee').innerText = payeeName;
-            document.getElementById('payment-qr-payee').innerText = payeeName;
-
-            // Generate UPI URIs
-            const cleanAmount = amount.toFixed(2);
-            // Setup app redirect URIs using native wallet deep links (official NPCI standard)
-             let phonepeUri = "";
-             let paytmUri = "";
-             let gpayUri = "";
-             
-             const isAndroid = /Android/i.test(navigator.userAgent);
-             
-             const tr = "T" + Math.floor(Math.random() * 1000000000);
-             
-             // PhonePe Native P2P Payload
-             const phonepePayload = {
-                 contact: { cbcName: "", nickName: "", vpa: upiId, type: "VPA" },
-                 p2pPaymentCheckoutParams: {
-                     note: "Pay For Store",
-                     isByDefaultKnownContact: true,
-                     initialAmount: Math.round(Number(cleanAmount) * 100),
-                     currency: "INR",
-                     checkoutType: "DEFAULT",
-                     transactionContext: "p2p"
-                 }
-             };
-             const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(phonepePayload))));
-             phonepeUri = `phonepe://native?data=${encodeURIComponent(base64)}&id=p2ppayment`;
-
-             paytmUri = isAndroid 
-                 ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                 : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId || "")}&featuretype=money_transfer`;
-
-             gpayUri = isAndroid 
-                 ? `intent://pay?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tr=${tr}&mc=8931#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`
-                 : `tez://upi/pay?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tr=${tr}&mc=8931`;
-             
-             const baseUpiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&tn=Order_Id_${orderId}&am=${cleanAmount}&tr=${tr}&mc=8931&cu=INR`;
-
-            // Helper to launch UPI app and trigger redirect to order confirmation page after 800ms
-            function launchUpiAndRedirect(appUri) {
-                window.location.href = appUri;
-                setTimeout(() => {
-                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&v=2.7`);
-                }, 800);
-            }
-
-            // Setup Mobile app action buttons with interception to redirect to confirmation
-            document.getElementById('link-phonepe').addEventListener('click', (e) => {
-                e.preventDefault();
-                launchUpiAndRedirect(phonepeUri);
-            });
-            document.getElementById('link-paytm').addEventListener('click', (e) => {
-                e.preventDefault();
-                launchUpiAndRedirect(paytmUri);
-            });
-            document.getElementById('link-gpay').addEventListener('click', (e) => {
-                e.preventDefault();
-                launchUpiAndRedirect(gpayUri);
-            });
-            document.getElementById('link-generic').addEventListener('click', (e) => {
-                e.preventDefault();
-                launchUpiAndRedirect(baseUpiUri);
-            });
-
-            // Device Detection & View Management
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // Show Mobile View, hide desktop QR
-                document.getElementById('mobile-payment-view').style.display = 'flex';
-                document.getElementById('desktop-payment-view').style.display = 'none';
-
-                // Update instruction text for PhonePe/GPay to guide user to scan QR screenshot
-                const instructionEl = document.getElementById('mobile-payment-instruction');
-                if (selectedMethod === 'phonepe' || selectedMethod === 'gpay') {
-                    if (instructionEl) {
-                        instructionEl.innerHTML = `<span style="color:#ffb74d; font-weight:bold; font-size:1.05rem;">⚠️ Airtel Pay Security Block / एयरटेल सुरक्षा ब्लॉक:</span><br><div style="margin-top:6px; font-size:0.9rem; color:#fff; text-align:left; line-height:1.4;">Direct opening of PhonePe/GPay is blocked by Airtel Payments Bank. Please <strong>take a screenshot of the QR code below</strong> and scan it from gallery in PhonePe/GPay to pay safely, or click Paytm below to pay instantly.<br><br>एयरटेल पेमेंट बैंक द्वारा डायरेक्ट PhonePe/GPay खोलना ब्लॉक है। कृपया <strong>नीचे दिए गए QR कोड का स्क्रीनशॉट लें</strong> और पेमेंट करने के लिए अपने ऐप में गैलरी से स्कैन करें, या तुरंत पेमेंट करने के लिए नीचे Paytm पर क्लिक करें।</div>`;
-                        instructionEl.style.marginBottom = '20px';
+            if (selectedMethod === 'phonepe') {
+                const phonepePayload = {
+                    contact: { cbcName: "", nickName: "", vpa: upiId, type: "VPA" },
+                    p2pPaymentCheckoutParams: {
+                        note: "Pay For Store",
+                        isByDefaultKnownContact: true,
+                        initialAmount: Math.round(Number(cleanAmount) * 100),
+                        currency: "INR",
+                        checkoutType: "DEFAULT",
+                        transactionContext: "p2p"
                     }
-                }
-
-                // Auto-redirect to Paytm only if selected (since Paytm works instantly without bank declines)
-                if (selectedMethod === 'paytm') {
-                    setTimeout(() => {
-                        launchUpiAndRedirect(paytmUri);
-                    }, 1000);
-                }
+                };
+                const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(phonepePayload))));
+                appUri = `phonepe://native?data=${encodeURIComponent(base64)}&id=p2ppayment`;
+            } else if (selectedMethod === 'paytm') {
+                appUri = isAndroid 
+                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer`;
             }
 
-            // Generate QR Code dynamically or load custom QR URL
-            const qrCodeUrl = settings.customQrUrl ? settings.customQrUrl : `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(baseUpiUri)}`;
-            const desktopQrImg = document.getElementById('dynamic-qr-image');
-            if (desktopQrImg) desktopQrImg.src = qrCodeUrl;
-            const mobileQrImg = document.getElementById('mobile-qr-image');
-            if (mobileQrImg) mobileQrImg.src = qrCodeUrl;
-
-            // Populate manual UPI VPA text
-            const manualTextEl = document.getElementById('manual-upi-id-text');
-            if (manualTextEl) {
-                manualTextEl.innerText = upiId;
-            }
-
-            // Start Countdown Timer
-            startTimer(300); // 5 minutes (300 seconds)
-        });
-
-        // Countdown Timer Logic
-        function startTimer(duration) {
-            let timer = duration, minutes, seconds;
-            const timerClock = document.getElementById('countdown-timer');
-            const interval = setInterval(() => {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                timerClock.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    timerClock.textContent = "EXPIRED";
-                    timerClock.style.color = "red";
-                    alert("Payment window has expired. Please place your order again.");
-                    window.location.href = 'checkout.html';
-                }
-            }, 1000);
+            // Launch app directly with fallback to confirmation page
+            window.location.href = appUri;
+            setTimeout(() => {
+                window.location.href = `order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`;
+            }, 1800);
         }
 
-        // Render header/footer wrapper (simulate app-core if required)
-        function renderHeaderAndFooter() {
-            // Standard renderers inside app-core
-            if (typeof window.renderHeader === 'function') window.renderHeader();
-            if (typeof window.renderFooter === 'function') window.renderFooter();
-        }
-
-        // Copy Manual UPI ID Helper
-        function copyManualUpiId() {
-            const text = document.getElementById('manual-upi-id-text').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const alertEl = document.getElementById('upi-copied-alert');
-                alertEl.style.display = 'block';
-                setTimeout(() => { alertEl.style.display = 'none'; }, 2000);
-            }).catch(err => {
-                console.error("Clipboard copy failed:", err);
-                alert("UPI ID: " + text);
-            });
-        }
-
-        // Toggle Mobile QR Code Screenshot Helper
-        function toggleMobileQr() {
-            const wrapper = document.getElementById('mobile-qr-wrapper');
-            if (wrapper.style.display === 'none') {
-                wrapper.style.display = 'block';
-                
-                const settings = getSettings();
-                const cleanAmount = amount.toFixed(2);
-                const baseUpiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&tn=Order_Id_${orderId}&am=${cleanAmount}&tr=${tr}&mc=8931&cu=INR`;
-                const qrCodeUrl = settings.customQrUrl ? settings.customQrUrl : `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(baseUpiUri)}`;
-                document.getElementById('mobile-qr-image').src = qrCodeUrl;
-            } else {
-                wrapper.style.display = 'none';
-            }
-        }
-
-        // Modal triggers
         function openUtrModal() {
-            document.getElementById('utr-modal').style.display = 'flex';
-            document.getElementById('utr-input').focus();
+            document.getElementById('qr-utr-modal').style.display = 'flex';
         }
 
         function closeUtrModal() {
-            document.getElementById('utr-modal').style.display = 'none';
+            document.getElementById('qr-utr-modal').style.display = 'none';
         }
 
-        // UTR Form submission
-        function handleUtrSubmit(e) {
-            e.preventDefault();
-            const utrInput = document.getElementById('utr-input').value.trim();
-
-            if (!/^\d{12}$/.test(utrInput)) {
-                alert('Please enter a valid 12-digit numeric UTR/Reference number.');
+        function submitUtrAndConfirm() {
+            const utr = document.getElementById('input-utr-number').value.trim();
+            if (!utr || utr.length < 6) {
+                alert('Please enter a valid 12-digit UTR/Reference number.');
                 return;
             }
 
-            closeUtrModal();
-            showSimulationOverlay(utrInput);
-        }
-
-        // Simulated full-screen validation steps
-        function showSimulationOverlay(utr) {
-            const overlay = document.getElementById('simulation-overlay');
-            const statusText = document.getElementById('simulation-status');
-            overlay.style.display = 'flex';
-
-            const steps = [
-                { text: "Connecting to secure UPI settlement ledger...", delay: 1000 },
-                { text: "Verifying UTR " + utr + " with bank records...", delay: 2000 },
-                { text: "Settlement verified! Syncing transaction metadata...", delay: 3000 },
-                { text: "Order confirmed! Redirecting to confirmation page...", delay: 4000 }
-            ];
-
-            steps.forEach((step, idx) => {
-                setTimeout(() => {
-                    statusText.innerText = step.text;
-                    
-                    // Final redirection step
-                    if (idx === steps.length - 1) {
-                        completeOrder(utr);
-                    }
-                }, step.delay);
-            });
-        }
-
-        // Complete Order and update Local Storage
-        async function completeOrder(utr) {
-            try {
-                const orders = getOrders();
-                const orderIdx = orders.findIndex(o => o.id === orderId);
-
-                if (orderIdx !== -1) {
-                    const order = orders[orderIdx];
-                    order.status = 'pending_verification'; // Awaiting verification by admin
-                    order.utr = utr; // Assigns the entered UTR
-                    
-                    // Save back and sync
-                    await saveOrder(order);
-                }
-
-                // Clear customer shopping cart
-                if (typeof clearCart === 'function') {
-                    clearCart();
-                } else {
-                    localStorage.removeItem('ikko_cart');
-                }
-
-                // Redirect to success
-                window.location.href = `order-confirmation.html?orderId=${encodeURIComponent(orderId)}&v=2.7`;
-
-            } catch (err) {
-                console.error("Error saving completed order:", err);
-                alert("An error occurred while saving your order. Please contact support.");
-                window.location.href = 'index.html';
+            // Update order status
+            const orders = getOrders();
+            const idx = orders.findIndex(o => o.id === currentOrderId);
+            if (idx !== -1) {
+                orders[idx].utr = utr;
+                orders[idx].status = 'pending_verification';
+                saveOrder(orders[idx]);
             }
+
+            window.location.href = `order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&utr=${encodeURIComponent(utr)}`;
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            currentOrderId = getQueryParam('orderId') || `IKKO-${Math.floor(100000 + Math.random() * 900000)}`;
+            const totalParam = getQueryParam('total');
+            if (totalParam) {
+                currentTotal = parseFloat(totalParam) || 1.00;
+            } else {
+                currentTotal = getCartTotal() || 1.00;
+            }
+
+            document.getElementById('top-payment-total').innerText = `₹${currentTotal.toFixed(2)}`;
+            document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
+
+            selectPaymentOption('phonepe');
+        });
     </script>
 </body>
 </html>

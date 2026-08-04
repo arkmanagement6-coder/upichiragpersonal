@@ -412,8 +412,8 @@
 
             function renderUtrSubmissionUI(order) {
                 const settings = getSettings();
-                const upiId = settings.phonepeMerchantId || 'paytm.s36o36b@pty';
-                const payeeName = settings.phonepeClientId || 'Paytm';
+                const upiId = settings.phonepeMerchantId || '8888817766@ibl';
+                const payeeName = settings.phonepeClientId || 'PhonePe';
                 const amount = parseFloat(order.total);
                 const cleanAmount = !isNaN(amount) ? amount.toFixed(2) : "0.00";
                 const isAndroid = /Android/i.test(navigator.userAgent);

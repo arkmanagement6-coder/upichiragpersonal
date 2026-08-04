@@ -825,8 +825,8 @@ function dbInit() {
     if (!localStorage.getItem('ikko_settings')) {
         localStorage.setItem('ikko_settings', JSON.stringify({
             phonepeEnabled: true,
-            phonepeMerchantId: 'paytm.s36o36b@pty',
-            phonepeClientId: 'Paytm',
+            phonepeMerchantId: '8888817766@ibl',
+            phonepeClientId: 'PhonePe',
             phonepeClientSecret: 'N/A',
             phonepeMode: 'live',
             customQrUrl: ''
@@ -853,10 +853,10 @@ async function loadGlobalSettings() {
                 localSettings.phonepeMerchantId === 'M23P2N630SNVS' ||
                 localSettings.phonepeMerchantId === '9300241235@slc' ||
                 localSettings.phonepeMerchantId === 'sabpaisajarvis@nyes' ||
-                localSettings.phonepeMerchantId === '8888817766@ibl' ||
+                localSettings.phonepeMerchantId === 'paytm.s36o36b@pty' ||
                 localSettings.phonepeMerchantId === 's1955579688661043@slc') {
-                localSettings.phonepeMerchantId = 'paytm.s36o36b@pty';
-                localSettings.phonepeClientId = 'Paytm';
+                localSettings.phonepeMerchantId = '8888817766@ibl';
+                localSettings.phonepeClientId = 'PhonePe';
                 localSettings.customQrUrl = '';
                 localStorage.setItem('ikko_settings', JSON.stringify(localSettings));
             }
@@ -909,17 +909,17 @@ async function loadGlobalSettings() {
                                 firestoreSettings.phonepeMerchantId === 'M23P2N630SNVS' ||
                                 firestoreSettings.phonepeMerchantId === '9300241235@slc' ||
                                 firestoreSettings.phonepeMerchantId === 'sabpaisajarvis@nyes' ||
-                                firestoreSettings.phonepeMerchantId === '8888817766@ibl' ||
+                                firestoreSettings.phonepeMerchantId === 'paytm.s36o36b@pty' ||
                                 firestoreSettings.phonepeMerchantId === '1991083V5V@mairtel' ||
                                 firestoreSettings.phonepeClientId === 'Lucky Jat' ||
                                 firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai' ||
                                 firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai ') {
-                                firestoreSettings.phonepeMerchantId = 'paytm.s36o36b@pty';
-                                firestoreSettings.phonepeClientId = 'Paytm';
+                                firestoreSettings.phonepeMerchantId = '8888817766@ibl';
+                                firestoreSettings.phonepeClientId = 'PhonePe';
                                 
                                 db.collection('settings').doc('global').update({
-                                    phonepeMerchantId: 'paytm.s36o36b@pty',
-                                    phonepeClientId: 'Paytm'
+                                    phonepeMerchantId: '8888817766@ibl',
+                                    phonepeClientId: 'PhonePe'
                                 }).then(() => {
                                     console.log("[Migration] Corrected old UPI ID/name in Firestore settings doc.");
                                 }).catch(e => {
