@@ -2,10 +2,22 @@
 
 // Meta Pixel Initialization & Tracking Logic
 (function() {
+    // Ensure Meta Pixel (ID: 1039324625032380) is dynamically initialized on all pages
+    if (!window.fbq) {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1039324625032380');
+        fbq('track', 'PageView');
+    }
+
     const runTracking = () => {
-        // Track page-specific actions dynamically
         const path = window.location.pathname.toLowerCase();
-        
         console.log(`[Pixel] Core tracking running for path: ${path}`);
         
         // Track Checkout Page (InitiateCheckout)
@@ -1200,8 +1212,8 @@ async function syncProductsBackground(forceSync = false) {
                     }
                 }
 
-                // Commented out to enable demo product
-                // products = products.filter(p => String(p.id) !== '8270415000000_demo');
+                // Filter out 1Rs Demo Testing product
+                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
