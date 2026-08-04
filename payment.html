@@ -535,11 +535,11 @@
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
                 Scan QR below or enter UTR Number after completing payment in PhonePe/Paytm.
             </p>
-            <div style="background: #fafbfc; padding: 12px; border-radius: 12px; border: 1.5px dashed var(--brand-color); display: inline-block; margin-bottom: 14px;">
-                <img id="modal-qr-img" src="Image/phonepe_qr.png" alt="Scan QR" style="width: 180px; height: 180px; display: block;">
+            <div style="background: white; padding: 14px; border-radius: 14px; border: 1.5px dashed var(--brand-color); display: inline-block; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <img id="modal-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=upi%3A%2F%2Fpay%3Fpa%3D8888817766%40ibl%26pn%3DOnline%2520Store%26am%3D1.00%26cu%3DINR" alt="Scan UPI QR" style="width: 190px; height: 190px; display: block; border-radius: 6px;">
             </div>
-            <div style="font-size: 0.85rem; font-weight: bold; color: var(--brand-color); margin-bottom: 12px;">
-                UPI VPA: <span style="font-family: monospace;">8888817766@ibl</span>
+            <div style="font-size: 0.88rem; font-weight: 800; color: var(--brand-color); margin-bottom: 12px;">
+                UPI VPA: <span id="modal-vpa-text" style="font-family: monospace; background: #fff5f5; padding: 2px 8px; border-radius: 6px; border: 1px solid #fed7d7;">8888817766@ibl</span>
             </div>
             <input type="text" id="input-utr-number" class="utr-input" placeholder="Enter 12-digit UTR / Ref No." maxlength="12">
             <button type="button" class="utr-submit-btn" id="btn-submit-utr" onclick="submitUtrAndConfirm()">Submit & Confirm Order</button>
@@ -656,6 +656,25 @@
         }
 
         function openUtrModal() {
+            const settings = getSettings();
+            const upiId = settings.phonepeMerchantId || '8888817766@ibl';
+            const payeeName = settings.phonepeClientId || 'Online Store';
+            const cleanAmount = currentTotal.toFixed(2);
+
+            const upiUri = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "Store Order")}`;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=${encodeURIComponent(upiUri)}`;
+
+            const qrImg = document.getElementById('modal-qr-img');
+            if (qrImg) {
+                qrImg.src = qrUrl;
+                qrImg.alt = `Scan QR to Pay ₹${cleanAmount}`;
+            }
+
+            const vpaText = document.getElementById('modal-vpa-text');
+            if (vpaText) {
+                vpaText.innerText = upiId;
+            }
+
             document.getElementById('qr-utr-modal').style.display = 'flex';
         }
 
