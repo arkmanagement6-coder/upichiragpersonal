@@ -1432,11 +1432,79 @@
             }
         }
 
+        function parseFirestoreRestValue(val) {
+            if (!val) return null;
+            if ('stringValue' in val) return val.stringValue;
+            if ('integerValue' in val) return parseInt(val.integerValue, 10);
+            if ('doubleValue' in val) return parseFloat(val.doubleValue);
+            if ('booleanValue' in val) return val.booleanValue;
+            if ('nullValue' in val) return null;
+            if ('arrayValue' in val) {
+                const arr = val.arrayValue.values || [];
+                return arr.map(parseFirestoreRestValue);
+            }
+            if ('mapValue' in val) {
+                const fields = val.mapValue.fields || {};
+                const obj = {};
+                for (const k in fields) {
+                    obj[k] = parseFirestoreRestValue(fields[k]);
+                }
+                return obj;
+            }
+            return null;
+        }
+
+        function parseFirestoreRestDoc(doc) {
+            if (!doc || !doc.fields) return null;
+            const fields = doc.fields;
+            const order = {};
+            for (const k in fields) {
+                order[k] = parseFirestoreRestValue(fields[k]);
+            }
+            if (!order.id && doc.name) {
+                const parts = doc.name.split('/');
+                order.id = parts[parts.length - 1];
+            }
+            return order;
+        }
+
+        async function fetchOrdersFromRestApi() {
+            try {
+                const url = `https://firestore.googleapis.com/v1/projects/upichirahpersonal/databases/(default)/documents/orders?key=AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs&pageSize=300`;
+                const res = await fetch(url + '&v=' + Date.now());
+                if (res.ok) {
+                    const data = await res.json();
+                    const docs = data.documents || [];
+                    const fetchedOrders = docs.map(parseFirestoreRestDoc).filter(o => o && o.id);
+                    if (fetchedOrders.length > 0) {
+                        const existingOrders = getOrders() || [];
+                        const mergedMap = {};
+                        existingOrders.forEach(o => { if (o && o.id) mergedMap[o.id] = o; });
+                        fetchedOrders.forEach(o => { mergedMap[o.id] = { ...(mergedMap[o.id] || {}), ...o }; });
+                        const mergedList = Object.values(mergedMap);
+                        localStorage.setItem('ikko_orders', JSON.stringify(mergedList));
+                        renderDashboard();
+                        renderOrders();
+                        console.log(`⚡ REST API fetched ${fetchedOrders.length} orders successfully!`);
+                    }
+                }
+            } catch(err) {
+                console.error("Error fetching orders from REST API:", err);
+            }
+        }
+
         let ordersListenerUnsubscribe = null;
 
         async function initRealTimeOrders() {
+            // 1. Fetch immediately via REST API (Instant Zero-SDK fallback)
+            await fetchOrdersFromRestApi();
+
+            // 2. Poll every 5 seconds via REST API for 100% real-time coverage
+            setInterval(fetchOrdersFromRestApi, 5000);
+
+            // 3. Subscribe via Firestore Web SDK for WebSocket updates
             if (window.settingsLoadingPromise) {
-                await window.settingsLoadingPromise;
+                try { await window.settingsLoadingPromise; } catch(e){}
             }
             const settings = getSettings();
             if (settings.firebaseEnabled) {
@@ -1449,10 +1517,8 @@
                             firestoreOrders.push(doc.data());
                         });
                         localStorage.setItem('ikko_orders', JSON.stringify(firestoreOrders));
-                        
-                        // Re-render
-                        if (currentAdminTab === 'dash') renderDashboard();
-                        if (currentAdminTab === 'orders') renderOrders();
+                        renderDashboard();
+                        renderOrders();
                     }, (error) => {
                         console.error("Firestore orders subscription error:", error);
                     });
