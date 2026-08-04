@@ -1539,7 +1539,7 @@ function getCartTotal() {
     });
 
     let freeDiscount = 0;
-    if (totalQty >= 2 && minPrice !== Infinity) {
+    if (totalQty >= 3 && minPrice !== Infinity) {
         freeDiscount = minPrice;
     }
 
