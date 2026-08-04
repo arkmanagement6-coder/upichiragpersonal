@@ -27,9 +27,10 @@
     <!-- End Meta Pixel Code -->
     <style>
         :root {
-            --brand-blue: #0090d0;
-            --brand-blue-hover: #007bb5;
-            --bg-page: #f2f5f8;
+            --brand-color: #e52e2e;
+            --brand-gradient: linear-gradient(135deg, #e52e2e 0%, #ff4d4d 100%);
+            --brand-gradient-hover: linear-gradient(135deg, #cc2525 0%, #e53935 100%);
+            --bg-page: #f8fafc;
             --text-heading: #0f172a;
             --text-body: #334155;
             --text-muted: #64748b;
@@ -50,7 +51,7 @@
 
         /* Top Brand Header Bar */
         .brand-header-bar {
-            background-color: var(--brand-blue);
+            background: var(--brand-gradient);
             color: white;
             padding: 14px 16px;
             display: flex;
@@ -59,7 +60,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 144, 208, 0.2);
+            box-shadow: 0 2px 12px rgba(229, 46, 46, 0.25);
         }
         .header-title-wrap {
             display: flex;
@@ -84,8 +85,8 @@
             margin: 0;
         }
         .secure-badge-pill {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
             padding: 4px 10px;
             border-radius: 20px;
@@ -122,7 +123,7 @@
         .view-details-link {
             font-size: 0.95rem;
             font-weight: 800;
-            color: var(--brand-blue);
+            color: var(--brand-color);
             display: flex;
             align-items: center;
             gap: 4px;
@@ -263,8 +264,8 @@
             transition: all 0.2s;
         }
         .payment-option-row.selected .custom-radio-circle {
-            border-color: var(--brand-blue);
-            background: var(--brand-blue);
+            border-color: var(--brand-color);
+            background: var(--brand-color);
         }
         .payment-option-row.selected .custom-radio-circle::after {
             content: '';
@@ -315,7 +316,7 @@
         }
         .pay-securely-btn {
             width: 100%;
-            background: var(--brand-blue);
+            background: var(--brand-gradient);
             color: white;
             border: none;
             padding: 14px;
@@ -323,15 +324,12 @@
             font-weight: 900;
             border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(0, 144, 208, 0.35);
+            box-shadow: 0 4px 14px rgba(229, 46, 46, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            transition: background 0.2s;
-        }
-        .pay-securely-btn:hover {
-            background: var(--brand-blue-hover);
+            transition: opacity 0.2s;
         }
         .secure-subtext {
             font-size: 0.75rem;
@@ -389,7 +387,7 @@
         }
         .utr-submit-btn {
             width: 100%;
-            background: var(--brand-blue);
+            background: var(--brand-gradient);
             color: white;
             border: none;
             padding: 14px;
@@ -476,7 +474,7 @@
             <!-- Option 3: Scan QR Code -->
             <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr')">
                 <div class="option-left-content">
-                    <div class="app-logo-box" style="background: #e0f2fe; color: var(--brand-blue); font-size: 1.2rem; font-weight: 800;">
+                    <div class="app-logo-box" style="background: #ffeef0; color: var(--brand-color); font-size: 1.2rem; font-weight: 800;">
                         ☴
                     </div>
                     <div class="app-title-text">
@@ -521,7 +519,7 @@
 
     <!-- Bottom Fixed Pay Action Bar -->
     <div class="bottom-pay-bar">
-        <button type="button" class="pay-securely-btn" onclick="executePayment()">
+        <button type="button" class="pay-securely-btn" id="btn-pay-securely" onclick="executePayment()">
             Pay Securely <span id="btn-pay-price">₹1.00</span> <span>›</span>
         </button>
         <div class="secure-subtext">
@@ -537,19 +535,19 @@
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
                 Scan QR below or enter UTR Number after completing payment in PhonePe/Paytm.
             </p>
-            <div style="background: #f8fafc; padding: 12px; border-radius: 12px; border: 1.5px dashed var(--brand-blue); display: inline-block; margin-bottom: 14px;">
+            <div style="background: #fafbfc; padding: 12px; border-radius: 12px; border: 1.5px dashed var(--brand-color); display: inline-block; margin-bottom: 14px;">
                 <img id="modal-qr-img" src="Image/phonepe_qr.png" alt="Scan QR" style="width: 180px; height: 180px; display: block;">
             </div>
-            <div style="font-size: 0.85rem; font-weight: bold; color: var(--brand-blue); margin-bottom: 12px;">
+            <div style="font-size: 0.85rem; font-weight: bold; color: var(--brand-color); margin-bottom: 12px;">
                 UPI VPA: <span style="font-family: monospace;">8888817766@ibl</span>
             </div>
             <input type="text" id="input-utr-number" class="utr-input" placeholder="Enter 12-digit UTR / Ref No." maxlength="12">
-            <button type="button" class="utr-submit-btn" onclick="submitUtrAndConfirm()">Submit & Confirm Order</button>
+            <button type="button" class="utr-submit-btn" id="btn-submit-utr" onclick="submitUtrAndConfirm()">Submit & Confirm Order</button>
         </div>
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=35.0"></script>
+    <script src="app-core.js?v=36.0"></script>
     <script>
         let selectedMethod = 'phonepe'; // 'phonepe', 'paytm', 'qr'
         let currentOrderId = '';
@@ -570,7 +568,7 @@
             }
         }
 
-        function executePayment() {
+        async function executePayment() {
             const settings = getSettings();
             const upiId = settings.phonepeMerchantId || '8888817766@ibl';
             const payeeName = settings.phonepeClientId || 'PhonePe';
@@ -578,7 +576,41 @@
             const isAndroid = /Android/i.test(navigator.userAgent);
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-            // Track Meta Pixel Purchase / InitiateCheckout event
+            // Make sure current order object is synced to Firestore
+            const orders = getOrders();
+            let currentOrder = orders.find(o => o.id === currentOrderId);
+            if (!currentOrder) {
+                let cust = {};
+                try { cust = JSON.parse(localStorage.getItem('ikko_customer')) || {}; } catch(e){}
+                currentOrder = {
+                    id: currentOrderId,
+                    date: new Date().toISOString(),
+                    status: 'pending_payment',
+                    paymentMethod: selectedMethod,
+                    utr: 'Pending Payment',
+                    customer: {
+                        name: cust.name || 'Customer',
+                        phone: cust.phone || '',
+                        address: cust.fullAddressText || `${cust.address || ''}, ${cust.city || ''}`,
+                        city: cust.city || '',
+                        state: cust.state || '',
+                        pin: cust.pin || ''
+                    },
+                    items: getCart(),
+                    total: currentTotal
+                };
+            } else {
+                currentOrder.paymentMethod = selectedMethod;
+            }
+
+            // Await saveOrder so Firestore receives mobile order data BEFORE redirecting!
+            try {
+                await saveOrder(currentOrder);
+            } catch(e){
+                console.error("Error syncing order to Firestore:", e);
+            }
+
+            // Track Meta Pixel Purchase event
             try {
                 if (typeof fbq === 'function') {
                     fbq('track', 'Purchase', {
@@ -631,20 +663,31 @@
             document.getElementById('qr-utr-modal').style.display = 'none';
         }
 
-        function submitUtrAndConfirm() {
-            const utr = document.getElementById('input-utr-number').value.trim();
+        async function submitUtrAndConfirm() {
+            const utrInput = document.getElementById('input-utr-number');
+            const utr = utrInput ? utrInput.value.trim() : '';
             if (!utr || utr.length < 6) {
                 alert('Please enter a valid 12-digit UTR/Reference number.');
                 return;
             }
 
-            // Update order status
+            const btnSubmit = document.getElementById('btn-submit-utr');
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.innerText = 'Submitting Order...';
+            }
+
+            // Update order status and UTR
             const orders = getOrders();
             const idx = orders.findIndex(o => o.id === currentOrderId);
             if (idx !== -1) {
                 orders[idx].utr = utr;
                 orders[idx].status = 'pending_verification';
-                saveOrder(orders[idx]);
+                try {
+                    await saveOrder(orders[idx]);
+                } catch(e){
+                    console.error("Error saving UTR to Firestore:", e);
+                }
             }
 
             window.location.href = `order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&utr=${encodeURIComponent(utr)}`;
