@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
                 }
             } catch (err) {}
 
-            const upiId = data.upi || settings.phonepeMerchantId || '8888817766@ibl';
+            const upiId = data.upi || settings.phonepeMerchantId || '7722051108@ibl';
             const payeeName = data.name || settings.phonepeClientId || 'PhonePe';
 
             // Construct full order object to guarantee it exists in Firestore

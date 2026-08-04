@@ -1,5 +1,32 @@
 [
   {
+    "id": "1000000000001",
+    "paymentLink": "",
+    "category": "tablets",
+    "price": "Rs. 1.00",
+    "badge": "DEMO PRODUCT",
+    "title": "Demo Testing Product (₹1)",
+    "image": "Image/phonepe_qr.png",
+    "images": [
+      "Image/phonepe_qr.png"
+    ],
+    "url": "/products/demo-testing-product",
+    "stockStatus": "in-stock",
+    "handle": "demo-testing-product",
+    "comparePrice": "Rs. 99.00",
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Demo Testing"
+      },
+      {
+        "name": "Price",
+        "value": "Rs. 1.00"
+      }
+    ],
+    "description": "Demo testing product worth Rs. 1 for payment testing."
+  },
+  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",

@@ -826,7 +826,7 @@ function dbInit() {
         };
         localStorage.setItem('ikko_settings', JSON.stringify({
             phonepeEnabled: true,
-            phonepeMerchantId: '8888817766@ibl',
+            phonepeMerchantId: '7722051108@ibl',
             phonepeClientId: 'PhonePe',
             phonepeClientSecret: 'N/A',
             phonepeMode: 'live',
@@ -858,7 +858,7 @@ async function loadGlobalSettings() {
                 localSettings.phonepeMerchantId === 'sabpaisajarvis@nyes' ||
                 localSettings.phonepeMerchantId === 'paytm.s36o36b@pty' ||
                 localSettings.phonepeMerchantId === 's1955579688661043@slc') {
-                localSettings.phonepeMerchantId = '8888817766@ibl';
+                localSettings.phonepeMerchantId = '7722051108@ibl';
                 localSettings.phonepeClientId = 'PhonePe';
                 localSettings.customQrUrl = '';
                 localStorage.setItem('ikko_settings', JSON.stringify(localSettings));
@@ -917,11 +917,11 @@ async function loadGlobalSettings() {
                                 firestoreSettings.phonepeClientId === 'Lucky Jat' ||
                                 firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai' ||
                                 firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai ') {
-                                firestoreSettings.phonepeMerchantId = '8888817766@ibl';
+                                firestoreSettings.phonepeMerchantId = '7722051108@ibl';
                                 firestoreSettings.phonepeClientId = 'PhonePe';
                                 
                                 db.collection('settings').doc('global').update({
-                                    phonepeMerchantId: '8888817766@ibl',
+                                    phonepeMerchantId: '7722051108@ibl',
                                     phonepeClientId: 'PhonePe'
                                 }).then(() => {
                                     console.log("[Migration] Corrected old UPI ID/name in Firestore settings doc.");
@@ -1212,8 +1212,7 @@ async function syncProductsBackground(forceSync = false) {
                     }
                 }
 
-                // Filter out 1Rs Demo Testing product
-                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
+                // Keep ₹1 Demo Testing product enabled for testing
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
