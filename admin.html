@@ -976,34 +976,35 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ order: order })
                         }).then(res => res.json())
-                      .then(async (resData) => {
-                          if (resData.success) {
-                              console.log(`[CAPI] Order purchase successfully tracked via server.`);
-                              order.pixelFired = true;
-                              
-                              // Update LocalStorage
-                              localStorage.setItem('ikko_orders', JSON.stringify(orders));
-                              
-                              // Sync pixelFired: true to Firestore
-                              if (settings.firebaseEnabled) {
-                                  const db = await initFirebase();
-                                  if (db) {
-                                      db.collection('orders').doc(orderId).update({ pixelFired: true })
-                                        .then(() => console.log("[CAPI] Synced pixelFired=true to Firestore."))
-                                        .catch(e => console.error("[CAPI] Failed to sync pixelFired to Firestore:", e));
+                          .then(async (resData) => {
+                              if (resData.success) {
+                                  console.log(`[CAPI] Order purchase successfully tracked via server.`);
+                                  order.pixelFired = true;
+                                  
+                                  // Update LocalStorage
+                                  localStorage.setItem('ikko_orders', JSON.stringify(orders));
+                                  
+                                  // Sync pixelFired: true to Firestore
+                                  if (settings.firebaseEnabled) {
+                                      const db = await initFirebase();
+                                      if (db) {
+                                          db.collection('orders').doc(orderId).update({ pixelFired: true })
+                                            .then(() => console.log("[CAPI] Synced pixelFired=true to Firestore."))
+                                            .catch(e => console.error("[CAPI] Failed to sync pixelFired to Firestore:", e));
+                                      }
                                   }
+                              } else {
+                                  console.error(`[CAPI] Meta Conversions API failed:`, resData.message, resData.detail);
                               }
-                          } else {
-                              console.error(`[CAPI] Meta Conversions API failed:`, resData.message, resData.detail);
-                          }
-                      }).catch(err => {
-                          console.error("[CAPI] Network error tracking purchase:", err);
-                      });
+                          }).catch(err => {
+                              console.error("[CAPI] Network error tracking purchase:", err);
+                          });
+                    }
                 }
                 
                 // Re-render the active tab
-                if (currentAdminTab === 'dash') renderDashboard();
-                if (currentAdminTab === 'orders') renderOrders();
+                renderDashboard();
+                renderOrders();
             }
         }
 
