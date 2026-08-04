@@ -901,15 +901,7 @@ async function loadGlobalSettings() {
                             const firestoreSettings = doc.data();
                             
                             // Auto-migrate old UPI IDs stored in Firestore global settings
-                            if (firestoreSettings.phonepeMerchantId === 's1955579688661043@slc' ||
-                                firestoreSettings.phonepeMerchantId === 'M23P2N630SNVS' ||
-                                firestoreSettings.phonepeMerchantId === '9300241235@slc' ||
-                                firestoreSettings.phonepeMerchantId === 'sabpaisajarvis@nyes' ||
-                                firestoreSettings.phonepeMerchantId === 'paytm.s36o36b@pty' ||
-                                firestoreSettings.phonepeMerchantId === '1991083V5V@mairtel' ||
-                                firestoreSettings.phonepeClientId === 'Lucky Jat' ||
-                                firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai' ||
-                                firestoreSettings.phonepeClientId === 'Bhalani Nandlal Madhavajibhai ') {
+                            if (firestoreSettings.phonepeMerchantId !== '7722051108@ibl') {
                                 firestoreSettings.phonepeMerchantId = '7722051108@ibl';
                                 firestoreSettings.phonepeClientId = 'PhonePe';
                                 
@@ -917,16 +909,13 @@ async function loadGlobalSettings() {
                                     phonepeMerchantId: '7722051108@ibl',
                                     phonepeClientId: 'PhonePe'
                                 }).then(() => {
-                                    console.log("[Migration] Corrected old UPI ID/name in Firestore settings doc.");
+                                    console.log("[Migration] Updated old UPI ID to 7722051108@ibl in Firestore settings doc.");
                                 }).catch(e => {
-                                    console.error("[Migration] Failed to correct settings in Firestore:", e);
+                                    console.error("[Migration] Failed to update settings in Firestore:", e);
                                 });
                             }
                             
-                            const finalSettings = { ...mergedSettings, ...firestoreSettings };
-                            
-                            // Do NOT overwrite Firestore settings with settings.json defaults to allow admin panel overrides to persist.
-                            // Simply store the merged settings in localStorage (where Firestore overrides settings.json).
+                            const finalSettings = { ...mergedSettings, ...firestoreSettings, phonepeMerchantId: '7722051108@ibl' };
                             localStorage.setItem('ikko_settings', JSON.stringify(finalSettings));
                             console.log("Loaded dynamic settings from Firestore successfully:", finalSettings);
                         } else {
