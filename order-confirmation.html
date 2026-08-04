@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmed | IKKO DIGITAL</title>
     <link rel="stylesheet" href="style.css?v=3.0">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1039324625032380');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1039324625032380&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
     <style>
         .confirmation-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 16px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
-            padding: 40px;
-            max-width: 800px;
-            margin: 40px auto;
+            padding: 35px 25px;
+            max-width: 600px;
+            margin: 30px auto;
             font-family: var(--font-body);
+            box-sizing: border-box;
         }
         .confirmation-success-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .success-icon-wrap {
-            width: 70px;
-            height: 70px;
+            width: 64px;
+            height: 64px;
             background-color: var(--accent-green);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 4px 10px rgba(72, 187, 120, 0.3);
+            margin: 0 auto 16px auto;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
         .confirmation-success-header h1 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .confirmation-success-header p {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
         }
         .order-badge-id {
             background-color: var(--bg-main);
             border: 1px dashed var(--border-color);
             padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 1.1rem;
+            border-radius: 6px;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--accent);
             display: inline-block;
@@ -72,120 +56,136 @@
         .confirmation-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 20px;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            padding: 30px 0;
-            margin-bottom: 30px;
+            padding: 20px 0;
+            margin-bottom: 25px;
         }
         .details-col h3 {
             font-family: var(--font-heading);
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .details-col p {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
             color: #4a5568;
         }
         .confirmation-items-title {
             font-family: var(--font-heading);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .confirmation-items-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         .confirmation-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding-bottom: 15px;
+            gap: 12px;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border-color);
         }
         .confirmation-item img {
-            width: 60px;
-            height: 60px;
+            width: 54px;
+            height: 54px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
             background-color: var(--bg-main);
+            flex-shrink: 0;
         }
         .confirmation-item-info {
             flex: 1;
         }
         .confirmation-item-title {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--primary);
             display: block;
             margin-bottom: 4px;
         }
         .confirmation-item-qty {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
         .confirmation-item-price {
             font-weight: 700;
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         .confirmation-totals {
-            margin-top: 25px;
+            margin-top: 20px;
             background-color: var(--bg-main);
-            padding: 20px;
-            border-radius: 6px;
+            padding: 16px;
+            border-radius: 10px;
         }
         .totals-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
             color: #4a5568;
         }
         .totals-row.final {
             margin-bottom: 0;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            font-size: 1.2rem;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--accent);
         }
         .continue-btn-wrap {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         .confirm-home-btn {
-            background-color: var(--accent);
+            background: linear-gradient(135deg, #e52e2e 0%, #ff4d4d 100%);
             color: white;
-            padding: 14px 35px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 1rem;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.95rem;
             text-decoration: none;
             display: inline-block;
             transition: var(--transition-fast);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 4px 14px rgba(229, 46, 46, 0.35);
         }
         .confirm-home-btn:hover {
-            background-color: #c42424;
+            opacity: 0.9;
             transform: translateY(-2px);
         }
         @media (max-width: 768px) {
-            .confirmation-details-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            body {
+                padding: 0;
+                background-color: #f8fafc;
             }
             .confirmation-card {
-                padding: 20px;
-                margin: 20px;
+                padding: 20px 16px;
+                margin: 12px 10px;
+                border-radius: 14px;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            }
+            .confirmation-success-header h1 {
+                font-size: 1.4rem;
+            }
+            .confirmation-details-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 16px 0;
+            }
+            .confirm-home-btn {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
             }
         }
     </style>
