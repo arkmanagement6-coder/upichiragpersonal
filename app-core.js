@@ -802,14 +802,24 @@ function dbInit() {
     if (!localStorage.getItem('ikko_orders')) {
         localStorage.setItem('ikko_orders', JSON.stringify([]));
     }
-    if (!localStorage.getItem('ikko_settings')) {
+        const defaultFirebaseConfig = {
+            apiKey: "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs",
+            authDomain: "upichirahpersonal.firebaseapp.com",
+            projectId: "upichirahpersonal",
+            storageBucket: "upichirahpersonal.firebasestorage.app",
+            messagingSenderId: "216570904039",
+            appId: "1:216570904039:web:e21bb467fbea0495181142",
+            measurementId: "G-ZGCX3LKTHQ"
+        };
         localStorage.setItem('ikko_settings', JSON.stringify({
             phonepeEnabled: true,
             phonepeMerchantId: '8888817766@ibl',
             phonepeClientId: 'PhonePe',
             phonepeClientSecret: 'N/A',
             phonepeMode: 'live',
-            customQrUrl: ''
+            customQrUrl: '',
+            firebaseEnabled: true,
+            firebaseConfig: defaultFirebaseConfig
         }));
     }
 }
@@ -949,9 +959,17 @@ function getSettings() {
         changed = true;
     }
     
-    if (settings.firebaseEnabled === undefined) {
-        settings.firebaseEnabled = false;
-        settings.firebaseConfig = '';
+    if (settings.firebaseEnabled === undefined || !settings.firebaseConfig) {
+        settings.firebaseEnabled = true;
+        settings.firebaseConfig = {
+            apiKey: "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs",
+            authDomain: "upichirahpersonal.firebaseapp.com",
+            projectId: "upichirahpersonal",
+            storageBucket: "upichirahpersonal.firebasestorage.app",
+            messagingSenderId: "216570904039",
+            appId: "1:216570904039:web:e21bb467fbea0495181142",
+            measurementId: "G-ZGCX3LKTHQ"
+        };
         changed = true;
     }
     
@@ -1429,18 +1447,18 @@ async function saveOrder(order) {
     }
     localStorage.setItem('ikko_orders', JSON.stringify(orders));
     
-    // Sync to Firestore if enabled
-    const settings = getSettings();
-    if (settings.firebaseEnabled) {
+    // Sync to Firestore immediately
+    try {
         const db = await initFirebase();
         if (db) {
-            try {
-                await db.collection('orders').doc(order.id).set(cleanUndefinedFields(order));
-                console.log("Order synced to Firestore successfully:", order.id);
-            } catch (e) {
-                console.error("Failed to sync order to Firestore:", e);
-            }
+            const cleanObj = cleanUndefinedFields(order);
+            await db.collection('orders').doc(order.id).set(cleanObj, { merge: true });
+            console.log("🔥 Order synced to Firestore successfully:", order.id);
+        } else {
+            console.warn("⚠️ initFirebase returned null during saveOrder for ID:", order.id);
         }
+    } catch (e) {
+        console.error("❌ Failed to sync order to Firestore:", e);
     }
 }
 
