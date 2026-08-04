@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/create-payment.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/save-settings.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/track-purchase.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.json",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Image/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/create-payment",
+      "dest": "api/create-payment.js"
+    },
+    {
+      "src": "/api/save-settings",
+      "dest": "api/save-settings.js"
+    },
+    {
+      "src": "/api/track-purchase",
+      "dest": "api/track-purchase.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

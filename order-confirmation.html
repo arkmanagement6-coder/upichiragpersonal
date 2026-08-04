@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | Thank You | IKKO DIGITAL</title>
+    <link rel="stylesheet" href="style.css?v=2.7">
+    <style>
+        .confirmation-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+            font-family: var(--font-body);
+        }
+        .confirmation-success-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .success-icon-wrap {
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 10px rgba(72, 187, 120, 0.3);
+        }
+        .confirmation-success-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .confirmation-success-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .order-badge-id {
+            background-color: var(--bg-main);
+            border: 1px dashed var(--border-color);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .confirmation-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        .details-col h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .details-col p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        .confirmation-items-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .confirmation-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .confirmation-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .confirmation-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-main);
+        }
+        .confirmation-item-info {
+            flex: 1;
+        }
+        .confirmation-item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .confirmation-item-qty {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .confirmation-item-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        .confirmation-totals {
+            margin-top: 25px;
+            background-color: var(--bg-main);
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .totals-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+        .totals-row.final {
+            margin-bottom: 0;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .continue-btn-wrap {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .confirm-home-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-glow);
+        }
+        .confirm-home-btn:hover {
+            background-color: #c42424;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .confirmation-details-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .confirmation-card {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+    <!-- Firebase SDKs for fast parallel loading and caching -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1039324625032380');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1039324625032380&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <!-- Header will be rendered here by app-core.js?v=20.0 -->
+    <div id="header-placeholder"></div>
+
+    <main class="storefront-main" style="min-height: 70vh;">
+        <div class="confirmation-card" id="confirmation-content-card">
+            <!-- Loading indicator -->
+            <div style="text-align: center; padding: 50px 0;">
+                <p style="color: var(--text-muted);">Fetching your order details...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be rendered here by app-core.js?v=20.0 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="app-core.js?v=31.0"></script>
+    <script>
+        function compressImage(file, maxWidth, maxHeight, quality) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = async () => {
+                        try {
+                            if (typeof img.decode === 'function') {
+                                await img.decode();
+                            }
+                        } catch (e) {
+                            console.warn("[Compression] Decode failed, proceeding:", e);
+                        }
+
+                        const canvas = document.createElement('canvas');
+                        let width = img.width || 500;
+                        let height = img.height || 650;
+
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height *= maxWidth / width;
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width *= maxHeight / height;
+                                height = maxHeight;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(0, 0, width, height);
+
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+                        resolve(dataUrl);
+                    };
+                    img.onerror = reject;
+                };
+                reader.onerror = reject;
+            });
+        }
+
+        // Global UPI launcher function to match checkout page behavior
+        window.launchUpi = function(uri) {
+            console.log("[Launch] Direct redirect to UPI App:", uri);
+            window.location.href = uri;
+        };
+
+        async function renderConfirmation() {
+            const card = document.getElementById('confirmation-content-card');
+            if (!card) return;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            let orderId = urlParams.get('orderId') || urlParams.get('client_txn_id') || urlParams.get('merchant_txn_id');
+
+            if (!orderId) {
+                const orders = getOrders();
+                if (orders.length > 0) {
+                    orderId = orders[orders.length - 1].id;
+                }
+            }
+
+            if (!orderId) {
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <h2 style="color: var(--accent); font-family: var(--font-heading);">No Order Information Found</h2>
+                        <p style="color: var(--text-muted); margin: 15px 0 30px 0;">We could not locate this order. If you just placed an order, please check your home page.</p>
+                        <a href="index.html" class="confirm-home-btn">Return to Storefront</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const orders = getOrders();
+            const orderIndex = orders.findIndex(o => o.id === orderId);
+
+            if (orderIndex === -1) {
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <h2 style="color: var(--accent); font-family: var(--font-heading);">Order Not Found</h2>
+                        <p style="color: var(--text-muted); margin: 15px 0 30px 0;">The order ID <strong>${orderId}</strong> was not found in our database.</p>
+                        <a href="index.html" class="confirm-home-btn">Return to Storefront</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const order = orders[orderIndex];
+
+            // Render different layouts depending on verified status
+            function renderSuccessUI(order) {
+                const itemsHtml = order.items.map(item => `
+                    <div class="confirmation-item">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="confirmation-item-info">
+                            <span class="confirmation-item-title">${item.title}</span>
+                            <span class="confirmation-item-qty">Quantity: ${item.qty}</span>
+                        </div>
+                        <span class="confirmation-item-price">${item.price}</span>
+                    </div>
+                `).join('');
+
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 20px 0;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #c6f6d5; color: #38a169; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h1 style="color: #38a169; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;">Order Confirmed!</h1>
+                        <p style="color: var(--text-dark); margin: 15px auto 25px auto; max-width: 480px; font-size: 1.05rem;">
+                            Thank you, <strong>${order.customer.name}</strong>! Your payment has been verified and your order is being processed.
+                        </p>
+                        
+                        <div class="order-badge-id" style="margin-bottom: 25px; background-color: #f7fafc; color: var(--text-dark); padding: 8px 16px; display: inline-block; border-radius: 20px; font-weight: bold; border: 1px solid #e2e8f0;">
+                            Order ID: ${order.id}
+                        </div>
+
+                        <div class="confirmation-summary-box" style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: left; max-width: 480px; margin: 0 auto 30px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                            <h3 style="margin-top: 0; margin-bottom: 20px; font-family: var(--font-heading); font-size: 1.15rem; color: var(--primary); border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Order Receipt</h3>
+                            
+                            <div class="confirmation-items-list" style="margin-bottom: 20px;">
+                                ${itemsHtml}
+                            </div>
+                            
+                            <div class="confirmation-price-row" style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 10px; color: var(--text-muted);">
+                                <span>Subtotal</span>
+                                <span>${formatPrice(order.total)}</span>
+                            </div>
+                            <div class="confirmation-price-row" style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 15px; color: var(--text-muted);">
+                                <span>Shipping</span>
+                                <span style="color: #38a169; font-weight: 600;">FREE</span>
+                            </div>
+                            <div class="confirmation-price-row" style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; border-top: 1px solid var(--border-color); padding-top: 15px; color: var(--primary);">
+                                <span>Total Paid</span>
+                                <span>${formatPrice(order.total)}</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <a href="index.html" class="confirm-home-btn" style="background-color: var(--accent); color: white; border: none; padding: 12px 30px; border-radius: 6px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">Continue Shopping</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function renderFailedUI(order) {
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #fed7d7; color: #e53e3e; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        </div>
+                        <h2 style="color: #e53e3e; font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800;">Payment Failed!</h2>
+                        <p style="color: var(--text-muted); margin: 15px auto 25px auto; max-width: 380px;">Your transaction could not be authorized. Please try checkout again.</p>
+                        <div class="order-badge-id" style="margin-bottom: 25px; background-color: #f7fafc; color: var(--text-dark);">Order ID: ${order.id}</div>
+                        <a href="checkout.html" class="confirm-home-btn" style="background-color: var(--accent); color: white; border: none;">Retry Checkout & Payment</a>
+                    </div>
+                `;
+            }
+
+            function renderPendingVerificationUI(order) {
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #feebc8; color: #dd6b20; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h1 style="color: #dd6b20; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;">Payment Awaiting Verification</h1>
+                        
+                        <p style="color: var(--text-dark); margin: 15px auto 10px auto; max-width: 480px; font-size: 1.05rem;">
+                            Thank you, <strong>${order.customer.name}</strong>! Your order has been placed.
+                        </p>
+                        <p style="color: var(--text-muted); margin: 0 auto 25px auto; max-width: 480px; font-size: 0.95rem; line-height: 1.5;">
+                            We are verifying your payment UTR <strong>${order.utr}</strong> manually. Your order will be processed and shipped as soon as the payment is confirmed.
+                        </p>
+                        
+                        <div class="order-badge-id" style="margin-bottom: 25px; background-color: #f7fafc; color: var(--text-dark); padding: 8px 16px; display: inline-block; border-radius: 20px; font-weight: bold; border: 1px solid #e2e8f0;">
+                            Order ID: ${order.id}
+                        </div>
+                        
+                        <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <button onclick="location.reload()" class="confirm-home-btn" style="background-color: var(--accent); color: white; border: none; cursor: pointer; padding: 10px 24px; border-radius: 6px; font-weight: 600;">Refresh Status</button>
+                            <a href="index.html" class="confirm-home-btn" style="background-color: #718096; color: white; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">Return to Storefront</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function renderUtrSubmissionUI(order) {
+                const settings = getSettings();
+                const upiId = settings.phonepeMerchantId || 'paytm.s36o36b@pty';
+                const payeeName = settings.phonepeClientId || 'Paytm';
+                const amount = parseFloat(order.total);
+                const cleanAmount = !isNaN(amount) ? amount.toFixed(2) : "0.00";
+                const isAndroid = /Android/i.test(navigator.userAgent);
+
+                // Clean payeeName just like checkout.html to prevent PhonePe app parsing error
+                let resolvedPayeeName = payeeName;
+                if (/^SU\d+/i.test(resolvedPayeeName) || resolvedPayeeName === 'SU2605131450590093051231') {
+                    resolvedPayeeName = 'Paytm';
+                }
+
+                // PhonePe payload link
+                const phonepePayload = {
+                    contact: { cbcName: "", nickName: "", vpa: upiId, type: "VPA" },
+                    p2pPaymentCheckoutParams: {
+                        note: "Pay For Store",
+                        isByDefaultKnownContact: true,
+                        initialAmount: Math.round(Number(cleanAmount) * 100),
+                        currency: "INR",
+                        checkoutType: "DEFAULT",
+                        transactionContext: "p2p"
+                    }
+                };
+                const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(phonepePayload))));
+                const phonepeUri = `phonepe://native?data=${encodeURIComponent(base64)}&id=p2ppayment`;
+
+                // Paytm cash wallet link
+                const paytmUri = isAndroid 
+                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(resolvedPayeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(order.id || "")}&featuretype=money_transfer`;
+
+                const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const isSmallScreen = window.innerWidth <= 768;
+                const isMobileDevice = isMobileUA || isSmallScreen;
+
+                let mobilePromptHtml = "";
+                if (isMobileDevice) {
+                    mobilePromptHtml = `
+                        <div id="confirmation-mobile-payment-prompt" style="max-width: 420px; margin: 20px auto; background: #f7fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                            <h3 style="color: #2d3748; font-family: var(--font-heading); margin-bottom: 8px; font-size: 1.1rem; font-weight: 700;">Pay via Payment App</h3>
+                            <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 15px; line-height: 1.4;">
+                                If the payment app did not open automatically, tap a button below to open your preferred payment app:
+                            </p>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <button onclick="launchUpi('${phonepeUri}')" class="confirm-home-btn" style="width: 100%; box-sizing: border-box; text-align: center; font-weight: 700; background: #5f259f; border-color: #5f259f; display: block; border-radius: 8px; padding: 12px; color: white; text-decoration: none; border: none; cursor: pointer;">Pay via PhonePe</button>
+                                <button onclick="launchUpi('${paytmUri}')" class="confirm-home-btn" style="width: 100%; box-sizing: border-box; text-align: center; font-weight: 700; background: #00b9f5; border-color: #00b9f5; display: block; border-radius: 8px; padding: 12px; color: white; text-decoration: none; border: none; cursor: pointer;">Pay via Paytm</button>
+                            </div>
+                        </div>
+                    `;
+
+                    // Auto-launch the app after 1.5s delay
+                    const launchMethod = order.paymentMethod || 'paytm';
+                    const autoLaunchUri = launchMethod === 'phonepe' ? phonepeUri : paytmUri;
+                    setTimeout(() => {
+                        console.log(`[Auto-Launch] Auto-launching UPI app: ${autoLaunchUri}`);
+                        window.location.href = autoLaunchUri;
+                    }, 1500);
+                }
+
+                card.innerHTML = `
+                    <div style="text-align: center; padding: 30px 0;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background-color: rgba(66, 153, 225, 0.1); color: #3182ce; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2.5" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h1 style="color: var(--primary); font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;">Submit UTR to Confirm Payment</h1>
+                        
+                        <p style="color: var(--text-dark); margin: 15px auto 10px auto; max-width: 480px; font-size: 1.05rem;">
+                            Your order <strong>${order.id}</strong> of <strong>${formatPrice(order.total)}</strong> is currently pending payment confirmation.
+                        </p>
+
+                        ${mobilePromptHtml}
+
+                        <div style="max-width: 420px; margin: 25px auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-align: left;">
+                            <form onsubmit="handleUtrSubmission(event, '${order.id}')">
+                                <label for="utr-input" style="display: block; font-weight: 700; color: #2d3748; margin-bottom: 10px; font-size: 0.95rem;">Enter 12-Digit UTR / Ref No *</label>
+                                <input type="text" id="utr-input" placeholder="e.g. 231784436885" required 
+                                       pattern="\\d{12}" maxLength="12" minLength="12"
+                                       style="width: 100%; padding: 14px 15px; border-radius: 8px; border: 1px solid #cbd5e0; font-size: 1.1rem; font-family: monospace; letter-spacing: 2px; margin-bottom: 20px; box-sizing: border-box; outline: none; transition: border-color 0.2s;"
+                                       title="Please enter your 12-digit numeric UPI reference/UTR number.">
+                                
+                                <button type="submit" class="confirm-home-btn" id="utr-submit-btn" style="width: 100%; border: none; cursor: pointer; padding: 14px; font-size: 1.1rem; font-weight: 700; border-radius: 8px; background: #00b9f5; color: white; transition: background 0.2s;">Submit UTR</button>
+                            </form>
+                        </div>
+
+                        <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 480px; margin: 0 auto 20px auto;">
+                            Please enter the 12-digit UTR/Reference number from your UPI payment success screen to verify your order.
+                        </p>
+                        
+                        <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <a href="index.html" class="confirm-home-btn" style="background-color: #718096; color: white; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none;">Return to Storefront</a>
+                        </div>
+                    </div>
+                `;
+                
+                const utrInput = document.getElementById('utr-input');
+                if (utrInput) {
+                    utrInput.addEventListener('input', function() {
+                        this.value = this.value.replace(/[^\d]/g, '').slice(0, 12);
+                    });
+                }
+            }
+
+            window.handleUtrSubmission = async function(event, orderId) {
+                event.preventDefault();
+                const utr = document.getElementById('utr-input').value.trim();
+                if (!/^\d{12}$/.test(utr)) {
+                    alert("Please enter a valid 12-digit numeric UTR/Reference number.");
+                    return;
+                }
+
+                const submitBtn = document.getElementById('utr-submit-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "Processing & Syncing...";
+                    submitBtn.style.opacity = "0.7";
+                }
+
+                // Check Local Duplicate
+                const orders = getOrders();
+                const isLocalDuplicate = orders.some(o => o.id !== orderId && o.utr === utr);
+                if (isLocalDuplicate) {
+                    alert("This UTR has already been submitted for another order. Please enter the correct UTR.");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Submit UTR";
+                        submitBtn.style.opacity = "1";
+                    }
+                    return;
+                }
+
+                // Check Database Duplicate & Sync
+                if (window.settingsLoadingPromise) {
+                    await window.settingsLoadingPromise;
+                }
+                const settings = getSettings();
+                let isDbDuplicate = false;
+
+                if (settings.firebaseEnabled) {
+                    const db = await initFirebase();
+                    if (db) {
+                        try {
+                            const snap = await db.collection('orders').where('utr', '==', utr).get();
+                            snap.forEach(doc => {
+                                if (doc.id !== orderId) {
+                                    isDbDuplicate = true;
+                                }
+                            });
+                        } catch (e) {
+                            console.error("[Confirmation] Failed to run database duplicate check:", e);
+                        }
+                    }
+                }
+
+                if (isDbDuplicate) {
+                    alert("This UTR has already been submitted for another order. Please enter the correct UTR.");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Submit UTR";
+                        submitBtn.style.opacity = "1";
+                    }
+                    return;
+                }
+
+                let screenshotBase64 = '';
+
+                // Update in local storage
+                const idx = orders.findIndex(o => o.id === orderId);
+                if (idx !== -1) {
+                    orders[idx].status = 'pending_verification';
+                    orders[idx].utr = utr;
+                    orders[idx].screenshot = screenshotBase64;
+                    localStorage.setItem('ikko_orders', JSON.stringify(orders));
+                }
+
+                // Sync to Firestore
+                if (settings.firebaseEnabled) {
+                    const db = await initFirebase();
+                    if (db) {
+                        try {
+                            await db.collection('orders').doc(orderId).set({
+                                status: 'pending_verification',
+                                utr: utr,
+                                screenshot: screenshotBase64
+                            }, { merge: true });
+                            console.log("[Confirmation] Order UTR synced to Firestore successfully.");
+                        } catch (e) {
+                            console.error("[Confirmation] Failed to sync UTR to Firestore:", e);
+                        }
+                    }
+                }
+
+                // Reload page to reflect updated state and start listener
+                location.reload();
+            };
+
+            let orderListenerUnsubscribe = null;
+ 
+            async function initOrderRealTimeListener(orderId) {
+                if (window.settingsLoadingPromise) {
+                    await window.settingsLoadingPromise;
+                }
+                const settings = getSettings();
+                if (settings.firebaseEnabled) {
+                    const db = await initFirebase();
+                    if (db) {
+                        console.log(`[Real-time] Subscribing to order subscribing to order ${orderId} status changes...`);
+                        orderListenerUnsubscribe = db.collection('orders').doc(orderId).onSnapshot((doc) => {
+                            if (doc.exists) {
+                                const updatedOrder = doc.data();
+                                const orders = getOrders();
+                                const idx = orders.findIndex(o => o.id === orderId);
+                                let mergedOrder = null;
+                                
+                                if (idx !== -1) {
+                                    orders[idx] = { ...orders[idx], ...updatedOrder };
+                                    mergedOrder = orders[idx];
+                                } else {
+                                    mergedOrder = updatedOrder;
+                                    orders.push(mergedOrder);
+                                }
+                                localStorage.setItem('ikko_orders', JSON.stringify(orders));
+                                
+                                renderConfirmationScreen(mergedOrder);
+                            }
+                        }, (err) => {
+                            console.error("[Real-time] Order subscription error:", err);
+                        });
+                    }
+                }
+            }
+
+            function renderConfirmationScreen(order) {
+                const status = (order.status || '').toLowerCase();
+                const hasUtr = order.utr && order.utr.trim() !== '' && !order.utr.toLowerCase().includes('pending') && order.utr !== 'Payment Failed';
+                
+                const isApproved = ['pending', 'success', 'delivered', 'completed'].includes(status);
+                if (isApproved) {
+                    if (typeof window.trackPurchaseEvent === 'function') {
+                        window.trackPurchaseEvent(order);
+                    }
+                }
+
+                if (status === 'pending' || status === 'success' || status === 'delivered' || status === 'completed') {
+                    renderSuccessUI(order);
+                } else if (status === 'pending_verification') {
+                    if (order.utr.toLowerCase().includes('pending') || !order.utr.trim()) {
+                        renderUtrSubmissionUI(order);
+                    } else {
+                        renderPendingVerificationUI(order);
+                    }
+                } else if (status === 'pending_payment') {
+                    renderUtrSubmissionUI(order);
+                } else if (status === 'cancelled' || order.utr === 'Payment Failed') {
+                    renderFailedUI(order);
+                } else {
+                    renderSuccessUI(order);
+                }
+            }
+
+            initOrderRealTimeListener(orderId);
+            renderConfirmationScreen(order);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderConfirmation();
+        });
+        </script>
+</body>
+</html>
