@@ -716,7 +716,7 @@
             if (!container) return;
 
             const orders = getOrders();
-            if (orders.length === 0) {
+            if (!Array.isArray(orders) || orders.length === 0) {
                 container.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 40px;">No customer orders placed yet</td></tr>';
                 return;
             }
@@ -735,8 +735,10 @@
             // 1. Apply Search Filter (Name, UTR, Phone, Order ID)
             if (filterSearch) {
                 filteredOrders = filteredOrders.filter(o => {
-                    const name = (o.customer.name || '').toLowerCase();
-                    const phone = (o.customer.phone || '').toLowerCase();
+                    if (!o) return false;
+                    const cust = o.customer || {};
+                    const name = (cust.name || '').toLowerCase();
+                    const phone = (cust.phone || '').toLowerCase();
                     const utr = (o.utr || '').toLowerCase();
                     const orderId = (o.id || '').toLowerCase();
                     return name.includes(filterSearch) || 
@@ -749,35 +751,42 @@
             // 2. Apply Date Filter
             if (filterDate) {
                 filteredOrders = filteredOrders.filter(o => {
+                    if (!o || !o.date) return false;
                     const localDateStr = new Date(o.date).toLocaleDateString('en-CA'); // YYYY-MM-DD
                     return localDateStr === filterDate;
                 });
             }
 
-            // 2. Apply UTR Status Filter
+            // 3. Apply UTR Status Filter
             if (filterUtr !== 'all') {
                 filteredOrders = filteredOrders.filter(o => {
+                    if (!o) return false;
+                    const status = o.status || 'pending_payment';
                     if (filterUtr === 'submitted') {
-                        return o.status === 'pending_verification';
+                        return status === 'pending_verification';
                     } else if (filterUtr === 'pending') {
-                        return o.status === 'pending_payment';
+                        return status === 'pending_payment';
                     } else if (filterUtr === 'approved') {
-                        return ['pending', 'success', 'delivered', 'completed'].includes(o.status);
+                        return ['pending', 'success', 'delivered', 'completed'].includes(status);
                     }
                     return true;
                 });
             }
 
             // Sort orders by date descending
-            const sortedOrders = filteredOrders.sort((a,b) => new Date(b.date) - new Date(a.date));
+            const sortedOrders = filteredOrders.sort((a,b) => {
+                const dateA = a && a.date ? new Date(a.date).getTime() : 0;
+                const dateB = b && b.date ? new Date(b.date).getTime() : 0;
+                return dateB - dateA;
+            });
 
             // Calculate filtered sums and counts
-            const submittedOrders = filteredOrders.filter(o => o.status === 'pending_verification');
-            const sumSubmitted = submittedOrders.reduce((sum, o) => sum + o.total, 0);
+            const submittedOrders = filteredOrders.filter(o => o && o.status === 'pending_verification');
+            const sumSubmitted = submittedOrders.reduce((sum, o) => sum + (parseFloat(o.total) || 0), 0);
             const countSubmitted = submittedOrders.length;
 
-            const approvedOrders = filteredOrders.filter(o => ['pending', 'success', 'delivered', 'completed'].includes(o.status));
-            const sumApproved = approvedOrders.reduce((sum, o) => sum + o.total, 0);
+            const approvedOrders = filteredOrders.filter(o => o && ['pending', 'success', 'delivered', 'completed'].includes(o.status));
+            const sumApproved = approvedOrders.reduce((sum, o) => sum + (parseFloat(o.total) || 0), 0);
             const countApproved = approvedOrders.length;
 
             // Update UI
@@ -801,46 +810,49 @@
             }
 
             container.innerHTML = sortedOrders.map(o => {
-                const itemsHtml = o.items.map(item => `
+                if (!o) return '';
+                const items = Array.isArray(o.items) ? o.items : [];
+                const cust = o.customer || {};
+                const itemsHtml = items.map(item => `
                     <div style="font-size: 0.8rem; margin-bottom: 4px;">
-                        • ${item.title} <strong>x ${item.qty}</strong>
+                        • ${item.title || 'Product'} <strong>x ${item.qty || 1}</strong>
                     </div>
                 `).join('');
 
-                const isUpi = ['upi', 'phonepe', 'paytm', 'gpay'].includes(o.paymentMethod);
-                const providerLabel = o.paymentMethod === 'phonepe' ? 'PhonePe' : 
-                                      (o.paymentMethod === 'paytm' ? 'Paytm' : 
-                                      (o.paymentMethod === 'gpay' ? 'Google Pay' : 
-                                      (o.paymentMethod === 'upi' ? 'UPI QR' : 'UPI')));
+                const method = o.paymentMethod || 'upi';
+                const isUpi = ['upi', 'phonepe', 'paytm', 'gpay'].includes(method);
+                const providerLabel = method === 'phonepe' ? 'PhonePe' : 
+                                      (method === 'paytm' ? 'Paytm' : 
+                                      (method === 'gpay' ? 'Google Pay' : 
+                                      (method === 'upi' ? 'UPI QR' : 'UPI')));
+
+                const status = o.status || 'pending_payment';
+                const utr = o.utr || 'N/A';
 
                 let utrBadgeHtml = '';
                 if (isUpi) {
-                    if (o.status === 'pending_verification') {
-                        // Customer submitted UTR, waiting for admin approval
+                    if (status === 'pending_verification') {
                         utrBadgeHtml = `
                             <div style="margin-top: 6px; padding: 6px 10px; background-color: #ebf8ff; color: #2b6cb0; font-size: 0.8rem; border-radius: 4px; font-weight: 800; border: 1px solid #bee3f8; box-shadow: var(--shadow-sm);">
-                                🔔 Action Required: Verify UTR: <span style="font-size: 0.9rem; text-decoration: underline; color: #2c5282;">${o.utr}</span> (${providerLabel})
+                                🔔 Action Required: Verify UTR: <span style="font-size: 0.9rem; text-decoration: underline; color: #2c5282;">${utr}</span> (${providerLabel})
                             </div>
                         `;
-                    } else if (o.status === 'pending_payment') {
-                        // Customer hasn't submitted UTR yet
+                    } else if (status === 'pending_payment') {
                         utrBadgeHtml = `
                             <div style="margin-top: 6px; padding: 4px 8px; background-color: #f7fafc; color: #4a5568; font-size: 0.8rem; border-radius: 4px; font-weight: 600; border: 1px solid #e2e8f0;">
                                 ⏳ Waiting for Payment (UTR Pending)
                             </div>
                         `;
-                    } else if (o.status === 'cancelled') {
-                        // Order cancelled
+                    } else if (status === 'cancelled') {
                         utrBadgeHtml = `
                             <div style="margin-top: 6px; padding: 4px 8px; background-color: #fed7d7; color: #9b2c2c; font-size: 0.8rem; border-radius: 4px; font-weight: 600; border: 1px solid #feb2b2;">
-                                ❌ Cancelled (UTR: ${o.utr || 'N/A'})
+                                ❌ Cancelled (UTR: ${utr})
                             </div>
                         `;
                     } else {
-                        // Approved / Delivered / Success
                         utrBadgeHtml = `
                             <div style="margin-top: 6px; padding: 4px 8px; background-color: #c6f6d5; color: #22543d; font-size: 0.8rem; border-radius: 4px; font-weight: 700; border: 1px solid #9ae6b4;">
-                                ✅ Approved (${providerLabel} UTR: ${o.utr})
+                                ✅ Approved (${providerLabel} UTR: ${utr})
                             </div>
                         `;
                     }
@@ -855,7 +867,7 @@
                             </button>
                         </div>
                     `;
-                } else if (o.status === 'pending_verification') {
+                } else if (status === 'pending_verification') {
                     screenshotBtnHtml = `
                         <div style="margin-top: 6px; font-size: 0.75rem; color: #e53e3e; font-weight: 700; display: inline-block; padding: 2px 6px; background-color: #fff5f5; border: 1px solid #fed7d7; border-radius: 4px;">
                             ⚠️ No Screenshot (Old Order)
@@ -864,21 +876,20 @@
                 }
 
                 const customerHtml = `
-                    <strong>${o.customer.name}</strong><br>
-                    📞 ${o.customer.phone}<br>
-                    🏠 ${o.customer.address}, ${o.customer.city}, ${o.customer.state} - ${o.customer.pin}
+                    <strong>${cust.name || 'Customer'}</strong><br>
+                    📞 ${cust.phone || 'N/A'}<br>
+                    🏠 ${cust.address || ''}, ${cust.city || ''}, ${cust.state || ''} - ${cust.pin || ''}
                     ${utrBadgeHtml}
                     ${screenshotBtnHtml}
                 `;
 
-                // Render dynamic status changes
                 let actionsHtml = '';
-                if (o.status === 'pending_verification' || o.status === 'pending_payment') {
+                if (status === 'pending_verification' || status === 'pending_payment') {
                     actionsHtml = `
                         <button class="btn btn-secondary" onclick="updateOrderStatus('${o.id}', 'pending')" style="background-color: var(--accent); color: white; border: none; margin-right: 5px; padding: 6px 12px;">Approve Payment</button>
                         <button class="btn btn-danger" onclick="updateOrderStatus('${o.id}', 'cancelled')" style="padding: 6px 12px;">Cancel</button>
                     `;
-                } else if (o.status === 'pending') {
+                } else if (status === 'pending') {
                     actionsHtml = `
                         <button class="btn btn-secondary" onclick="updateOrderStatus('${o.id}', 'delivered')" style="background-color: var(--accent-green); color: white; border: none; margin-right: 5px; padding: 6px 12px;">Ship & Deliver</button>
                         <button class="btn btn-danger" onclick="updateOrderStatus('${o.id}', 'cancelled')" style="padding: 6px 12px;">Cancel</button>
@@ -887,15 +898,16 @@
                     actionsHtml = `<span style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No actions required</span>`;
                 }
 
+                const totalVal = parseFloat(o.total) || 0;
+                const formattedDate = o.date ? new Date(o.date).toLocaleString() : 'N/A';
+
                 return `
                     <tr>
                         <td>
-                            <strong>${o.id}</strong><br>
-                            <span style="font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; background-color: ${isUpi ? '#ebf8ff' : '#f7fafc'}; color: ${isUpi ? '#2b6cb0' : '#4a5568'}; display: inline-block; margin-top: 4px; border: 1px solid ${isUpi ? '#bee3f8' : '#e2e8f0'}; text-transform: uppercase;">
-                                ${isUpi ? providerLabel : 'COD'}
-                            </span>
+                            <strong>${o.id || 'N/A'}</strong><br>
+                            <span class="badge badge-${method}">${method.toUpperCase()}</span>
                         </td>
-                        <td>${new Date(o.date).toLocaleString()}</td>
+                        <td style="font-size: 0.85rem; color: #475569;">${formattedDate}</td>
                         <td>${customerHtml}</td>
                         <td>${itemsHtml}</td>
                         <td>${formatPrice(o.total)}</td>
