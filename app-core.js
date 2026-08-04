@@ -1142,8 +1142,15 @@ async function syncProductsBackground(forceSync = false) {
                 // If local cache is up-to-date or newer, skip fetching from Firestore
                 if (!forceSync && serverTimestamp && localTimestamp >= serverTimestamp && cachedProducts) {
                     try {
-                        const parsed = JSON.parse(cachedProducts);
+                        let parsed = JSON.parse(cachedProducts);
                         if (parsed && parsed.length > 0) {
+                            if (!parsed.some(p => String(p.id) === '1000000000001')) {
+                                const demoProd = INITIAL_PRODUCTS.find(p => String(p.id) === '1000000000001');
+                                if (demoProd) {
+                                    parsed.unshift(demoProd);
+                                    localStorage.setItem('ikko_products', JSON.stringify(parsed));
+                                }
+                            }
                             console.log("⚡ Products cache is up-to-date/newer with Firestore (version: " + serverTimestamp + ")");
                             return parsed;
                         }
