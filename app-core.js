@@ -1639,15 +1639,18 @@ function renderHeader() {
     
     headerPlaceholder.innerHTML = `
         <div class="announcement-bar">
-            <div class="announcement-bar__text">Up to 90% Off Select Tablets & Smart Phone | Free Shipping All Over India |</div>
+            <div class="announcement-bar__text">🎉 Grand Electronics Sale | Flat ₹999 Store | Free Shipping All Over India | 100% Original Tech</div>
         </div>
         <header class="main-header">
             <div class="header-container">
-                <a href="index.html" class="logo-link">IKKO DIGITAL</a>
+                <a href="index.html" class="logo-link">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    IKKO DIGITAL
+                </a>
                 
                 <div class="search-bar-container">
                     <form action="index.html" method="GET" class="search-form" onsubmit="event.preventDefault();">
-                        <input type="text" id="header-search" placeholder="What are you looking for?" autocomplete="off">
+                        <input type="text" id="header-search" placeholder="Search for Smart Phones, Tablets & Audio..." autocomplete="off">
                         <button type="submit" class="search-btn">
                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </button>
@@ -1665,6 +1668,12 @@ function renderHeader() {
                 </div>
             </div>
         </header>
+        <div class="sub-header-nav">
+            <div class="sub-header-container">
+                <div>📍 Deliver to: <strong>Agra - 282004 ▾</strong></div>
+                <div>⚡ Express 3 to 5 Days Delivery | 🛡️ 100% Genuine Products</div>
+            </div>
+        </div>
         <nav class="lower-nav">
             <div class="lower-nav-container">
                 <a href="index.html" class="nav-item">HOME</a>
