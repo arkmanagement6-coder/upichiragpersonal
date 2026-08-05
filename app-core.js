@@ -1839,8 +1839,8 @@ function renderCartDrawer() {
                         <span>Subtotal:</span>
                         <span class="subtotal-amount">${formatPrice(total)}</span>
                     </div>
-                    <p class="shipping-info-text">🚚 Free Shipping 5 - 7 Days</p>
-                    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+                    <p class="shipping-info-text">🚚 Free Shipping 3 - 5 Days | 🛡️ 100% Original Guarantee</p>
+                    <a href="checkout.html" class="checkout-btn">Proceed to Checkout &rsaquo;</a>
                 </div>
             ` : ''}
         </div>
