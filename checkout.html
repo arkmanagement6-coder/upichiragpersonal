@@ -633,7 +633,7 @@
                     Address Snippet
                 </div>
                 <div class="delivery-time-badge">
-                    🚚 Delivery in 3 to 7 DAYS to <span id="summary-name-text">Customer</span>
+                    🚚 Express Shipping 2 to 3 Days Delivery to <span id="summary-name-text">Customer</span>
                 </div>
             </div>
 
@@ -645,7 +645,7 @@
                 </div>
 
                 <div class="offer-dashed-banner" id="offer-dashed-banner-el">
-                    <span>Add 2 more items for <b>BUY 3 GET 1 FREE</b></span>
+                    <span>Add 2 more items for <b>BUY 2 GET 1 FREE</b></span>
                     <span>🎁</span>
                 </div>
 
@@ -668,7 +668,7 @@
                 </div>
 
                 <div class="discount-row-box" id="free-item-discount-row" style="display: none; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 10px; background: #e8f8ee; color: #16a34a; font-weight: 700; margin-bottom: 10px; font-size: 0.88rem;">
-                    <span style="display: flex; align-items: center; gap: 6px;">🏷️ Coupon <b>BUY3GET1</b> (1 Free Item)</span>
+                    <span style="display: flex; align-items: center; gap: 6px;">🏷️ Coupon <b>BUY2GET1</b> (1 Free Item)</span>
                     <span id="summary-free-discount-val" style="font-weight: 800; font-size: 0.95rem; color: #16a34a;">-₹0.00</span>
                 </div>
 
@@ -704,7 +704,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=100.0"></script>
+    <script src="app-core.js?v=135.0"></script>
     <script>
         let currentStep = 1;
 
@@ -837,21 +837,22 @@
 
             let freeDiscount = 0;
             if (totalQty >= 3 && minPrice !== Infinity) {
-                freeDiscount = minPrice;
+                const freeCount = Math.floor(totalQty / 3);
+                freeDiscount = freeCount * minPrice;
                 if (offerBanner) {
-                    offerBanner.innerHTML = `<span>🎉 Coupon <b>BUY3GET1</b> Applied! (1 Item FREE Included)</span><span>🎁</span>`;
+                    offerBanner.innerHTML = `<span>🎉 Coupon <b>BUY2GET1</b> Applied! (${freeCount} ${freeCount === 1 ? 'Item' : 'Items'} FREE Included)</span><span>🎁</span>`;
                     offerBanner.style.background = '#e8f8ee';
                     offerBanner.style.borderColor = '#bbf7d0';
                     offerBanner.style.color = '#16a34a';
                 }
                 if (freeDiscountRow) {
                     freeDiscountRow.style.display = 'flex';
-                    document.getElementById('summary-free-discount-val').innerText = `-₹${freeDiscount.toFixed(2)}`;
+                    freeDiscountRow.innerHTML = `<span style="display: flex; align-items: center; gap: 6px;">🏷️ Coupon <b>BUY2GET1</b> (${freeCount} Free ${freeCount === 1 ? 'Item' : 'Items'})</span><span id="summary-free-discount-val" style="font-weight: 800; font-size: 0.95rem; color: #16a34a;">-₹${freeDiscount.toFixed(2)}</span>`;
                 }
             } else {
                 const needed = 3 - totalQty;
                 if (offerBanner) {
-                    offerBanner.innerHTML = `<span>Add ${needed} more ${needed === 1 ? 'item' : 'items'} for <b>BUY 3 GET 1 FREE</b></span><span>🎁</span>`;
+                    offerBanner.innerHTML = `<span>Add ${needed} more ${needed === 1 ? 'item' : 'items'} for <b>BUY 2 GET 1 FREE</b></span><span>🎁</span>`;
                     offerBanner.style.background = '#fff5f5';
                     offerBanner.style.borderColor = 'var(--brand-color)';
                     offerBanner.style.color = 'var(--brand-color)';
