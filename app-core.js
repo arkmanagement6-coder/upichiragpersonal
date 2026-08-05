@@ -1666,7 +1666,7 @@ function renderHeader() {
             </div>
         </header>
         <div class="announcement-bar">
-            <div class="announcement-bar__text">📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery</div>
+            <div class="announcement-bar__text">⚡ Express Shipping 2 to 3 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express Shipping 2 to 3 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store</div>
         </div>
     `;
     
@@ -1823,7 +1823,7 @@ function renderCartDrawer() {
                         <span>Subtotal:</span>
                         <span class="subtotal-amount">${formatPrice(total)}</span>
                     </div>
-                    <p class="shipping-info-text">🚚 Free Shipping 3 - 5 Days | 🛡️ 100% Original Guarantee</p>
+                    <p class="shipping-info-text">🚚 Express Shipping 2 to 3 Days Delivery | 🛡️ 100% Original Guarantee</p>
                     <a href="checkout.html" class="checkout-btn">Proceed to Checkout &rsaquo;</a>
                 </div>
             ` : ''}
