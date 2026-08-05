@@ -1638,9 +1638,6 @@ function renderHeader() {
     const accountText = customer ? 'ACCOUNT' : 'LOGIN';
     
     headerPlaceholder.innerHTML = `
-        <div class="announcement-bar">
-            <div class="announcement-bar__text">⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; 🎉 Grand Electronics Sale &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Promotional Store &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products</div>
-        </div>
         <header class="main-header">
             <div class="header-container">
                 <a href="index.html" class="logo-link">
@@ -1668,11 +1665,8 @@ function renderHeader() {
                 </div>
             </div>
         </header>
-        <div class="sub-header-nav">
-            <div class="sub-header-container">
-                <div>📍 Deliver to: <strong>Agra - 282004 ▾</strong></div>
-                <div>⚡ Express Delivery | 🛡️ 100% Original Tech</div>
-            </div>
+        <div class="announcement-bar">
+            <div class="announcement-bar__text">📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; 🎉 Grand Electronics Sale &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; 📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery</div>
         </div>
     `;
     

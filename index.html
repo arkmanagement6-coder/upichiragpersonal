@@ -76,37 +76,70 @@
     <!-- Header will be rendered here by app-core.js?v=20.0 -->
     <div id="header-placeholder"></div>
 
-    <!-- Hero Slider Section (3 Electronics Slides) -->
+    <!-- Hero Slider Section (3 High-End Electronics Slides with Images) -->
     <section class="hero-slider-wrapper">
         <button class="slider-arrow slider-arrow-prev" onclick="prevSlide()">&lsaquo;</button>
         <button class="slider-arrow slider-arrow-next" onclick="nextSlide()">&rsaquo;</button>
         
         <div class="hero-slider-track" id="hero-slider-track">
-            <!-- Slide 1 -->
+            <!-- Slide 1: Apple iPad Air -->
             <div class="hero-slide hero-slide-1">
-                <div class="hero-slide-content">
-                    <span class="hero-slide-tag">⚡ FLAT ₹999 PROMOTIONAL STORE</span>
-                    <h2>GRAND ELECTRONICS SALE</h2>
-                    <p>Up to 90% OFF on iPads, Tablets & Smart Phones | Direct Factory Deals</p>
-                    <a href="#store-listings" class="hero-slide-btn" onclick="scrollToProducts(event)">EXPLORE DEALS &rsaquo;</a>
+                <div class="hero-slide-container">
+                    <div class="hero-slide-text">
+                        <span class="hero-slide-tag">🔥 FLAT 98% OFF DEAL</span>
+                        <h2>Apple iPad Air (M2) 11″</h2>
+                        <p>Liquid Retina Display | M2 Powerhouse | 256GB Storage</p>
+                        <div class="hero-slide-price-pill">
+                            <span>Rs. 999.00</span>
+                            <span class="hero-slide-price-compare">Rs. 59,900.00</span>
+                        </div>
+                        <div>
+                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('tablets'); scrollToProducts(event)">BUY NOW &rsaquo;</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide-img-wrap">
+                        <img src="https://look-10287.myshopify.com/cdn/shop/files/2_cd196f0b-3a1d-440f-8443-55d07c764b30_512x512.jpg?v=1781259490" alt="Apple iPad Air M2">
+                    </div>
                 </div>
             </div>
-            <!-- Slide 2 -->
+            <!-- Slide 2: boAt Airdopes -->
             <div class="hero-slide hero-slide-2">
-                <div class="hero-slide-content">
-                    <span class="hero-slide-tag">🎧 LIMITED TIME PROMOTION</span>
-                    <h2>AUDIO & EARBUDS FESTIVAL</h2>
-                    <p>boAt, Noise & Premium Wireless TWS Earbuds starting at ₹999</p>
-                    <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('audio'); scrollToProducts(event)">SHOP AUDIO &rsaquo;</a>
+                <div class="hero-slide-container">
+                    <div class="hero-slide-text">
+                        <span class="hero-slide-tag">🎧 AUDIO FESTIVAL 2026</span>
+                        <h2>boAt Airdopes 441 TWS</h2>
+                        <p>IPX7 Water Resistance | 500mAh Case | 20 Hours Playback</p>
+                        <div class="hero-slide-price-pill">
+                            <span>Rs. 999.00</span>
+                            <span class="hero-slide-price-compare">Rs. 14,98,500.00</span>
+                        </div>
+                        <div>
+                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('audio'); scrollToProducts(event)">EXPLORE AUDIO &rsaquo;</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide-img-wrap">
+                        <img src="https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437" alt="boAt Airdopes Wireless">
+                    </div>
                 </div>
             </div>
-            <!-- Slide 3 -->
+            <!-- Slide 3: Samsung Galaxy Tab S10+ -->
             <div class="hero-slide hero-slide-3">
-                <div class="hero-slide-content">
-                    <span class="hero-slide-tag">🚚 FREE EXPRESS SHIPPING INDIA</span>
-                    <h2>NEXT-GEN SMART PHONES</h2>
-                    <p>Flagship High-Performance Smart Phones & Tablets at Unbeatable Prices</p>
-                    <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('smart-phone'); scrollToProducts(event)">VIEW PHONES &rsaquo;</a>
+                <div class="hero-slide-container">
+                    <div class="hero-slide-text">
+                        <span class="hero-slide-tag">📱 PREMIUM TABLET DEAL</span>
+                        <h2>Samsung Galaxy Tab S10+</h2>
+                        <p>12.4" Dynamic AMOLED 2X Display | S Pen In-Box | 12GB RAM</p>
+                        <div class="hero-slide-price-pill">
+                            <span>Rs. 999.00</span>
+                            <span class="hero-slide-price-compare">Rs. 90,999.00</span>
+                        </div>
+                        <div>
+                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('tablets'); scrollToProducts(event)">ORDER NOW &rsaquo;</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide-img-wrap">
+                        <img src="https://look-10287.myshopify.com/cdn/shop/files/5_ab735dcb-c7a9-4839-8fdc-79d12c03c54c_512x512.jpg?v=1781259489" alt="Samsung Galaxy Tab S10 Plus">
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,7 +170,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=115.0"></script>
+    <script src="app-core.js?v=120.0"></script>
     <script>
         let currentTab = 'all';
 
