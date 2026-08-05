@@ -1666,7 +1666,7 @@ function renderHeader() {
             </div>
         </header>
         <div class="announcement-bar">
-            <div class="announcement-bar__text">📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; 🎉 Grand Electronics Sale &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; 📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery</div>
+            <div class="announcement-bar__text">📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 📍 Deliver to: Agra - 282004 &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery</div>
         </div>
     `;
     
