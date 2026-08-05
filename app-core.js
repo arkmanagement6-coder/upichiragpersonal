@@ -128,21 +128,6 @@ window.trackPurchaseEvent = function(order) {
 
 const INITIAL_PRODUCTS = [
   {
-    "id": "1000000000001",
-    "title": "₹1 Demo Testing Product",
-    "price": "Rs. 1.00",
-    "comparePrice": "Rs. 999.00",
-    "category": "gadgets",
-    "badge": "DEMO",
-    "stockStatus": "in-stock",
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437",
-    "images": [
-      "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437"
-    ],
-    "description": "<p>Demo testing product for payment verification.</p>",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
-  },
-  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
@@ -1147,10 +1132,7 @@ async function syncProductsBackground(forceSync = false) {
                     try {
                         let parsed = JSON.parse(cachedProducts);
                         if (parsed && parsed.length > 0) {
-                            if (!parsed.some(p => String(p.id) === '1000000000001')) {
-                                const demoItem = INITIAL_PRODUCTS.find(p => String(p.id) === '1000000000001');
-                                if (demoItem) parsed.unshift(demoItem);
-                            }
+                            parsed = parsed.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
                             localStorage.setItem('ikko_products', JSON.stringify(parsed));
                             console.log("⚡ Products cache is up-to-date/newer with Firestore (version: " + serverTimestamp + ")");
                             return parsed;
@@ -1213,11 +1195,8 @@ async function syncProductsBackground(forceSync = false) {
                     }
                 }
 
-                // Ensure ₹1 Demo product exists in products list if not present
-                if (!products.some(p => String(p.id) === '1000000000001')) {
-                    const demoItem = INITIAL_PRODUCTS.find(p => String(p.id) === '1000000000001');
-                    if (demoItem) products.unshift(demoItem);
-                }
+                // Always filter out ₹1 Demo Testing product
+                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
