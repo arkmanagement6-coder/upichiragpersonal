@@ -76,12 +76,45 @@
     <!-- Header will be rendered here by app-core.js?v=20.0 -->
     <div id="header-placeholder"></div>
 
-    <!-- Hero Banner Section -->
-    <section class="hero-banner">
-        <div class="hero-container">
-            <h1>⚡ GRAND ELECTRONICS SALE</h1>
-            <p>Flat ₹999 Store | Direct Factory Promotional Deals | Free Delivery India</p>
-            <a href="#store-listings" class="hero-btn" onclick="scrollToProducts(event)">EXPLORE DEALS</a>
+    <!-- Hero Slider Section (3 Electronics Slides) -->
+    <section class="hero-slider-wrapper">
+        <button class="slider-arrow slider-arrow-prev" onclick="prevSlide()">&lsaquo;</button>
+        <button class="slider-arrow slider-arrow-next" onclick="nextSlide()">&rsaquo;</button>
+        
+        <div class="hero-slider-track" id="hero-slider-track">
+            <!-- Slide 1 -->
+            <div class="hero-slide hero-slide-1">
+                <div class="hero-slide-content">
+                    <span class="hero-slide-tag">⚡ FLAT ₹999 PROMOTIONAL STORE</span>
+                    <h2>GRAND ELECTRONICS SALE</h2>
+                    <p>Up to 90% OFF on iPads, Tablets & Smart Phones | Direct Factory Deals</p>
+                    <a href="#store-listings" class="hero-slide-btn" onclick="scrollToProducts(event)">EXPLORE DEALS &rsaquo;</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide hero-slide-2">
+                <div class="hero-slide-content">
+                    <span class="hero-slide-tag">🎧 LIMITED TIME PROMOTION</span>
+                    <h2>AUDIO & EARBUDS FESTIVAL</h2>
+                    <p>boAt, Noise & Premium Wireless TWS Earbuds starting at ₹999</p>
+                    <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('audio'); scrollToProducts(event)">SHOP AUDIO &rsaquo;</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide hero-slide-3">
+                <div class="hero-slide-content">
+                    <span class="hero-slide-tag">🚚 FREE EXPRESS SHIPPING INDIA</span>
+                    <h2>NEXT-GEN SMART PHONES</h2>
+                    <p>Flagship High-Performance Smart Phones & Tablets at Unbeatable Prices</p>
+                    <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('smart-phone'); scrollToProducts(event)">VIEW PHONES &rsaquo;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <div class="slider-dot active" onclick="goToSlide(0)"></div>
+            <div class="slider-dot" onclick="goToSlide(1)"></div>
+            <div class="slider-dot" onclick="goToSlide(2)"></div>
         </div>
     </section>
 
@@ -104,12 +137,50 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=110.0"></script>
+    <script src="app-core.js?v=115.0"></script>
     <script>
         let currentTab = 'all';
 
+        // 3-Slide Hero Banner Carousel Logic
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let slideTimer = null;
+
+        function updateSlider() {
+            const track = document.getElementById('hero-slider-track');
+            if (track) {
+                track.style.transform = `translate3d(-${currentSlide * (100 / totalSlides)}%, 0, 0)`;
+            }
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function startAutoSlide() {
+            if (slideTimer) clearInterval(slideTimer);
+            slideTimer = setInterval(nextSlide, 3800);
+        }
+
+        startAutoSlide();
+
         function scrollToProducts(e) {
-            e.preventDefault();
+            if (e) e.preventDefault();
             document.getElementById('store-listings').scrollIntoView({ behavior: 'smooth' });
         }
 

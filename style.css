@@ -46,19 +46,27 @@ button, input, select, textarea {
     font-family: inherit;
 }
 
-/* --- ANNOUNCEMENT BAR --- */
+/* --- ANNOUNCEMENT BAR (RUNNING RED MARQUEE) --- */
 .announcement-bar {
-    background-color: #072e5c;
+    background-color: #e52e2e;
     color: #ffffff;
-    text-align: center;
-    padding: 8px 15px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(229, 46, 46, 0.3);
+    position: relative;
+    z-index: 101;
 }
 .announcement-bar__text {
     display: inline-block;
+    padding-left: 100%;
+    animation: marquee 16s linear infinite;
+}
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 }
 
 /* --- SUB HEADER NAVIGATION / DELIVERY BAR --- */
@@ -303,117 +311,139 @@ button, input, select, textarea {
     justify-content: center;
 }
 
-/* --- LOWER NAVIGATION --- */
+/* --- LOWER NAVIGATION (HIDDEN AS REQUESTED) --- */
 .lower-nav {
-    background-color: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-}
-.lower-nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 30px;
-}
-.nav-item {
-    font-family: var(--font-heading);
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--text-main);
-    padding: 15px 0;
-    letter-spacing: 0.8px;
-    position: relative;
-    transition: color var(--transition-fast);
-    text-transform: uppercase;
-}
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav-item:hover {
-    color: var(--accent);
-}
-.nav-item:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    display: none !important;
 }
 
-/* --- BANNER / HERO SECTION --- */
-.hero-banner {
-    background: linear-gradient(135deg, #062347 0%, #0c529c 60%, #0088cc 100%);
-    padding: 60px 20px;
+/* --- HERO CAROUSEL SLIDER (3 ELECTRONICS SLIDES) --- */
+.hero-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #062347;
+    border-bottom: 3px solid #ffc107;
+}
+.hero-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 300%;
+}
+.hero-slide {
+    width: 33.3333%;
+    flex-shrink: 0;
+    padding: 50px 20px;
     text-align: center;
     position: relative;
-    overflow: hidden;
-    min-height: 280px;
+    min-height: 270px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 3px solid #ffc107;
+    box-sizing: border-box;
 }
-.hero-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.25) 100%);
-    pointer-events: none;
-    z-index: 1;
+.hero-slide-1 {
+    background: linear-gradient(135deg, #062347 0%, #0c529c 60%, #0088cc 100%);
 }
-.hero-container {
+.hero-slide-2 {
+    background: linear-gradient(135deg, #031b33 0%, #005691 60%, #0099e6 100%);
+}
+.hero-slide-3 {
+    background: linear-gradient(135deg, #4a0000 0%, #900000 60%, #e52e2e 100%);
+}
+.hero-slide-content {
     max-width: 800px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    text-align: center;
+    color: #ffffff;
 }
-.hero-banner h1 {
+.hero-slide-tag {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.hero-slide h2 {
     font-family: var(--font-heading);
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 12px;
-    color: #ffeb3b; /* Jio Promo Yellow */
+    margin-bottom: 10px;
+    color: #ffeb3b;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-.hero-banner p {
-    font-size: 1.15rem;
+.hero-slide p {
+    font-size: 1.1rem;
     color: #ffffff;
-    margin-bottom: 25px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 22px;
     font-weight: 500;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
-.hero-btn {
-    background-color: #00875a; /* Jio Action Green */
+.hero-slide-btn {
+    background-color: #00875a;
     color: #ffffff;
-    padding: 12px 36px;
+    padding: 12px 34px;
     border-radius: 8px;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     display: inline-block;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     box-shadow: 0 4px 15px rgba(0, 135, 90, 0.4);
     transition: var(--transition-premium);
 }
-.hero-btn:hover {
+.hero-slide-btn:hover {
     background-color: #00704a;
-    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 135, 90, 0.5);
+}
+/* Slider Navigation Controls */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s;
+}
+.slider-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.slider-arrow-prev { left: 15px; }
+.slider-arrow-next { right: 15px; }
+.slider-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.slider-dot.active {
+    background-color: #ffeb3b;
+    width: 24px;
+    border-radius: 12px;
 }
 
 /* --- TABS / FILTER --- */

@@ -1639,7 +1639,7 @@ function renderHeader() {
     
     headerPlaceholder.innerHTML = `
         <div class="announcement-bar">
-            <div class="announcement-bar__text">🎉 Grand Electronics Sale | Flat ₹999 Store | Free Shipping All Over India | 100% Original Tech</div>
+            <div class="announcement-bar__text">⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; 🎉 Grand Electronics Sale &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Promotional Store &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express 3 to 5 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products</div>
         </div>
         <header class="main-header">
             <div class="header-container">
@@ -1671,19 +1671,9 @@ function renderHeader() {
         <div class="sub-header-nav">
             <div class="sub-header-container">
                 <div>📍 Deliver to: <strong>Agra - 282004 ▾</strong></div>
-                <div>⚡ Express 3 to 5 Days Delivery | 🛡️ 100% Genuine Products</div>
+                <div>⚡ Express Delivery | 🛡️ 100% Original Tech</div>
             </div>
         </div>
-        <nav class="lower-nav">
-            <div class="lower-nav-container">
-                <a href="index.html" class="nav-item">HOME</a>
-                <a href="collections.html?type=all" class="nav-item">SHOP ALL</a>
-                <a href="collections.html?type=tablets" class="nav-item">TABLETS</a>
-                <a href="collections.html?type=smart-phone" class="nav-item">SMART PHONE</a>
-                <a href="collections.html?type=audio" class="nav-item">AUDIO & EARBUDS</a>
-                <a href="account.html" class="nav-item">${accountText}</a>
-            </div>
-        </nav>
     `;
     
     // Hook up search dropdown handler
