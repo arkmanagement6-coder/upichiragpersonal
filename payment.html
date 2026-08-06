@@ -623,10 +623,10 @@
                 console.error("Error syncing order to Firestore:", e);
             }
 
-            // Track Meta Pixel Purchase event
+            // Track Meta Pixel AddPaymentInfo event (Purchase event fires on order confirmation / admin approval)
             try {
                 if (typeof fbq === 'function') {
-                    fbq('track', 'Purchase', {
+                    fbq('track', 'AddPaymentInfo', {
                         value: currentTotal,
                         currency: 'INR'
                     });

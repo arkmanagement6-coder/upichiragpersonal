@@ -1,5 +1,20 @@
 [
   {
+    "id": "1000000000001",
+    "title": "₹1 Demo Testing Product",
+    "price": "Rs. 1.00",
+    "comparePrice": "Rs. 999.00",
+    "category": "gadgets",
+    "badge": "DEMO",
+    "stockStatus": "in-stock",
+    "image": "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437",
+    "images": [
+      "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437"
+    ],
+    "description": "<p>Demo testing product for payment verification.</p>",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+  },
+  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
