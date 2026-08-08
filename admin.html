@@ -955,7 +955,7 @@
                 }
 
                 // Fire Meta Pixel & Conversions API Purchase tracking if approved
-                const approvalStatuses = ['approved', 'success', 'delivered', 'completed'];
+                const approvalStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
                 if (approvalStatuses.includes(newStatus)) {
                     console.log(`[Pixel] Firing Purchase event for approved order: ${orderId}`);
                     if (typeof window.trackPurchaseEvent === 'function') {

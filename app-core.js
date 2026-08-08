@@ -106,7 +106,7 @@ window.trackPurchaseEvent = function(order) {
             
             const contentIds = (order.items && Array.isArray(order.items) && order.items.length > 0)
                 ? order.items.map(item => String(item.id))
-                : ['1000000000001'];
+                : ['8270415000000'];
 
             console.log(`[Pixel] Firing Purchase event for order ${order.id} with value Rs. ${totalVal}`);
             fbq('track', 'Purchase', {

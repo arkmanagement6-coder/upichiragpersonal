@@ -666,7 +666,7 @@
                 const status = (order.status || '').toLowerCase();
                 const hasUtr = order.utr && order.utr.trim() !== '' && !order.utr.toLowerCase().includes('pending') && order.utr !== 'Payment Failed';
                 
-                const isApproved = ['approved', 'success', 'delivered', 'completed'].includes(status);
+                const isApproved = ['approved', 'pending', 'success', 'delivered', 'completed'].includes(status);
                 if (isApproved) {
                     if (typeof window.trackPurchaseEvent === 'function') {
                         window.trackPurchaseEvent(order);

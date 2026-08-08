@@ -900,7 +900,7 @@
                 }
 
                 // Fire Conversions API tracking if approved and not already fired
-                const approvalStatuses = ['approved', 'success', 'delivered', 'completed'];
+                const approvalStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
                 if (approvalStatuses.includes(newStatus) && !order.pixelFired) {
                     console.log(`[CAPI] Firing Conversions API Purchase tracking request for order: ${orderId}`);
                     fetch('/api/track-purchase', {
