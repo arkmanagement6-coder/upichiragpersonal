@@ -911,15 +911,12 @@
                             content_type: 'product',
                             content_ids: (order.items || []).map(i => String(i.id))
                         }, { eventID: order.id });
-                    }
-
-                    if (!order.pixelFired) {
-                        console.log(`[CAPI] Firing Conversions API Purchase tracking request for order: ${orderId}`);
-                        fetch('/api/track-purchase', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ order: order })
-                        }).then(res => res.json())
+                    console.log(`[CAPI] Firing Conversions API Purchase tracking request for order: ${orderId}`);
+                    fetch('/api/track-purchase', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ order: order })
+                    }).then(res => res.json())
                       .then(async (resData) => {
                           if (resData.success) {
                               console.log(`[CAPI] Order purchase successfully tracked via server.`);
