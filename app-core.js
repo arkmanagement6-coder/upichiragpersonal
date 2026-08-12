@@ -86,12 +86,33 @@
 
 // Expose global helper to track purchase event dynamically on demand
 window.trackPurchaseEvent = function(order) {
-    if (!order) return;
+    if (!order || !order.id) return;
     
-    // Check session storage per order ID so that when customer views their confirmed/approved order, browser pixel fires
+    // Always trigger Server Conversions API (CAPI)
+    try {
+        console.log(`[CAPI] Dispatching Conversions API purchase for order: ${order.id}`);
+        fetch('/api/track-purchase', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ order: order })
+        }).then(res => res.json())
+          .then(resData => {
+              if (resData.success) {
+                  console.log(`[CAPI] Server purchase event successfully logged for order ${order.id}`);
+              } else {
+                  console.warn(`[CAPI] Meta CAPI response:`, resData);
+              }
+          }).catch(err => {
+              console.error("[CAPI] Server tracking error:", err);
+          });
+    } catch(e) {
+        console.error("[CAPI] Error calling track-purchase endpoint:", e);
+    }
+
+    // Check session storage per order ID so browser pixel doesn't spam on page reloads
     const sessionKey = 'pixel_purchase_fired_' + order.id;
     if (sessionStorage.getItem(sessionKey)) {
-        console.log(`[Pixel] Purchase event already fired for order ${order.id} in this session.`);
+        console.log(`[Pixel] Browser Purchase event already fired for order ${order.id} in this session.`);
         return;
     }
 
@@ -108,7 +129,7 @@ window.trackPurchaseEvent = function(order) {
                 ? order.items.map(item => String(item.id))
                 : ['8270415000000'];
 
-            console.log(`[Pixel] Firing Purchase event for order ${order.id} with value Rs. ${totalVal}`);
+            console.log(`[Pixel] Firing Browser Purchase event for order ${order.id} with value Rs. ${totalVal}`);
             fbq('track', 'Purchase', {
                 value: totalVal,
                 currency: 'INR',

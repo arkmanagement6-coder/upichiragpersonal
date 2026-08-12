@@ -902,44 +902,24 @@
                 // Fire Meta Pixel & Conversions API tracking if approved
                 const approvalStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
                 if (approvalStatuses.includes(newStatus)) {
+                    console.log(`[Pixel & CAPI] Firing Purchase event for approved order: ${orderId}`);
                     if (typeof window.trackPurchaseEvent === 'function') {
                         window.trackPurchaseEvent(order);
-                    } else if (typeof fbq === 'function') {
-                        fbq('track', 'Purchase', {
-                            value: parseFloat(order.total) || 1.00,
-                            currency: 'INR',
-                            content_type: 'product',
-                            content_ids: (order.items || []).map(i => String(i.id))
-                        }, { eventID: order.id });
-                    console.log(`[CAPI] Firing Conversions API Purchase tracking request for order: ${orderId}`);
-                    fetch('/api/track-purchase', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ order: order })
-                    }).then(res => res.json())
-                      .then(async (resData) => {
-                          if (resData.success) {
-                              console.log(`[CAPI] Order purchase successfully tracked via server.`);
-                              order.pixelFired = true;
-                              
-                              // Update LocalStorage
-                              localStorage.setItem('ikko_orders', JSON.stringify(orders));
-                              
-                              // Sync pixelFired: true to Firestore
-                              if (settings.firebaseEnabled) {
-                                  const db = await initFirebase();
-                                  if (db) {
-                                      db.collection('orders').doc(orderId).update({ pixelFired: true })
-                                        .then(() => console.log("[CAPI] Synced pixelFired=true to Firestore."))
-                                        .catch(e => console.error("[CAPI] Failed to sync pixelFired to Firestore:", e));
-                                  }
-                              }
-                          } else {
-                              console.error(`[CAPI] Meta Conversions API failed:`, resData.message, resData.detail);
-                          }
-                      }).catch(err => {
-                          console.error("[CAPI] Network error tracking purchase:", err);
-                      });
+                    } else {
+                        if (typeof fbq === 'function') {
+                            fbq('track', 'Purchase', {
+                                value: parseFloat(order.total) || 1.00,
+                                currency: 'INR',
+                                content_type: 'product',
+                                content_ids: (order.items || []).map(i => String(i.id))
+                            }, { eventID: order.id });
+                        }
+                        fetch('/api/track-purchase', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ order: order })
+                        }).catch(err => console.error("[CAPI] Error tracking purchase:", err));
+                    }
                 }
                 
                 // Re-render the active tab
