@@ -176,7 +176,7 @@ module.exports = async (req, res) => {
             };
 
             const pixelId = '1039324625032380';
-            const accessToken = 'EAAsYZCV526LABSBVZCGiNFqTaFb37aGYeInrxCR2ndap59k6yaVx6fLtojK8BQPiBczzZBxniLVOozlnYX9FQsLt4YGoyCk9rtp36WJDtw0HPSLfeHLdzZAIi7m98AJFkrOExjSdQfazwNfWLJkTQikl8LcZBZCj0vjJCDbAldl267PAOxMv6GzbLw79QCihBu6gZDZD';
+            const accessToken = 'EAAsYZCV526LABSCIqZBQepBk494LBaOB19ynZA9bj5eJuTWAv4wmwi4GxqcrBPgksUbEP7A5UTJhA4IcyqH4FqZC28bOxkAcNwfY6gAlZCjwXVk1V2Dp7g9Kw5sB7wBPlV456AVbW7F9oZBw3BMZAkxhVuJtgRCd7V75j63eSRf0i9n3Gt57FgKKqVZCMykXEwZDZD';
             const url = `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`;
 
             console.log(`[CAPI] Dispatching server event for order: ${order.id} with value: Rs. ${totalVal}`);
