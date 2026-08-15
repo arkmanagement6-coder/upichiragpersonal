@@ -86,7 +86,9 @@
 
 // Expose global helper to track purchase event dynamically on demand
 window.trackPurchaseEvent = function(order) {
-    if (!order || !order.id) return;
+    if (!order) return;
+    const targetId = order.id || order.orderId || order.order_id || ('ORD-' + Date.now());
+    order.id = targetId;
     
     // Always trigger Server Conversions API (CAPI)
     try {
