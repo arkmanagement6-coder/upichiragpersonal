@@ -66,7 +66,13 @@ module.exports = async (req, res) => {
 
     async function processTracking(bodyData) {
         try {
-            const order = bodyData.order || bodyData;
+            let order = bodyData.order || bodyData;
+            if (typeof order === 'string') {
+                try { order = JSON.parse(order); } catch(e) {}
+            }
+            if (order && typeof order === 'object') {
+                order.id = order.id || order.orderId || order.order_id || ('ORD-' + Date.now());
+            }
             if (!order || !order.id) {
                 res.statusCode = 400;
                 res.setHeader('Content-Type', 'application/json');
@@ -209,7 +215,11 @@ module.exports = async (req, res) => {
     }
 
     if (req.body) {
-        await processTracking(req.body);
+        let parsed = req.body;
+        if (typeof parsed === 'string') {
+            try { parsed = JSON.parse(parsed); } catch(e) {}
+        }
+        await processTracking(parsed);
     } else {
         let body = '';
         req.on('data', chunk => {
