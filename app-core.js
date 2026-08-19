@@ -149,26 +149,6 @@ window.trackPurchaseEvent = function(order) {
 
 const INITIAL_PRODUCTS = [
   {
-    "id": "1000000000001",
-    "paymentLink": "",
-    "category": "tablets",
-    "price": "Rs. 1.00",
-    "badge": "DEMO TEST",
-    "title": "₹1 Demo Testing Product - Test Order Payment",
-    "image": "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp",
-    "images": [
-      "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp"
-    ],
-    "url": "/product.html?id=1000000000001",
-    "stockStatus": "in-stock",
-    "handle": "demo-testing-product-1rs",
-    "comparePrice": "Rs. 99.00",
-    "specs": [
-      { "name": "Type", "value": "Demo Product" },
-      { "name": "Price", "value": "₹1.00" }
-    ]
-  },
-  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
@@ -1237,7 +1217,7 @@ async function syncProductsBackground(forceSync = false) {
                 }
 
                 // Always filter out ₹1 Demo Testing product
-                products = products.filter(p => String(p.id) !== '8270415000000_demo');
+                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
@@ -1352,23 +1332,6 @@ const DEMO_PRODUCT = {
   "url": "/product.html?id=1000000000001",
   "stockStatus": "in-stock",
   "handle": "demo-testing-product-1rs",
-  "comparePrice": "Rs. 99.00",
-  "specs": [
-    { "name": "Type", "value": "Demo Product" },
-    { "name": "Price", "value": "₹1.00" }
-  ]
-};
-
-function ensureDemoProduct(products) {
-    if (!Array.isArray(products)) products = [];
-    const hasDemo = products.some(p => String(p.id) === '1000000000001');
-    if (!hasDemo) {
-        products = [DEMO_PRODUCT, ...products];
-    }
-    localStorage.setItem('ikko_products', JSON.stringify(products));
-    return products;
-}
-
 // Product Database Helpers (Firestore Async with local Cache fallback)
 async function getProducts(forceSync = false) {
     const cached = localStorage.getItem('ikko_products');
@@ -1376,21 +1339,22 @@ async function getProducts(forceSync = false) {
 
     if (cached && !forceSync) {
         try {
-            const products = JSON.parse(cached);
+            let products = JSON.parse(cached);
             if (products && products.length > 0) {
-                const guaranteed = ensureDemoProduct(products);
+                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
+                localStorage.setItem('ikko_products', JSON.stringify(products));
+                // Trigger background sync only once per session to prevent hitting Firestore limits
                 if (!alreadySynced) {
                     sessionStorage.setItem('ikko_products_synced', 'true');
                     syncProductsBackground(false).catch(err => console.error("Background sync error:", err));
                 }
-                return guaranteed;
+                return products;
             }
         } catch (e) {}
     }
     // No cache or forcing sync, await the sync
     sessionStorage.setItem('ikko_products_synced', 'true');
-    const synced = await syncProductsBackground(forceSync);
-    return ensureDemoProduct(synced);
+    return await syncProductsBackground(forceSync);
 }
 
 async function saveProducts(products, changedProduct = null) {
