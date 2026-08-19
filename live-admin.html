@@ -527,7 +527,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=700.0"></script>
+    <script src="app-core.js?v=800.0"></script>
     <script>
         let currentAdminTab = 'dash';
         let isEditing = false;
@@ -1405,23 +1405,16 @@
                         snapshot.forEach((doc) => {
                             firestoreOrders.push(doc.data());
                         });
-                        firestoreOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+                        firestoreOrders.sort((a, b) => new Date(b.date || b.timestamp || 0) - new Date(a.date || a.timestamp || 0));
                         allFetchedOrders = firestoreOrders;
                         localStorage.setItem('ikko_orders', JSON.stringify(firestoreOrders));
                         if (currentAdminTab === 'dash') renderDashboard();
                         if (currentAdminTab === 'orders') renderOrders();
                     };
 
-                    try {
-                        ordersListenerUnsubscribe = db.collection('orders').orderBy('date', 'desc').limit(200).onSnapshot(handleSnapshot, (error) => {
-                            console.warn("Ordered Firestore query error, falling back to limit query:", error);
-                            ordersListenerUnsubscribe = db.collection('orders').limit(200).onSnapshot(handleSnapshot, (err) => {
-                                console.error("Firestore orders subscription error:", err);
-                            });
-                        });
-                    } catch(e) {
-                        ordersListenerUnsubscribe = db.collection('orders').limit(200).onSnapshot(handleSnapshot);
-                    }
+                    ordersListenerUnsubscribe = db.collection('orders').onSnapshot(handleSnapshot, (error) => {
+                        console.error("Firestore orders subscription error:", error);
+                    });
                 }
             }
         }
