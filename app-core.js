@@ -846,7 +846,7 @@ function dbInit() {
         };
         localStorage.setItem('ikko_settings', JSON.stringify({
             phonepeEnabled: true,
-            phonepeMerchantId: 'ikkodigital@naviaxis',
+            phonepeMerchantId: 'ikkodigital@axl',
             phonepeClientId: 'PhonePe',
             phonepeClientSecret: 'N/A',
             phonepeMode: 'live',
@@ -867,9 +867,9 @@ async function loadGlobalSettings() {
             const globalSettings = await res.json();
             const localSettings = JSON.parse(localStorage.getItem('ikko_settings')) || {};
             
-            // Always force migration of UPI ID to ikkodigital@naviaxis
-            if (localSettings.phonepeMerchantId !== 'ikkodigital@naviaxis') {
-                localSettings.phonepeMerchantId = 'ikkodigital@naviaxis';
+            // Always force migration of UPI ID to ikkodigital@axl
+            if (localSettings.phonepeMerchantId !== 'ikkodigital@axl') {
+                localSettings.phonepeMerchantId = 'ikkodigital@axl';
                 localSettings.phonepeClientId = 'PhonePe';
                 localSettings.customQrUrl = '';
                 localStorage.setItem('ikko_settings', JSON.stringify(localSettings));
@@ -906,8 +906,8 @@ async function loadGlobalSettings() {
                 }
             }
             
-            // Guarantee phonepeMerchantId is ikkodigital@naviaxis in merged settings
-            mergedSettings.phonepeMerchantId = 'ikkodigital@naviaxis';
+            // Guarantee phonepeMerchantId is ikkodigital@axl in merged settings
+            mergedSettings.phonepeMerchantId = 'ikkodigital@axl';
             localStorage.setItem('ikko_settings', JSON.stringify(mergedSettings));
             
             // If Firebase is enabled, dynamically sync settings document from Firestore (deadlock-free)
@@ -921,21 +921,21 @@ async function loadGlobalSettings() {
                             const firestoreSettings = doc.data();
                             
                             // Auto-migrate old UPI IDs stored in Firestore global settings
-                            if (firestoreSettings.phonepeMerchantId !== 'ikkodigital@naviaxis') {
-                                firestoreSettings.phonepeMerchantId = 'ikkodigital@naviaxis';
+                            if (firestoreSettings.phonepeMerchantId !== 'ikkodigital@axl') {
+                                firestoreSettings.phonepeMerchantId = 'ikkodigital@axl';
                                 firestoreSettings.phonepeClientId = 'PhonePe';
                                 
                                 db.collection('settings').doc('global').update({
-                                    phonepeMerchantId: 'ikkodigital@naviaxis',
+                                    phonepeMerchantId: 'ikkodigital@axl',
                                     phonepeClientId: 'PhonePe'
                                 }).then(() => {
-                                    console.log("[Migration] Updated old UPI ID to ikkodigital@naviaxis in Firestore settings doc.");
+                                    console.log("[Migration] Updated old UPI ID to ikkodigital@axl in Firestore settings doc.");
                                 }).catch(e => {
                                     console.error("[Migration] Failed to update settings in Firestore:", e);
                                 });
                             }
                             
-                            const finalSettings = { ...mergedSettings, ...firestoreSettings, phonepeMerchantId: 'ikkodigital@naviaxis' };
+                            const finalSettings = { ...mergedSettings, ...firestoreSettings, phonepeMerchantId: 'ikkodigital@axl' };
                             localStorage.setItem('ikko_settings', JSON.stringify(finalSettings));
                             console.log("Loaded dynamic settings from Firestore successfully:", finalSettings);
                         } else {

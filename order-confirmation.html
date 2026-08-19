@@ -228,7 +228,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=900.0"></script>
+    <script src="app-core.js?v=1000.0"></script>
     <script>
         function compressImage(file, maxWidth, maxHeight, quality) {
             return new Promise((resolve, reject) => {
@@ -428,7 +428,7 @@
 
             function renderUtrSubmissionUI(order) {
                 const settings = getSettings();
-                const upiId = settings.phonepeMerchantId || 'ikkodigital@naviaxis';
+                const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
                 const payeeName = settings.phonepeClientId || 'PhonePe';
                 const amount = parseFloat(order.total);
                 const cleanAmount = !isNaN(amount) ? amount.toFixed(2) : "0.00";
