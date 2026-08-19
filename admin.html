@@ -1526,17 +1526,28 @@
                 const db = await initFirebase();
                 if (db) {
                     console.log("Listening to orders from Firestore in real-time...");
-                    ordersListenerUnsubscribe = db.collection('orders').onSnapshot((snapshot) => {
+                    const handleSnapshot = (snapshot) => {
                         const firestoreOrders = [];
                         snapshot.forEach((doc) => {
                             firestoreOrders.push(doc.data());
                         });
+                        firestoreOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+                        allFetchedOrders = firestoreOrders;
                         localStorage.setItem('ikko_orders', JSON.stringify(firestoreOrders));
                         renderDashboard();
                         renderOrders();
-                    }, (error) => {
-                        console.error("Firestore orders subscription error:", error);
-                    });
+                    };
+
+                    try {
+                        ordersListenerUnsubscribe = db.collection('orders').orderBy('date', 'desc').limit(200).onSnapshot(handleSnapshot, (error) => {
+                            console.warn("Ordered Firestore query error, falling back to limit query:", error);
+                            ordersListenerUnsubscribe = db.collection('orders').limit(200).onSnapshot(handleSnapshot, (err) => {
+                                console.error("Firestore orders subscription error:", err);
+                            });
+                        });
+                    } catch(e) {
+                        ordersListenerUnsubscribe = db.collection('orders').limit(200).onSnapshot(handleSnapshot);
+                    }
                 }
             }
         }

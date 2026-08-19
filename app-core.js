@@ -149,6 +149,26 @@ window.trackPurchaseEvent = function(order) {
 
 const INITIAL_PRODUCTS = [
   {
+    "id": "1000000000001",
+    "paymentLink": "",
+    "category": "tablets",
+    "price": "Rs. 1.00",
+    "badge": "DEMO TEST",
+    "title": "₹1 Demo Testing Product - Test Order Payment",
+    "image": "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp",
+    "images": [
+      "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp"
+    ],
+    "url": "/product.html?id=1000000000001",
+    "stockStatus": "in-stock",
+    "handle": "demo-testing-product-1rs",
+    "comparePrice": "Rs. 99.00",
+    "specs": [
+      { "name": "Type", "value": "Demo Product" },
+      { "name": "Price", "value": "₹1.00" }
+    ]
+  },
+  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
@@ -846,7 +866,7 @@ function dbInit() {
         };
         localStorage.setItem('ikko_settings', JSON.stringify({
             phonepeEnabled: true,
-            phonepeMerchantId: '7722051108@ibl',
+            phonepeMerchantId: '8743097874-3@ibl',
             phonepeClientId: 'PhonePe',
             phonepeClientSecret: 'N/A',
             phonepeMode: 'live',
@@ -867,9 +887,9 @@ async function loadGlobalSettings() {
             const globalSettings = await res.json();
             const localSettings = JSON.parse(localStorage.getItem('ikko_settings')) || {};
             
-            // Always force migration of UPI ID to 7722051108@ibl
-            if (localSettings.phonepeMerchantId !== '7722051108@ibl') {
-                localSettings.phonepeMerchantId = '7722051108@ibl';
+            // Always force migration of UPI ID to 8743097874-3@ibl
+            if (localSettings.phonepeMerchantId !== '8743097874-3@ibl') {
+                localSettings.phonepeMerchantId = '8743097874-3@ibl';
                 localSettings.phonepeClientId = 'PhonePe';
                 localSettings.customQrUrl = '';
                 localStorage.setItem('ikko_settings', JSON.stringify(localSettings));
@@ -906,8 +926,8 @@ async function loadGlobalSettings() {
                 }
             }
             
-            // Guarantee phonepeMerchantId is 7722051108@ibl in merged settings
-            mergedSettings.phonepeMerchantId = '7722051108@ibl';
+            // Guarantee phonepeMerchantId is 8743097874-3@ibl in merged settings
+            mergedSettings.phonepeMerchantId = '8743097874-3@ibl';
             localStorage.setItem('ikko_settings', JSON.stringify(mergedSettings));
             
             // If Firebase is enabled, dynamically sync settings document from Firestore (deadlock-free)
@@ -921,21 +941,21 @@ async function loadGlobalSettings() {
                             const firestoreSettings = doc.data();
                             
                             // Auto-migrate old UPI IDs stored in Firestore global settings
-                            if (firestoreSettings.phonepeMerchantId !== '7722051108@ibl') {
-                                firestoreSettings.phonepeMerchantId = '7722051108@ibl';
+                            if (firestoreSettings.phonepeMerchantId !== '8743097874-3@ibl') {
+                                firestoreSettings.phonepeMerchantId = '8743097874-3@ibl';
                                 firestoreSettings.phonepeClientId = 'PhonePe';
                                 
                                 db.collection('settings').doc('global').update({
-                                    phonepeMerchantId: '7722051108@ibl',
+                                    phonepeMerchantId: '8743097874-3@ibl',
                                     phonepeClientId: 'PhonePe'
                                 }).then(() => {
-                                    console.log("[Migration] Updated old UPI ID to 7722051108@ibl in Firestore settings doc.");
+                                    console.log("[Migration] Updated old UPI ID to 8743097874-3@ibl in Firestore settings doc.");
                                 }).catch(e => {
                                     console.error("[Migration] Failed to update settings in Firestore:", e);
                                 });
                             }
                             
-                            const finalSettings = { ...mergedSettings, ...firestoreSettings, phonepeMerchantId: '7722051108@ibl' };
+                            const finalSettings = { ...mergedSettings, ...firestoreSettings, phonepeMerchantId: '8743097874-3@ibl' };
                             localStorage.setItem('ikko_settings', JSON.stringify(finalSettings));
                             console.log("Loaded dynamic settings from Firestore successfully:", finalSettings);
                         } else {
