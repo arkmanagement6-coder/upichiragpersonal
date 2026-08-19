@@ -1318,20 +1318,6 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const DEMO_PRODUCT = {
-  "id": "1000000000001",
-  "paymentLink": "",
-  "category": "tablets",
-  "price": "Rs. 1.00",
-  "badge": "DEMO TEST",
-  "title": "₹1 Demo Testing Product - Test Order Payment",
-  "image": "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp",
-  "images": [
-    "Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/11_0ea24f3d-9bcd-4e5f-a894-b4f66903a3c8_679x679.webp"
-  ],
-  "url": "/product.html?id=1000000000001",
-  "stockStatus": "in-stock",
-  "handle": "demo-testing-product-1rs",
 // Product Database Helpers (Firestore Async with local Cache fallback)
 async function getProducts(forceSync = false) {
     const cached = localStorage.getItem('ikko_products');
