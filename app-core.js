@@ -1173,7 +1173,7 @@ async function syncProductsBackground(forceSync = false) {
                     try {
                         let parsed = JSON.parse(cachedProducts);
                         if (parsed && parsed.length > 0) {
-                            parsed = parsed.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
+                            parsed = parsed.filter(p => String(p.id) !== '8270415000000_demo');
                             localStorage.setItem('ikko_products', JSON.stringify(parsed));
                             console.log("⚡ Products cache is up-to-date/newer with Firestore (version: " + serverTimestamp + ")");
                             return parsed;
@@ -1237,7 +1237,7 @@ async function syncProductsBackground(forceSync = false) {
                 }
 
                 // Always filter out ₹1 Demo Testing product
-                products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
+                products = products.filter(p => String(p.id) !== '8270415000000_demo');
 
                 // Sanitize products to prevent XSS payloads from hiding the DOM and update old payment links
                 products = products.map(p => {
