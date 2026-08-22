@@ -704,7 +704,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=1000.0"></script>
+    <script src="app-core.js?v=1100.0"></script>
     <script>
         let currentStep = 1;
 
@@ -914,7 +914,7 @@
             const proceedBtn = document.getElementById('btn-proceed-to-pay');
             if (proceedBtn) {
                 proceedBtn.disabled = true;
-                proceedBtn.innerText = 'Saving Order...';
+                proceedBtn.innerText = 'Processing Order...';
             }
 
             const total = getCartTotal();
@@ -924,9 +924,9 @@
             const order = {
                 id: orderId,
                 date: new Date().toISOString(),
-                status: 'pending_payment',
-                paymentMethod: 'phonepe',
-                utr: 'Pending Payment',
+                status: 'pending_verification',
+                paymentMethod: 'paytm',
+                utr: 'Pending Verification',
                 customer: {
                     name: cust.name || 'Customer',
                     phone: cust.phone || '',
@@ -946,8 +946,43 @@
                 console.error("Error saving order to Firestore:", err);
             }
 
-            // Redirect to Payment Options page with order details
-            window.location.href = `payment.html?orderId=${encodeURIComponent(orderId)}&total=${encodeURIComponent(total)}`;
+            // Track Meta Pixel AddPaymentInfo event
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'AddPaymentInfo', {
+                        value: total,
+                        currency: 'INR'
+                    });
+                }
+            } catch(e){}
+
+            const settings = getSettings();
+            const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
+            const cleanAmount = parseFloat(total).toFixed(2);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+            // Check if cart item has a custom product paymentLink
+            const customPaymentLink = (cart[0] && cart[0].paymentLink && cart[0].paymentLink.startsWith('http')) ? cart[0].paymentLink : null;
+
+            if (customPaymentLink) {
+                window.location.href = customPaymentLink;
+                setTimeout(() => {
+                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
+                }, 1000);
+            } else if (isMobile) {
+                // Launch Paytm / UPI app URI directly
+                const paytmUri = isAndroid 
+                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId)}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId)}`;
+
+                window.location.href = paytmUri;
+                setTimeout(() => {
+                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
+                }, 800);
+            } else {
+                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
