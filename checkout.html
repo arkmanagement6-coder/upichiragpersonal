@@ -704,7 +704,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=1100.0"></script>
+    <script src="app-core.js?v=1200.0"></script>
     <script>
         let currentStep = 1;
 
@@ -958,31 +958,17 @@
 
             const settings = getSettings();
             const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
-            const cleanAmount = parseFloat(total).toFixed(2);
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-
-            // Check if cart item has a custom product paymentLink
+            const sabpaisaLink = settings.sabpaisaLink || 'https://dashboard.sabpaisa.in/links/eqipjvn';
             const customPaymentLink = (cart[0] && cart[0].paymentLink && cart[0].paymentLink.startsWith('http')) ? cart[0].paymentLink : null;
+            const targetPaymentLink = customPaymentLink || sabpaisaLink;
 
-            if (customPaymentLink) {
-                window.location.href = customPaymentLink;
-                setTimeout(() => {
-                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
-                }, 1000);
-            } else if (isMobile) {
-                // Launch Paytm / UPI app URI directly
-                const paytmUri = isAndroid 
-                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId)}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(orderId)}`;
+            // Redirect directly to SabPaisa link
+            window.location.href = targetPaymentLink;
 
-                window.location.href = paytmUri;
-                setTimeout(() => {
-                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
-                }, 800);
-            } else {
+            // Fallback: If browser remains or customer returns, set order confirmation UTR submission page after 1.2s
+            setTimeout(() => {
                 window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
-            }
+            }, 1200);
         }
 
         window.addEventListener('DOMContentLoaded', () => {

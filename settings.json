@@ -5,6 +5,7 @@
   "phonepeClientSecret": "cab34e32-8fb5-4d6d-94be-7bcccc16c8cb",
   "phonepeMode": "live",
   "customQrUrl": "",
+  "sabpaisaLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
   "firebaseEnabled": true,
   "firebaseConfig": {
     "apiKey": "AIzaSyAzHf13KyA0W0qBW0nAJnHSgqgrDBewzRs",
