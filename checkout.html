@@ -704,7 +704,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=1200.0"></script>
+    <script src="app-core.js?v=1300.0"></script>
     <script>
         let currentStep = 1;
 
@@ -962,13 +962,11 @@
             const customPaymentLink = (cart[0] && cart[0].paymentLink && cart[0].paymentLink.startsWith('http')) ? cart[0].paymentLink : null;
             const targetPaymentLink = customPaymentLink || sabpaisaLink;
 
-            // Redirect directly to SabPaisa link
-            window.location.href = targetPaymentLink;
+            // Open payment link in a NEW TAB for mobile & desktop
+            const paymentWin = window.open(targetPaymentLink, '_blank');
 
-            // Fallback: If browser remains or customer returns, set order confirmation UTR submission page after 1.2s
-            setTimeout(() => {
-                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
-            }, 1200);
+            // Immediately switch main tab to UTR submission page (order-confirmation.html)
+            window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
