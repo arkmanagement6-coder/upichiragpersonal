@@ -2,7 +2,7 @@
 
 // Meta Pixel Initialization & Tracking Logic
 (function() {
-    // Ensure Meta Pixel (ID: 1039324625032380) is dynamically initialized on all pages
+    // Ensure Meta Pixel (ID: 1790061685763294) is dynamically initialized on all pages
     if (!window.fbq) {
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -12,7 +12,7 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1039324625032380');
+        fbq('init', '1790061685763294');
         fbq('track', 'PageView');
     }
 

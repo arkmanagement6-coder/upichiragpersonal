@@ -181,8 +181,8 @@ module.exports = async (req, res) => {
                 ]
             };
 
-            const pixelId = '1039324625032380';
-            const accessToken = 'EAAsYZCV526LABSCIqZBQepBk494LBaOB19ynZA9bj5eJuTWAv4wmwi4GxqcrBPgksUbEP7A5UTJhA4IcyqH4FqZC28bOxkAcNwfY6gAlZCjwXVk1V2Dp7g9Kw5sB7wBPlV456AVbW7F9oZBw3BMZAkxhVuJtgRCd7V75j63eSRf0i9n3Gt57FgKKqVZCMykXEwZDZD';
+            const pixelId = '1790061685763294';
+            const accessToken = 'EAANR0GgjZB6wBSdaZAD2Wg8mb6JqilZAY8tbtYNrXO2B1sRRld582hU7quKJQ3mapdSYMJ0fOGZCYZAijuuZCPkGVTpiy51npS3mu32zhW7RtMOT7nZBPTFCOPA6LK7vKEYZADLIg98H9vGaLPnkXCZBNkfXVJD9z07gO3rHdlrXvEiOAZALi2MakvolZBWdsqn7gZDZD';
             const url = `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`;
 
             console.log(`[CAPI] Dispatching server event for order: ${order.id} with value: Rs. ${totalVal}`);
