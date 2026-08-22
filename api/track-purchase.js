@@ -181,30 +181,31 @@ module.exports = async (req, res) => {
                 ]
             };
 
-            const pixelId = '1790061685763294';
-            const accessToken = 'EAANR0GgjZB6wBSdaZAD2Wg8mb6JqilZAY8tbtYNrXO2B1sRRld582hU7quKJQ3mapdSYMJ0fOGZCYZAijuuZCPkGVTpiy51npS3mu32zhW7RtMOT7nZBPTFCOPA6LK7vKEYZADLIg98H9vGaLPnkXCZBNkfXVJD9z07gO3rHdlrXvEiOAZALi2MakvolZBWdsqn7gZDZD';
-            const url = `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`;
+            const pixels = [
+                {
+                    id: '1039324625032380',
+                    token: 'EAAsYZCV526LABSCIqZBQepBk494LBaOB19ynZA9bj5eJuTWAv4wmwi4GxqcrBPgksUbEP7A5UTJhA4IcyqH4FqZC28bOxkAcNwfY6gAlZCjwXVk1V2Dp7g9Kw5sB7wBPlV456AVbW7F9oZBw3BMZAkxhVuJtgRCd7V75j63eSRf0i9n3Gt57FgKKqVZCMykXEwZDZD'
+                },
+                {
+                    id: '1790061685763294',
+                    token: 'EAANR0GgjZB6wBSdaZAD2Wg8mb6JqilZAY8tbtYNrXO2B1sRRld582hU7quKJQ3mapdSYMJ0fOGZCYZAijuuZCPkGVTpiy51npS3mu32zhW7RtMOT7nZBPTFCOPA6LK7vKEYZADLIg98H9vGaLPnkXCZBNkfXVJD9z07gO3rHdlrXvEiOAZALi2MakvolZBWdsqn7gZDZD'
+                }
+            ];
 
-            console.log(`[CAPI] Dispatching server event for order: ${order.id} with value: Rs. ${totalVal}`);
+            console.log(`[CAPI] Dispatching server events for order: ${order.id} with value: Rs. ${totalVal} to ${pixels.length} Meta Pixels`);
 
-            const response = await makeRequest(
-                url,
-                'POST',
-                { 'Content-Type': 'application/json' },
-                JSON.stringify(payload)
-            );
+            const results = await Promise.all(pixels.map(px => {
+                const url = `https://graph.facebook.com/v19.0/${px.id}/events?access_token=${px.token}`;
+                return makeRequest(url, 'POST', { 'Content-Type': 'application/json' }, JSON.stringify(payload));
+            }));
 
-            console.log(`[CAPI] Response code: ${response.statusCode}, Body: ${response.body}`);
+            results.forEach((r, idx) => {
+                console.log(`[CAPI] Pixel ${pixels[idx].id} Response status: ${r.statusCode}`);
+            });
 
-            if (response.statusCode === 200) {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ success: true, message: 'Purchase event tracked via Conversions API' }));
-            } else {
-                res.statusCode = response.statusCode;
-                res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify({ success: false, message: 'Meta CAPI rejected event', detail: response.body }));
-            }
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: true, message: 'Purchase events tracked on dual Meta Pixels via Conversions API' }));
 
         } catch (err) {
             console.error('[CAPI] Internal server error:', err);
