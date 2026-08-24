@@ -150,6 +150,426 @@ window.trackPurchaseEvent = function(order) {
 
 const INITIAL_PRODUCTS = [
   {
+    "id": "JUBI-1",
+    "title": "Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1099.00",
+    "badge": "55% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1720600667-wg3b558v.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600667-wg3b558v.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-2",
+    "title": "Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam",
+    "price": "Rs. 299.00",
+    "comparePrice": "Rs. 899.00",
+    "badge": "67% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-3",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 699.00",
+    "comparePrice": "Rs. 2478.00",
+    "badge": "72% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-4",
+    "title": "May Offer - Get 4Kg Dry Fruit Mix Combo",
+    "price": "Rs. 399.00",
+    "comparePrice": "Rs. 999.00",
+    "badge": "60% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>May Offer - Get 4Kg Dry Fruit Mix Combo</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-5",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 699.00",
+    "comparePrice": "Rs. 2478.00",
+    "badge": "72% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722696423-Cs-KGap3.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722696423-Cs-KGap3.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-6",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 369.00",
+    "comparePrice": "Rs. 3999.00",
+    "badge": "91% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700076-BKN2_81Q.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700076-BKN2_81Q.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-7",
+    "title": "4 combo pack' india basmati 10kg 'tata agni 500g ashirwaad atta 10kg fortune sugar 5kg",
+    "price": "Rs. 595.00",
+    "comparePrice": "Rs. 2789.00",
+    "badge": "79% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700182-Cx6BP6WC.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700182-Cx6BP6WC.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>4 combo pack' india basmati 10kg 'tata agni 500g ashirwaad atta 10kg fortune sugar 5kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-8",
+    "title": "Aashirvaad Atta 5kg, India gate basmati rice 5kg, Fortune Suger 5kg, Lipton 1kg TATA Agni 1Kg, Super Sarvottam Refined Rice Bran Oil 1L",
+    "price": "Rs. 369.00",
+    "comparePrice": "Rs. 3999.00",
+    "badge": "91% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700324-B7a9_A2G.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700324-B7a9_A2G.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Aashirvaad Atta 5kg, India gate basmati rice 5kg, Fortune Suger 5kg, Lipton 1kg TATA Agni 1Kg, Super Sarvottam Refined Rice Bran Oil 1L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-9",
+    "title": "Jio Mart Offer today: Combo of 5 kg Fortune oil+ 5 kg sugar+ 5 kg Basmati rice",
+    "price": "Rs. 298.00",
+    "comparePrice": "Rs. 999.00",
+    "badge": "70% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700435-Cervrfo5.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700435-Cervrfo5.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today: Combo of 5 kg Fortune oil+ 5 kg sugar+ 5 kg Basmati rice</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-10",
+    "title": "Jio Mart Offer today online: Get Combo of 5 liter Fortune Oil and 5 Litre Mustard Oil",
+    "price": "Rs. 386.00",
+    "comparePrice": "Rs. 1286.00",
+    "badge": "69% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700753-BbmOAGSP.png",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700753-BbmOAGSP.png"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 5 liter Fortune Oil and 5 Litre Mustard Oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-11",
+    "title": "Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1099.00",
+    "badge": "55% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700896-RModbxHX.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700896-RModbxHX.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-12",
+    "title": "Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 1988.00",
+    "badge": "90% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-13",
+    "title": "Jio Mart Offer today online: Get Basmati Rice 5kg+ Fortune Oil 5L",
+    "price": "Rs. 299.00",
+    "comparePrice": "Rs. 996.00",
+    "badge": "75% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/299-fq7XbP8h.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/299-fq7XbP8h.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Basmati Rice 5kg+ Fortune Oil 5L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-14",
+    "title": "Jio Mart Combo: Fortune Basmati Rice 5kg, Oil 5L, Sugar 5kg & Besan 2kg",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1663.00",
+    "badge": "70% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/3434355454-CqeSvYN9.png",
+    "images": [
+      "https://jubimart.vercel.app/assets/3434355454-CqeSvYN9.png"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Combo: Fortune Basmati Rice 5kg, Oil 5L, Sugar 5kg & Besan 2kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
@@ -191,7 +611,8 @@ const INITIAL_PRODUCTS = [
         "name": "Display Resolution Maximum"
       }
     ],
-    "description": "<div id=\"productOverview_feature_div\" class=\"celwidget\" data-feature-name=\"productOverview\" data-csa-c-type=\"widget\" data-csa-c-content-id=\"productOverview\" data-csa-c-slot-id=\"productOverview_feature_div\" data-csa-c-asin=\"B0D3J9HD7K\" data-csa-c-is-in-initial-active-row=\"false\" data-csa-c-id=\"atbs44-3yeehx-vhl0zv-ic7fd1\" data-cel-widget=\"productOverview_feature_div\" style=\"box-sizing: border-box; color: rgb(15, 17, 17); font-family: 'Amazon Ember', Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\n<div class=\"a-section a-spacing-small a-spacing-top-small\" style=\"box-sizing: border-box; margin-bottom: 0px; margin-top: 8px !important;\">\n<table class=\"a-normal a-spacing-micro\" style=\"box-sizing: border-box; margin-bottom: 0px !important; border-collapse: collapse; width: 100%;\">\n<tbody style=\"box-sizing: border-box;\">\n<tr class=\"a-spacing-small po-brand\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 0px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Brand</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 0px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">Apple</span></td>\n</tr>\n<tr class=\"a-spacing-small po-model_name\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Model Name</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">11-inch iPad Air (M2, 2024)</span></td>\n</tr>\n<tr class=\"a-spacing-small po-memory_storage_capacity\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Memory Storage Capacity</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">256 GB</span></td>\n</tr>\n<tr class=\"a-spacing-small po-display.size\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Screen Size</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">11 Inches</span></td>\n</tr>\n<tr class=\"a-spacing-small po-display.resolution_maximum\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 0px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Display Resolution Maximum</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 0px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">2360 x 1640 Pixels</span></td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n<div id=\"featurebullets_feature_div\" class=\"celwidget\" data-feature-name=\"featurebullets\" data-csa-c-type=\"widget\" data-csa-c-content-id=\"featurebullets\" data-csa-c-slot-id=\"featurebullets_feature_div\" data-csa-c-asin=\"B0D3J9HD7K\" data-csa-c-is-in-initial-active-row=\"false\" data-csa-c-id=\"ue4ww-9s5c5i-f7xzo4-tm0by\" data-cel-widget=\"featurebullets_feature_div\" style=\"box-sizing: border-box; color: rgb(15, 17, 17); font-family: 'Amazon Ember', Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\n<div id=\"feature-bullets\" class=\"a-section a-spacing-medium a-spacing-top-small\" style=\"box-sizing: border-box; margin-top: 8px !important; margin-bottom: 0px;\">\n<hr style=\"box-sizing: border-box; background-color: transparent; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); display: block; height: 1px; line-height: 19px; margin-bottom: 14px; margin-top: 0px;\">\n<h1 class=\"a-size-base-plus a-text-bold\" style=\"box-sizing: border-box; padding: 0px 0px 4px; margin: 0px; text-rendering: optimizelegibility; font-weight: 700 !important; font-size: 16px !important; line-height: 24px !important;\">About this item</h1>\n<ul class=\"a-unordered-list a-vertical a-spacing-mini\" style=\"box-sizing: border-box; margin: 0px 0px 0px 18px; color: var(--__n4qdchev6mgo,#0f1111); padding: 0px;\">\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">WHY IPAD AIR — iPad Air is powerful, versatile and comes in a choice of two sizes. Featuring a stunning Liquid Retina display and the amazing performance of the M2 chip, along with Touch ID, advanced cameras, superfast Wi-Fi 6E and a USB-C connector. Plus powerful productivity features in iPadOS and next-generation Apple Pencil Pro experience.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">LIQUID RETINA DISPLAY — The gorgeous Liquid Retina display features advanced technologies like P3 wide colour, True Tone and ultra-low reflectivity, which make everything look stunning.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">PERFORMANCE AND STORAGE — The M2 chip lets you multitask smoothly between powerful apps and play graphics-intensive games. And with all-day battery life, you can keep working and playing wherever you go. Choose up to 1TB of storage depending on the room you need for apps, music, movies and more.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">IPADOS + APPS — iPadOS makes iPad more productive, intuitive and versatile. With iPadOS, run multiple apps at once, use Apple Pencil to write in any text field with Scribble, and edit and share photos. Stage Manager makes multitasking easy with resizable, overlapping apps and external display support. iPad Air comes with essential apps like Safari, Messages and Keynote, with over a million more apps available on the App Store.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">APPLE PENCIL AND MAGIC KEYBOARD — Apple Pencil Pro transforms iPad Air into an immersive drawing canvas and the world’s best note‑taking device. Apple Pencil (USB-C) is also compatible with iPad Air. Magic Keyboard features a great typing experience and a built‑in trackpad, while doubling as a protective cover for iPad.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">ADVANCED CAMERAS — iPad Pro features a landscape 12MP Ultra Wide front camera that supports Centre Stage for video conferencing or epic Portrait mode selfies. The 12MP Wide back camera with adaptive True Tone flash is great for capturing photos or 4K video with ProRes support. Four studio-quality microphones and a four-speaker audio system provide rich audio. And AR experiences are enhanced with the LiDAR Scanner to capture a depth map of any space.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">CONNECTIVITY — Wi-Fi 6E gives you fast wireless connections for quick transfers of photos, documents and large video files. And when you’re away from Wi-Fi, superfast 5G gives you the flexibility to stay connected in more places.* Connect to external displays, drives and more using the USB-C connector with support for Thunderbolt / USB 4.</span></li>\n</ul>\n<div class=\"a-row a-expander-container a-expander-inline-container\" style=\"box-sizing: border-box; width: 483.25px;\">\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-extend-content a-expander-content-expanded\" style=\"box-sizing: border-box; overflow: hidden;\">\n<ul class=\"a-unordered-list a-vertical a-spacing-none\" style=\"box-sizing: border-box; margin: 0px 0px 0px 18px; color: var(--__n4qdchev6mgo,#0f1111); padding: 0px;\">\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">UNLOCK WITH FACE ID — Unlock your iPad Pro, sign in to apps and more — all with just a glance.*</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">LEGAL DISCLAIMERS — This is a summary of the main product features. See below to learn more.</span></li>\n</ul>\n<p style=\"box-sizing: border-box;list-style-position: outside;list-style-image: none;list-style-type: disc;overflow-wrap: break-word;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/2.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/3.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/4.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/1.jpg\"></span></p>\n</div>\n</div>\n</div>\n</div>"
+    "description": "<div id=\"productOverview_feature_div\" class=\"celwidget\" data-feature-name=\"productOverview\" data-csa-c-type=\"widget\" data-csa-c-content-id=\"productOverview\" data-csa-c-slot-id=\"productOverview_feature_div\" data-csa-c-asin=\"B0D3J9HD7K\" data-csa-c-is-in-initial-active-row=\"false\" data-csa-c-id=\"atbs44-3yeehx-vhl0zv-ic7fd1\" data-cel-widget=\"productOverview_feature_div\" style=\"box-sizing: border-box; color: rgb(15, 17, 17); font-family: 'Amazon Ember', Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\n<div class=\"a-section a-spacing-small a-spacing-top-small\" style=\"box-sizing: border-box; margin-bottom: 0px; margin-top: 8px !important;\">\n<table class=\"a-normal a-spacing-micro\" style=\"box-sizing: border-box; margin-bottom: 0px !important; border-collapse: collapse; width: 100%;\">\n<tbody style=\"box-sizing: border-box;\">\n<tr class=\"a-spacing-small po-brand\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 0px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Brand</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 0px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">Apple</span></td>\n</tr>\n<tr class=\"a-spacing-small po-model_name\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Model Name</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">11-inch iPad Air (M2, 2024)</span></td>\n</tr>\n<tr class=\"a-spacing-small po-memory_storage_capacity\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Memory Storage Capacity</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">256 GB</span></td>\n</tr>\n<tr class=\"a-spacing-small po-display.size\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 3px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Screen Size</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 3px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">11 Inches</span></td>\n</tr>\n<tr class=\"a-spacing-small po-display.resolution_maximum\" style=\"box-sizing: border-box; margin-bottom: 8px !important;\">\n<td class=\"a-span3\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 3px 0px 0px; float: none !important; margin-right: 0px; width: 126.5px;\"><span class=\"a-size-base a-text-bold\" style=\"box-sizing: border-box; font-weight: 700 !important; font-size: 14px !important; line-height: 20px !important;\">Display Resolution Maximum</span></td>\n<td class=\"a-span9\" style=\"box-sizing: border-box; vertical-align: top; padding: 3px 0px 0px 3px; float: none !important; margin-right: 0px; width: 356.75px;\"><span class=\"a-size-base po-break-word\" style=\"box-sizing: border-box; font-size: 14px !important; line-height: 20px !important; word-break: break-word;\">2360 x 1640 Pixels</span></td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n<div id=\"featurebullets_feature_div\" class=\"celwidget\" data-feature-name=\"featurebullets\" data-csa-c-type=\"widget\" data-csa-c-content-id=\"featurebullets\" data-csa-c-slot-id=\"featurebullets_feature_div\" data-csa-c-asin=\"B0D3J9HD7K\" data-csa-c-is-in-initial-active-row=\"false\" data-csa-c-id=\"ue4ww-9s5c5i-f7xzo4-tm0by\" data-cel-widget=\"featurebullets_feature_div\" style=\"box-sizing: border-box; color: rgb(15, 17, 17); font-family: 'Amazon Ember', Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">\n<div id=\"feature-bullets\" class=\"a-section a-spacing-medium a-spacing-top-small\" style=\"box-sizing: border-box; margin-top: 8px !important; margin-bottom: 0px;\">\n<hr style=\"box-sizing: border-box; background-color: transparent; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); display: block; height: 1px; line-height: 19px; margin-bottom: 14px; margin-top: 0px;\">\n<h1 class=\"a-size-base-plus a-text-bold\" style=\"box-sizing: border-box; padding: 0px 0px 4px; margin: 0px; text-rendering: optimizelegibility; font-weight: 700 !important; font-size: 16px !important; line-height: 24px !important;\">About this item</h1>\n<ul class=\"a-unordered-list a-vertical a-spacing-mini\" style=\"box-sizing: border-box; margin: 0px 0px 0px 18px; color: var(--__n4qdchev6mgo,#0f1111); padding: 0px;\">\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">WHY IPAD AIR — iPad Air is powerful, versatile and comes in a choice of two sizes. Featuring a stunning Liquid Retina display and the amazing performance of the M2 chip, along with Touch ID, advanced cameras, superfast Wi-Fi 6E and a USB-C connector. Plus powerful productivity features in iPadOS and next-generation Apple Pencil Pro experience.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">LIQUID RETINA DISPLAY — The gorgeous Liquid Retina display features advanced technologies like P3 wide colour, True Tone and ultra-low reflectivity, which make everything look stunning.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">PERFORMANCE AND STORAGE — The M2 chip lets you multitask smoothly between powerful apps and play graphics-intensive games. And with all-day battery life, you can keep working and playing wherever you go. Choose up to 1TB of storage depending on the room you need for apps, music, movies and more.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">IPADOS + APPS — iPadOS makes iPad more productive, intuitive and versatile. With iPadOS, run multiple apps at once, use Apple Pencil to write in any text field with Scribble, and edit and share photos. Stage Manager makes multitasking easy with resizable, overlapping apps and external display support. iPad Air comes with essential apps like Safari, Messages and Keynote, with over a million more apps available on the App Store.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">APPLE PENCIL AND MAGIC KEYBOARD — Apple Pencil Pro transforms iPad Air into an immersive drawing canvas and the world’s best note‑taking device. Apple Pencil (USB-C) is also compatible with iPad Air. Magic Keyboard features a great typing experience and a built‑in trackpad, while doubling as a protective cover for iPad.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">ADVANCED CAMERAS — iPad Pro features a landscape 12MP Ultra Wide front camera that supports Centre Stage for video conferencing or epic Portrait mode selfies. The 12MP Wide back camera with adaptive True Tone flash is great for capturing photos or 4K video with ProRes support. Four studio-quality microphones and a four-speaker audio system provide rich audio. And AR experiences are enhanced with the LiDAR Scanner to capture a depth map of any space.</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">CONNECTIVITY — Wi-Fi 6E gives you fast wireless connections for quick transfers of photos, documents and large video files. And when you’re away from Wi-Fi, superfast 5G gives you the flexibility to stay connected in more places.* Connect to external displays, drives and more using the USB-C connector with support for Thunderbolt / USB 4.</span></li>\n</ul>\n<div class=\"a-row a-expander-container a-expander-inline-container\" style=\"box-sizing: border-box; width: 483.25px;\">\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-extend-content a-expander-content-expanded\" style=\"box-sizing: border-box; overflow: hidden;\">\n<ul class=\"a-unordered-list a-vertical a-spacing-none\" style=\"box-sizing: border-box; margin: 0px 0px 0px 18px; color: var(--__n4qdchev6mgo,#0f1111); padding: 0px;\">\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">UNLOCK WITH FACE ID — Unlock your iPad Pro, sign in to apps and more — all with just a glance.*</span></li>\n<li class=\"a-spacing-mini\" style=\"box-sizing: border-box; list-style: disc; overflow-wrap: break-word; margin: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\">LEGAL DISCLAIMERS — This is a summary of the main product features. See below to learn more.</span></li>\n</ul>\n<p style=\"box-sizing: border-box;list-style-position: outside;list-style-image: none;list-style-type: disc;overflow-wrap: break-word;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;\"><span class=\"a-list-item\" style=\"box-sizing: border-box; color: var(--__n4qdchev6mgo,#0f1111);\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/2.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/3.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/4.jpg\"><img alt=\"\" src=\"Image/Apple iPad Air 11″ (M2) Liquid Retina Display, 256GB, Landscape 12MP Front Camera  12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray/1.jpg\"></span></p>\n</div>\n</div>\n</div>\n</div>",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000005",
@@ -321,7 +742,8 @@ const INITIAL_PRODUCTS = [
     "description": "<div class=\"a-row\">\n<div class=\"a-column a-span6\">\n<h1 class=\"a-size-medium a-spacing-small\">Technical Details</h1>\n</div>\n</div>\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-extend-content\">\n<div class=\"a-row a-expander-container a-expander-inline-container\">\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-section-content a-section-expander-inner\">\n<table id=\"productDetails_techSpec_section_1\" class=\"a-keyvalue prodDetTable\" role=\"presentation\">\n<tbody>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung, Dixon Technologies (India) Ltd., Plot no.6, Sector 90, Noida, Gautam Buddha Nagar, U.P. India – 201305</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Series</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung Galaxy Tab S10+</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Colour</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Gray | WiFi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Standing screen display size</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12.4 Inches</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2800 x 1752 Pixels</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Package Dimensions</th>\n<td class=\"a-size-base prodDetAttrValue\">‎30.2 x 20.3 x 2.1 cm; 571 g</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Batteries</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1 Lithium Ion batteries required. (included)</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item model number</th>\n<td class=\"a-size-base prodDetAttrValue\">‎SM-X820</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎MediaTek</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Speed</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2 GHz</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Speaker Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Dolby Speakers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Chipset Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Card Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Integrated</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Connectivity Type</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Wi-Fi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Wireless Carrier</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Unlocked for All Carriers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Rear Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎13 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Front Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Operating System</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Android 14</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Are Batteries Included</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Yes</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Lithium Battery Energy Content</th>\n<td class=\"a-size-base prodDetAttrValue\">‎42.21 Watt Hours</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Number of Lithium Ion Cells</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Included Components</th>\n<td class=\"a-size-base prodDetAttrValue\">‎USB Type C Cable, Tablet, S Pen, Ejection PIN, Quick Start Guide</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Country of Origin</th>\n<td class=\"a-size-base prodDetAttrValue\">‎India</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item Weight</th>\n<td class=\"a-size-base prodDetAttrValue\">‎571 g</td>\n</tr>\n</tbody>\n</table>\n<p><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/1.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/2.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/3.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/4.webp\"></p>\n</div>\n</div>\n</div>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
-    "price": "Rs. 999.00"
+    "price": "Rs. 999.00",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000007",
@@ -350,7 +772,8 @@ const INITIAL_PRODUCTS = [
     ],
     "image": "https://look-10287.myshopify.com/cdn/shop/files/3_512x512.jpg?v=1781259492",
     "title": "Apple iPad mini (6th Gen) 256 GB ROM 8.3 inch with Wi-Fi+5G",
-    "badge": ""
+    "badge": "",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000008",
@@ -377,7 +800,8 @@ const INITIAL_PRODUCTS = [
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/2.webp",
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/3.webp",
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/4.webp"
-    ]
+    ],
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000010",
@@ -410,7 +834,8 @@ const INITIAL_PRODUCTS = [
     "description": "This pocket-sized powerhouse packs a punch with its brilliant AMOLED display and a clever 180° rotating 50MP Sony camera. Navigating your world is a breeze thanks to the seamless blend of Android 15 and the specialized iKKO AI OS. Stay connected anywhere with built-in global internet that keeps your favorite AI tools at your fingertips. It’s the tiny tech companion that proves great things really do come in small, card-sized packages.\n\n<strong>Processor</strong>\n\n<ul>\n  <li>MediaTek MT8781\nOcta-core CPU (2× Cortex-A76 @ 2.2GHz + 6× Cortex-A55 @ 2.0GHz)\nMemory\n</li>\n</ul>\n<ul>\n  <li>8GB RAM\n256GB internal storage\nOperating System</li>\n</ul>\n\n<ul>\n  <li>Android 15\niKKO AI OS\nProcessor\n</li>\n</ul>\n\n<ul>\n  <li>MediaTek MT8781\nOcta-core CPU (2× Cortex-A76 @ 2.2GHz + 6× Cortex-A55 @ 2.0GHz)\nMemory</li>\n</ul>\n\n<ul>\n  <li>8GB RAM\n256GB internal storage\nOperating System\n</li>\n</ul>\n\n<ul>\n  <li>Android 15\nDisplay</li>\n</ul>\n\n<ul>\n  <li>AMOLED\n1240 × 1080 resolution\n90Hz refresh rate\n16.7 million colors\nDC Dimming\nSapphire Glass (9H hardness) on Pro model\nCamera\n</li>\n</ul>\n\n<ul>\n  <li>50MP Sony sensor (1/1.56\")\nf/1.88 aperture, OIS, LED flash\nH.265 video, 1440p @ 30fps\nSupports 180° flip angle</li>\n</ul>\n\n<table class=\"specs-table\" style=\"width:100%; border-collapse:collapse; margin: 15px 0;\">\n  <tbody>\n    <tr>\n      <td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Operating System</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">Android 15 + iKKO AI OS</td></tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Camera</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">50MP 180° rotating Sony camera</td></tr>\n<tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Display Type</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">AMOLED Display</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Connectivity</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">Built-in Global Internet</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Form Factor</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">Card-Sized Compact Design</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Material</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">Glass and Metal Alloy (estimated: true)</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Dimensions</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">3.4 x 2.1 x 0.4 inches (estimated: true)</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Weight</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">2.2 lbs</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Warranty</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">1-year manufacturer warranty</td>\n</tr><tr>\n<td style=\"border:1px solid #cbd5e1; padding:8px; font-weight:bold;\">Special Feature</td>\n      <td style=\"border:1px solid #cbd5e1; padding:8px;\">AI tool integration</td>\n    </tr>\n  </tbody>\n</table>\n\n<h2>Yes, it's that compact, Only 8.9mm thin.</h2>\nOnly 8.9mm thin. Just 86×72mm. AMOLED display — protected by Sapphire Glass. We know many of you miss smaller phones, but still want something smart, stylish, and capable. That's why we set out to create one that's both ultra-portable and modern.\n\n<h2>Sapphire Glass Display</h2>\nMindOne (Pro Model) features a full Sapphire Glass screen (9H hardness), tougher than regular tempered glass. We've thickened the glass and added precision curved edges to make it even more resistant to cracks and drops. It won't scratch. It won't crack easily. That means no screen protectors, no worries!\n\n<h2>How Small is MindOne?</h2>\nMindOne never weighs you down. It’s perfect as a second phone or your go-to everyday device: smart, light, and essential.\n\n<h2>Sony 50MP Flip Camera</h2>\nMindOne packs a 50MP Sony 1/1.56” sensor with custom OIS and a bright F1.88 aperture, specs you'd normally see on a rear camera. But this one flips.\n\nUp for selfies\nDown for shots\nLocks at any angle\nProtected by scratch-resistant Sapphire Glass for long-term durability\n\n<h2>Android 15</h2>\nWe support at least 3 major Android upgrades and 5 years of security patches, so your device stays secure and up to date for the long haul.",
     "comparePrice": "Rs. 35,699.00",
     "stockStatus": "in-stock",
-    "handle": "mindone-pro-card-sized-ai-smartphone"
+    "handle": "mindone-pro-card-sized-ai-smartphone",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000030",
@@ -438,7 +863,8 @@ const INITIAL_PRODUCTS = [
       "Image/Apple%20iPad%20Air%2011%E2%80%B3%20(M2)%20Liquid%20Retina%20Display%2C%20256GB%2C%20Landscape%2012MP%20Front%20Camera%20%2012MP%20Back%20Camera%2C%20Wi-Fi%206E%2C%20Touch%20ID%2C%20All-Day%20Battery%20Life-Gray/1.jpg",
       "Image/Apple%20iPad%20Air%2011%E2%80%B3%20(M2)%20Liquid%20Retina%20Display%2C%20256GB%2C%20Landscape%2012MP%20Front%20Camera%20%2012MP%20Back%20Camera%2C%20Wi-Fi%206E%2C%20Touch%20ID%2C%20All-Day%20Battery%20Life-Gray/2.jpg",
       "Image/Apple%20iPad%20Air%2011%E2%80%B3%20(M2)%20Liquid%20Retina%20Display%2C%20256GB%2C%20Landscape%2012MP%20Front%20Camera%20%2012MP%20Back%20Camera%2C%20Wi-Fi%206E%2C%20Touch%20ID%2C%20All-Day%20Battery%20Life-Gray/3.jpg"
-    ]
+    ],
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000001",
@@ -456,7 +882,8 @@ const INITIAL_PRODUCTS = [
     "stockStatus": "out-of-stock",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "price": "Rs. 999.00",
-    "category": "tablets"
+    "category": "tablets",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000002",
@@ -474,7 +901,8 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/22_c4018750-ed95-469f-823b-be23e178e304_512x512.jpg?v=1781259484",
     "badge": "",
     "title": "Apple iPad (10th Generation): with A14 Bionic chip, 256GB, Wi-Fi 6, 12MP front/12MP Back Camera, Touch ID, All-Day Battery Life-Silver",
-    "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-silver"
+    "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-silver",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000003",
@@ -492,7 +920,8 @@ const INITIAL_PRODUCTS = [
     "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life",
     "category": "tablets",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000004",
@@ -510,7 +939,8 @@ const INITIAL_PRODUCTS = [
       "https://look-10287.myshopify.com/cdn/shop/files/2_c198a4d5-844f-486d-91d2-897053138cca_512x512.jpg?v=1781259487",
       "https://look-10287.myshopify.com/cdn/shop/files/1_09ec4f7e-a578-443a-a9f6-8797d1410070_512x512.jpg?v=1781259487"
     ],
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/2_c198a4d5-844f-486d-91d2-897053138cca_512x512.jpg?v=1781259487"
+    "image": "https://look-10287.myshopify.com/cdn/shop/files/2_c198a4d5-844f-486d-91d2-897053138cca_512x512.jpg?v=1781259487",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000006",
@@ -528,7 +958,8 @@ const INITIAL_PRODUCTS = [
     "images": [
       "https://look-10287.myshopify.com/cdn/shop/files/2_cd196f0b-3a1d-440f-8443-55d07c764b30_512x512.jpg?v=1781259490",
       "https://look-10287.myshopify.com/cdn/shop/files/1_47eed24d-bcca-4417-b2cb-5c753994cbcc_512x512.jpg?v=1781259490"
-    ]
+    ],
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000009",
@@ -556,7 +987,8 @@ const INITIAL_PRODUCTS = [
       "https://picsum.photos/600/400",
       "https://picsum.photos/600/400"
     ],
-    "url": "/products/boult-audio-ufo-truly-wireless-in-ear-earbuds-with-48h-playtime-built-in-app-support-45ms-low-latency-gaming-4-mics-enc-breathing-leds-13mm-bass-drivers-ear-buds-tws-made-in-india"
+    "url": "/products/boult-audio-ufo-truly-wireless-in-ear-earbuds-with-48h-playtime-built-in-app-support-45ms-low-latency-gaming-4-mics-enc-breathing-leds-13mm-bass-drivers-ear-buds-tws-made-in-india",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000011",
@@ -574,7 +1006,8 @@ const INITIAL_PRODUCTS = [
     "url": "/products/airdopes-411-anc-with-10mm-drivers-asaptm-charge-technology-up-to-25db-anc-enx%E2%84%A2-technology-17-5-hours-playback",
     "category": "audio",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000012",
@@ -592,7 +1025,8 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/A175Packaging.1807_512x512.png?v=1781259432",
     "price": "Rs. 999.00",
     "category": "audio",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000013",
@@ -610,7 +1044,8 @@ const INITIAL_PRODUCTS = [
       "https://look-10287.myshopify.com/cdn/shop/files/back_4b76a852-bc9e-4196-b901-bc102ea6b447_512x512.png?v=1781259433",
       "https://look-10287.myshopify.com/cdn/shop/files/grey_70f0bdb4-5141-4020-a62b-09a61d204eef_512x512.png?v=1781259434"
     ],
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/back_4b76a852-bc9e-4196-b901-bc102ea6b447_512x512.png?v=1781259433"
+    "image": "https://look-10287.myshopify.com/cdn/shop/files/back_4b76a852-bc9e-4196-b901-bc102ea6b447_512x512.png?v=1781259433",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000014",
@@ -627,7 +1062,8 @@ const INITIAL_PRODUCTS = [
     "description": "<h1></h1>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "audio",
-    "price": "Rs. 999.00"
+    "price": "Rs. 999.00",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000015",
@@ -644,7 +1080,8 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/03_7a776f40-34f7-4fc0-a708-bf715f327c6f_512x512.jpg?v=1781259435",
     "price": "Rs. 999.00",
     "category": "audio",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000016",
@@ -662,7 +1099,8 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/101_512x512.png?v=1781259436",
     "price": "Rs. 999.00",
     "category": "audio",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000017",
@@ -679,7 +1117,8 @@ const INITIAL_PRODUCTS = [
     "handle": "boat-airdopes-441-with-6mm-drivers-ipx7-water-sweat-resistance-500mah-charging-case-nonstop-music-upto-20-hours",
     "stockStatus": "out-of-stock",
     "comparePrice": "Rs. 14,98,500.00",
-    "description": "<h1></h1>"
+    "description": "<h1></h1>",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000018",
@@ -697,7 +1136,8 @@ const INITIAL_PRODUCTS = [
       "https://look-10287.myshopify.com/cdn/shop/files/main6_ff7bee5d-e843-4344-b504-c16bdd73f47f_512x512.png?v=1781259438"
     ],
     "badge": "",
-    "title": "boAt Airdopes 281 Pro - ENx™ Technology with 4 Mics, ASAP Charge, 6mm Drivers, 32 Hours Nonstop Audio Bliss"
+    "title": "boAt Airdopes 281 Pro - ENx™ Technology with 4 Mics, ASAP Charge, 6mm Drivers, 32 Hours Nonstop Audio Bliss",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000019",
@@ -715,7 +1155,8 @@ const INITIAL_PRODUCTS = [
     "handle": "boat-airdopes-641-beast-mode-for-gamers-500mah-pocket-friendly-charging-case-6mm-dual-drivers-30h-mountainous-playback",
     "stockStatus": "out-of-stock",
     "comparePrice": "Rs. 14,98,500.00",
-    "description": "<h1></h1>"
+    "description": "<h1></h1>",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000024",
@@ -733,7 +1174,8 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/2_cd196f0b-3a1d-440f-8443-55d07c764b30_512x512.jpg?v=1781259490",
     "badge": "",
     "title": "Apple iPad Air (5th gen) 256 GB ROM 10.9 Inch with Wi-Fi+5G",
-    "url": "/products/apple-ipad-air-5th-gen-256-gb-rom-10-9-inch-with-wi-fi-5g"
+    "url": "/products/apple-ipad-air-5th-gen-256-gb-rom-10-9-inch-with-wi-fi-5g",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000025",
@@ -751,7 +1193,8 @@ const INITIAL_PRODUCTS = [
     "comparePrice": "Rs. 90,999.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
-    "price": "Rs. 999.00"
+    "price": "Rs. 999.00",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000026",
@@ -769,7 +1212,8 @@ const INITIAL_PRODUCTS = [
     "title": "Apple iPad Pro 13″ (M4): Ultra Retina XDR Display, 512GB, 12MP Front Camera / 12MP Back Camera, LiDAR Scanner, Wi-Fi 6E + 5G Cellular with eSIM, All-Day Battery Life, Standard Glass — Space Black",
     "price": "Rs. 999.00",
     "category": "tablets",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000027",
@@ -787,7 +1231,8 @@ const INITIAL_PRODUCTS = [
     "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life",
     "category": "tablets",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq"
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000028",
@@ -805,7 +1250,8 @@ const INITIAL_PRODUCTS = [
     "description": "<h1></h1>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
-    "price": "Rs. 999.00"
+    "price": "Rs. 999.00",
+    "hiddenOnWebsite": true
   },
   {
     "id": "8270415000029",
@@ -823,7 +1269,8 @@ const INITIAL_PRODUCTS = [
     "comparePrice": "Rs. 33,900.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
-    "price": "Rs. 999.00"
+    "price": "Rs. 999.00",
+    "hiddenOnWebsite": true
   }
 ];
 
@@ -1339,17 +1786,18 @@ async function getProducts(forceSync = false) {
                     }
                     return p;
                 });
-                localStorage.setItem('ikko_products', JSON.stringify(products));
-                // Trigger background sync only once per session to prevent hitting Firestore limits
-                if (!alreadySynced) {
-                    sessionStorage.setItem('ikko_products_synced', 'true');
-                    syncProductsBackground(false).catch(err => console.error("Background sync error:", err));
+                const hasVisible = products.some(p => !p.hiddenOnWebsite && p.stockStatus !== 'hidden');
+                if (hasVisible) {
+                    localStorage.setItem('ikko_products', JSON.stringify(products));
+                    if (!alreadySynced) {
+                        sessionStorage.setItem('ikko_products_synced', 'true');
+                        syncProductsBackground(false).catch(err => console.error("Background sync error:", err));
+                    }
+                    return products;
                 }
-                return products;
             }
         } catch (e) {}
     }
-    // No cache or forcing sync, await the sync
     sessionStorage.setItem('ikko_products_synced', 'true');
     return await syncProductsBackground(forceSync);
 }
