@@ -1303,6 +1303,10 @@ async function syncProductsBackground(forceSync = false) {
                 p.title = "Boult Audio UFO Truly Wireless In-Ear Earbuds with 48H Playtime, Built-in App Support, 45ms Low Latency Gaming, 4 Mics ENC, Breathing LEDs, 13mm Bass Drivers, Ear Buds TWS, Made in India";
                 updated = true;
             }
+            if (p.id && String(p.id).startsWith('8270415000')) {
+                p.hiddenOnWebsite = true;
+                updated = true;
+            }
             return p;
         });
         const oldProductsStr = localStorage.getItem('ikko_products');
@@ -1329,6 +1333,12 @@ async function getProducts(forceSync = false) {
             let products = JSON.parse(cached);
             if (products && products.length > 0) {
                 products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
+                products = products.map(p => {
+                    if (p.id && String(p.id).startsWith('8270415000')) {
+                        p.hiddenOnWebsite = true;
+                    }
+                    return p;
+                });
                 localStorage.setItem('ikko_products', JSON.stringify(products));
                 // Trigger background sync only once per session to prevent hitting Firestore limits
                 if (!alreadySynced) {
