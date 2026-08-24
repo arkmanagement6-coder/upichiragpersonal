@@ -287,7 +287,8 @@
             if (activeSidebarLink) activeSidebarLink.classList.add('active');
 
             // Get products
-            const allProducts = await getProducts();
+            const rawProducts = await getProducts();
+            const allProducts = rawProducts.filter(p => !p.hiddenOnWebsite && p.stockStatus !== 'hidden');
             
             // Filter by type
             if (currentType === 'all') {
@@ -322,7 +323,8 @@
                 sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
             } else {
                 // Featured (default load order)
-                const allProducts = await getProducts();
+                const rawProducts = await getProducts();
+                const allProducts = rawProducts.filter(p => !p.hiddenOnWebsite && p.stockStatus !== 'hidden');
                 if (currentType === 'all') {
                     sortedProducts = [...allProducts];
                 } else {

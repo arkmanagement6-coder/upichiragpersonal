@@ -169,7 +169,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=1600.0"></script>
+    <script src="app-core.js?v=1700.0"></script>
     <script>
         let currentTab = 'all';
 
@@ -251,14 +251,14 @@
 
             const products = await getProducts();
             
-            // Filter products
-            let filteredProducts = products;
+            // Filter products: hide products marked hiddenOnWebsite or hidden stockStatus
+            let filteredProducts = products.filter(p => !p.hiddenOnWebsite && p.stockStatus !== 'hidden');
             if (currentTab !== 'all') {
-                filteredProducts = products.filter(p => getProductCategory(p) === currentTab);
+                filteredProducts = filteredProducts.filter(p => getProductCategory(p) === currentTab);
             }
 
             if (filteredProducts.length === 0) {
-                grid.innerHTML = '<div class="no-products-msg">No products found in this category.</div>';
+                grid.innerHTML = '<div class="no-products-msg" style="text-align:center; padding: 50px 20px; color:#718096; font-size:1.1rem; grid-column: 1 / -1; width: 100%;">No products currently available on homepage.</div>';
                 return;
             }
 
