@@ -1,5 +1,425 @@
 [
   {
+    "id": "JUBI-1",
+    "title": "Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1099.00",
+    "badge": "55% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1720600667-wg3b558v.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600667-wg3b558v.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-2",
+    "title": "Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam",
+    "price": "Rs. 299.00",
+    "comparePrice": "Rs. 899.00",
+    "badge": "67% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-3",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 699.00",
+    "comparePrice": "Rs. 2478.00",
+    "badge": "72% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-4",
+    "title": "May Offer - Get 4Kg Dry Fruit Mix Combo",
+    "price": "Rs. 399.00",
+    "comparePrice": "Rs. 999.00",
+    "badge": "60% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>May Offer - Get 4Kg Dry Fruit Mix Combo</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-5",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 699.00",
+    "comparePrice": "Rs. 2478.00",
+    "badge": "72% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722696423-Cs-KGap3.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722696423-Cs-KGap3.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-6",
+    "title": "Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg",
+    "price": "Rs. 369.00",
+    "comparePrice": "Rs. 3999.00",
+    "badge": "91% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700076-BKN2_81Q.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700076-BKN2_81Q.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-7",
+    "title": "4 combo pack' india basmati 10kg 'tata agni 500g ashirwaad atta 10kg fortune sugar 5kg",
+    "price": "Rs. 595.00",
+    "comparePrice": "Rs. 2789.00",
+    "badge": "79% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700182-Cx6BP6WC.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700182-Cx6BP6WC.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>4 combo pack' india basmati 10kg 'tata agni 500g ashirwaad atta 10kg fortune sugar 5kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-8",
+    "title": "Aashirvaad Atta 5kg, India gate basmati rice 5kg, Fortune Suger 5kg, Lipton 1kg TATA Agni 1Kg, Super Sarvottam Refined Rice Bran Oil 1L",
+    "price": "Rs. 369.00",
+    "comparePrice": "Rs. 3999.00",
+    "badge": "91% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700324-B7a9_A2G.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700324-B7a9_A2G.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Aashirvaad Atta 5kg, India gate basmati rice 5kg, Fortune Suger 5kg, Lipton 1kg TATA Agni 1Kg, Super Sarvottam Refined Rice Bran Oil 1L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-9",
+    "title": "Jio Mart Offer today: Combo of 5 kg Fortune oil+ 5 kg sugar+ 5 kg Basmati rice",
+    "price": "Rs. 298.00",
+    "comparePrice": "Rs. 999.00",
+    "badge": "70% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700435-Cervrfo5.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700435-Cervrfo5.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today: Combo of 5 kg Fortune oil+ 5 kg sugar+ 5 kg Basmati rice</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-10",
+    "title": "Jio Mart Offer today online: Get Combo of 5 liter Fortune Oil and 5 Litre Mustard Oil",
+    "price": "Rs. 386.00",
+    "comparePrice": "Rs. 1286.00",
+    "badge": "69% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700753-BbmOAGSP.png",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700753-BbmOAGSP.png"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 5 liter Fortune Oil and 5 Litre Mustard Oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-11",
+    "title": "Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1099.00",
+    "badge": "55% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/1722700896-RModbxHX.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700896-RModbxHX.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-12",
+    "title": "Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 1988.00",
+    "badge": "90% Off",
+    "category": "dry-fruits",
+    "image": "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-13",
+    "title": "Jio Mart Offer today online: Get Basmati Rice 5kg+ Fortune Oil 5L",
+    "price": "Rs. 299.00",
+    "comparePrice": "Rs. 996.00",
+    "badge": "75% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/299-fq7XbP8h.jpg",
+    "images": [
+      "https://jubimart.vercel.app/assets/299-fq7XbP8h.jpg"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Offer today online: Get Basmati Rice 5kg+ Fortune Oil 5L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
+    "id": "JUBI-14",
+    "title": "Jio Mart Combo: Fortune Basmati Rice 5kg, Oil 5L, Sugar 5kg & Besan 2kg",
+    "price": "Rs. 499.00",
+    "comparePrice": "Rs. 1663.00",
+    "badge": "70% Off",
+    "category": "grocery-combos",
+    "image": "https://jubimart.vercel.app/assets/3434355454-CqeSvYN9.png",
+    "images": [
+      "https://jubimart.vercel.app/assets/3434355454-CqeSvYN9.png"
+    ],
+    "stockStatus": "in-stock",
+    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "hiddenOnWebsite": false,
+    "specs": [
+      {
+        "name": "Brand",
+        "value": "Jio Mart"
+      },
+      {
+        "name": "Offer Type",
+        "value": "Mega Saver Combo"
+      },
+      {
+        "name": "Delivery",
+        "value": "Express Shipping (2-3 Days)"
+      }
+    ],
+    "description": "<p><strong>Jio Mart Combo: Fortune Basmati Rice 5kg, Oil 5L, Sugar 5kg & Besan 2kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
+  },
+  {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "category": "tablets",
