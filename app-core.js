@@ -1420,7 +1420,6 @@ function renderHeader() {
     const cartCount = getCartCount();
     
     headerPlaceholder.innerHTML = `
-        <div class="header-top-blue-strip"></div>
         <header class="main-header">
             <div class="header-container">
                 <a href="index.html" class="logo-link">
@@ -1428,12 +1427,10 @@ function renderHeader() {
                 </a>
                 
                 <div class="search-bar-container" id="header-search-container">
-                    <form action="index.html" method="GET" class="search-form" onsubmit="event.preventDefault();">
+                    <div class="search-input-pill">
+                        <svg class="search-glass-icon" viewBox="0 0 24 24" width="18" height="18" stroke="#94a3b8" stroke-width="2.2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         <input type="text" id="header-search" placeholder='Search "atta, milk, eggs..."' autocomplete="off">
-                        <button type="submit" class="search-btn">
-                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                    </form>
+                    </div>
                     <div id="search-results-dropdown" class="search-results-dropdown"></div>
                 </div>
                 
@@ -1441,16 +1438,16 @@ function renderHeader() {
                     <button class="search-trigger-btn" onclick="toggleMobileSearch()" title="Search">
                         <svg viewBox="0 0 24 24" width="22" height="22" stroke="#1f2937" stroke-width="2.2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
-                    <button class="header-action-btn cart-toggle-btn" onclick="openCartDrawer()" title="View Cart">
-                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="#0c831f" stroke-width="2.2" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                        <span class="cart-badge" id="cart-badge-count">${cartCount}</span>
+                    <button class="header-my-cart-btn" onclick="openCartDrawer()" title="View Cart">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="#0c831f" stroke-width="2.2" fill="none"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span class="my-cart-text">My Cart</span>
+                        ${cartCount > 0 ? `<span class="cart-badge" id="cart-badge-count">${cartCount}</span>` : `<span class="cart-badge" id="cart-badge-count" style="display:none;">0</span>`}
                     </button>
                 </div>
             </div>
             <div class="mobile-search-expand" id="mobile-search-expand">
                 <form action="index.html" method="GET" class="search-form-mobile" onsubmit="event.preventDefault();">
                     <input type="text" id="mobile-header-search" placeholder='Search "atta, milk, eggs..."' autocomplete="off">
-                    <button type="submit" class="search-btn">Search</button>
                 </form>
             </div>
         </header>
