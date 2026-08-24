@@ -342,13 +342,13 @@ button, input, select, textarea {
     box-sizing: border-box;
 }
 .hero-slide-1 {
-    background: linear-gradient(135deg, #051c38 0%, #0c529c 60%, #0077b6 100%);
+    background: linear-gradient(135deg, #0c831f 0%, #055e14 100%);
 }
 .hero-slide-2 {
-    background: linear-gradient(135deg, #021a30 0%, #005f73 60%, #0a9396 100%);
+    background: linear-gradient(135deg, #15803d 0%, #166534 100%);
 }
 .hero-slide-3 {
-    background: linear-gradient(135deg, #10002b 0%, #240046 60%, #3c096c 100%);
+    background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
 }
 .hero-slide-container {
     max-width: 1100px;
