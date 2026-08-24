@@ -3428,12 +3428,235 @@ button, input, select, textarea {
 .graphic-emoji {
     font-size: 8.5rem;
     line-height: 1;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
-    animation: floatEmoji 3s ease-in-out infinite alternate;
 }
-@keyframes floatEmoji {
-    0% { transform: translateY(0px) scale(1); }
-    100% { transform: translateY(-8px) scale(1.03); }
+
+/* --- EXACT JUBIMART DARK FOOTER STYLES --- */
+.jubimart-footer {
+    background-color: #1c1c1c !important;
+    color: #ffffff !important;
+    font-family: inherit;
+    width: 100%;
+}
+.jubimart-footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 24px 32px;
+}
+.footer-top-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+@media (min-width: 768px) {
+    .footer-top-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.footer-brand-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.footer-logo-wrap {
+    background: #ffffff;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+}
+.footer-logo-img {
+    height: 36px;
+    display: block;
+}
+.footer-brand-desc {
+    font-size: 0.88rem;
+    color: #9ca3af;
+    max-width: 320px;
+    line-height: 1.5;
+    margin: 0;
+}
+.footer-app-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.footer-app-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #d1d5db;
+    margin: 0;
+}
+.footer-app-badges {
+    display: flex;
+    gap: 12px;
+}
+.footer-app-badges img {
+    height: 40px;
+    border-radius: 8px;
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+@media (min-width: 768px) {
+    .footer-links-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.footer-col h4 {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-col ul li a {
+    font-size: 0.88rem;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+.footer-social-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-social-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #9ca3af;
+}
+.footer-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.footer-social-icons a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+.footer-social-icons a:hover {
+    background: #0c831f;
+}
+.footer-social-icons svg {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+}
+
+.footer-cities-row {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-cities-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #d1d5db;
+    letter-spacing: 0.8px;
+    margin: 0 0 16px;
+}
+.footer-cities-list {
+    font-size: 0.78rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin: 0;
+}
+.footer-cities-list span {
+    color: #374151;
+    margin: 0 6px;
+}
+
+.footer-about-row {
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-about-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #d1d5db;
+    letter-spacing: 0.8px;
+    margin: 0 0 12px;
+}
+.footer-about-text {
+    font-size: 0.78rem;
+    color: #6b7280;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 0 12px;
+}
+.footer-disclaimer-text {
+    font-size: 0.75rem;
+    color: #4b5563;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0;
+}
+
+.jubimart-footer-bottom {
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px 24px;
+}
+.jubimart-bottom-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+@media (min-width: 768px) {
+    .jubimart-bottom-container {
+        flex-direction: row;
+    }
+}
+.jubimart-bottom-container p {
+    margin: 0;
+}
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer-bottom-links a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+.footer-bottom-links a:hover {
+    color: #9ca3af;
 }
 
 

@@ -1504,43 +1504,120 @@ function renderFooter() {
     if (!footerPlaceholder) return;
     
     footerPlaceholder.innerHTML = `
-        <footer class="main-footer">
-            <div class="footer-container">
-                <div class="footer-col footer-about">
-                    <h3>IKKO DIGITAL</h3>
-                    <p>We bring you premium consumer electronics at unbeatable, direct-to-consumer promotional prices. Get the latest tech essentials delivered right to your doorstep.</p>
+        <footer class="jubimart-footer">
+            <div class="jubimart-footer-container">
+                <!-- Top Brand & App Downloads Row -->
+                <div class="footer-top-row">
+                    <div class="footer-brand-box">
+                        <a href="index.html" class="footer-logo-wrap">
+                            <img src="https://jubimart.vercel.app/assets/logo-BDwwMpVg.png" alt="JioMart" class="footer-logo-img">
+                        </a>
+                        <p class="footer-brand-desc">India's fastest online shopping platform. Groceries & more delivered in minutes.</p>
+                    </div>
+                    <div class="footer-app-box">
+                        <p class="footer-app-title">Download our app</p>
+                        <div class="footer-app-badges">
+                            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
+                            <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store"></a>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- 4 Column Links Grid -->
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>USEFUL LINKS</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Lead Freshness</a></li>
+                            <li><a href="#">Jio Mart for Business</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>CATEGORIES</h4>
+                        <ul>
+                            <li><a href="index.html?tab=grocery-combos">Vegetables & Fruits</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Dairy & Breakfast</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Munchies</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Cold Drinks & Juices</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Instant & Frozen Food</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Tea, Coffee & Health Drinks</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Bakery & Biscuits</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Sweet Tooth</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Atta, Rice & Dal</a></li>
+                            <li><a href="index.html?tab=grocery-combos">Sauces & Spreads</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>HELP & SUPPORT</h4>
+                        <ul>
+                            <li><a href="faq.html">FAQs</a></li>
+                            <li><a href="contact-information.html">Contact Us</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms & Conditions</a></li>
+                            <li><a href="refund-policy.html">Refund Policy</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                            <li><a href="shipping-policy.html">Pricing & Delivery Policy</a></li>
+                            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>OUR POLICIES</h4>
+                        <ul>
+                            <li><a href="#">Grievance Redressal</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">Pickup Points</a></li>
+                            <li><a href="cancellation-policy.html">Cancellation Policy</a></li>
+                            <li><a href="#">Responsible Disclosure</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html?tab=all">Shop All</a></li>
-                        <li><a href="account.html">My Account</a></li>
-                        <li><a href="about-us.html">About Us</a></li>
-                    </ul>
+
+                <!-- Social Follow Icons Row -->
+                <div class="footer-social-row">
+                    <span class="footer-social-title">Follow us</span>
+                    <div class="footer-social-icons">
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.636L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Customer Care</h3>
-                    <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="shipping-policy.html">Shipping Policy</a></li>
-                        <li><a href="refund-policy.html">Refund Policy</a></li>
-                        <li><a href="contact-information.html">Contact Us</a></li>
-                    </ul>
+
+                <!-- Cities List Row -->
+                <div class="footer-cities-row">
+                    <p class="footer-cities-title">WE DELIVER IN</p>
+                    <p class="footer-cities-list">Agra <span>|</span> Ahmedabad <span>|</span> Aligarh <span>|</span> Allahabad <span>|</span> Bengaluru <span>|</span> Bhopal <span>|</span> Chandigarh <span>|</span> Chennai <span>|</span> Delhi <span>|</span> Faridabad <span>|</span> Gurugram <span>|</span> Guwahati <span>|</span> Hyderabad <span>|</span> Jaipur <span>|</span> Kanpur <span>|</span> Kolkata <span>|</span> Lucknow <span>|</span> Mumbai <span>|</span> Noida <span>|</span> Patna <span>|</span> Pune <span>|</span> Surat <span>|</span> Vadodara <span>|</span> Varanasi <span>|</span> Visakhapatnam</p>
                 </div>
-                <div class="footer-col footer-newsletter">
-                    <h3>Subscribe to our Newsletter</h3>
-                    <p>Signup for release drops, discount codes, and stock alerts.</p>
-                    <form onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();" class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit">Join</button>
-                    </form>
+
+                <!-- About JioMart Text Row -->
+                <div class="footer-about-row">
+                    <p class="footer-about-title">ABOUT JIOMART</p>
+                    <p class="footer-about-text">Jio Mart is India's fastest online shopping platform. Get fresh groceries and much more delivered online in minutes. Order thousands of products at just a tap: milk, eggs, bread, cooking oil, ghee, atta, rice, fresh fruits and vegetables, spices, fresh meat, seafood, frozen food, chocolates, chips, biscuits, cold drinks, shampoos, soaps, diapers, electronics, sanitizers, sanitary napkins, health products, and much more from your nearest stores.</p>
+                    <p class="footer-disclaimer-text">"Jio Mart" is owned & managed by "Grofers India Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to "GROFFR.COM". By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 IKKO DIGITAL. All rights reserved.</p>
+
+            <!-- Bottom Copyright Bar -->
+            <div class="jubimart-footer-bottom">
+                <div class="jubimart-bottom-container">
+                    <p>© 2025 Grofers India Pvt. Ltd. All Rights Reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="privacy-policy.html">Privacy</a>
+                        <span>·</span>
+                        <a href="terms-of-service.html">Terms</a>
+                        <span>·</span>
+                        <a href="#">Cookies</a>
+                        <span>·</span>
+                        <span>Made in India</span>
+                    </div>
+                </div>
             </div>
         </footer>
     `;
