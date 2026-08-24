@@ -706,7 +706,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=1500.0"></script>
+    <script src="app-core.js?v=1600.0"></script>
     <script>
         let currentStep = 1;
 
@@ -916,7 +916,7 @@
             const proceedBtn = document.getElementById('btn-proceed-to-pay');
             if (proceedBtn) {
                 proceedBtn.disabled = true;
-                proceedBtn.innerText = 'Processing Order...';
+                proceedBtn.innerText = 'Saving Order...';
             }
 
             const total = getCartTotal();
@@ -926,9 +926,9 @@
             const order = {
                 id: orderId,
                 date: new Date().toISOString(),
-                status: 'pending_verification',
-                paymentMethod: 'paytm',
-                utr: 'Pending Verification',
+                status: 'pending_payment',
+                paymentMethod: 'phonepe',
+                utr: 'Pending Payment',
                 customer: {
                     name: cust.name || 'Customer',
                     phone: cust.phone || '',
@@ -948,27 +948,8 @@
                 console.error("Error saving order to Firestore:", err);
             }
 
-            // Track Meta Pixel AddPaymentInfo event
-            try {
-                if (typeof fbq === 'function') {
-                    fbq('track', 'AddPaymentInfo', {
-                        value: total,
-                        currency: 'INR'
-                    });
-                }
-            } catch(e){}
-
-            const settings = getSettings();
-            const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
-            const sabpaisaLink = settings.sabpaisaLink || 'https://dashboard.sabpaisa.in/links/eqipjvn';
-            const customPaymentLink = (cart[0] && cart[0].paymentLink && cart[0].paymentLink.startsWith('http')) ? cart[0].paymentLink : null;
-            const targetPaymentLink = customPaymentLink || sabpaisaLink;
-
-            // Open payment link in a NEW TAB for mobile & desktop
-            const paymentWin = window.open(targetPaymentLink, '_blank');
-
-            // Immediately switch main tab to UTR submission page (order-confirmation.html)
-            window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(orderId)}&upi=${encodeURIComponent(upiId)}`);
+            // Redirect to Payment Options page with order details
+            window.location.href = `payment.html?orderId=${encodeURIComponent(orderId)}&total=${encodeURIComponent(total)}`;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
