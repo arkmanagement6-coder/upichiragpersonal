@@ -562,55 +562,92 @@ button, input, select, textarea {
 
 /* --- PRODUCT GRID --- */
 .storefront-section {
-    max-width: 1400px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
+.storefront-section, .storefront-main {
+    max-width: 1360px;
+    margin: 20px auto 60px;
+    padding: 0 16px;
 }
-.products-grid {
+.products-grid, .products-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+    gap: 16px;
+    width: 100%;
 }
 
-/* Product Card */
+@media (max-width: 640px) {
+    .products-grid, .products-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* Jubimart Product Card */
 .product-card {
-    background-color: var(--bg-card);
-    border-radius: 12px; /* Smoother corners */
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: var(--transition-premium);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(18, 28, 48, 0.08);
-    border-color: rgba(18, 28, 48, 0.08);
+    border-color: #0c831f;
+    box-shadow: 0 10px 25px rgba(12, 131, 31, 0.12);
+    transform: translateY(-2px);
 }
+
 .card-badge-sale {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: var(--accent);
-    color: white;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px; /* Pill badge */
+    top: 10px;
+    left: 10px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
     z-index: 10;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(229, 46, 46, 0.25);
+    line-height: 1;
 }
+
+.card-badge-jiomart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffffff;
+    color: #e11d48;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+    z-index: 10;
+    border: 1px solid #f43f5e;
+    letter-spacing: -0.2px;
+}
+
+.card-badge-timer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #f8c42a;
+    color: #1c1c1c;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 6px;
+    z-index: 10;
+}
+
 .product-card-img-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
-    background-color: #fafbfc;
+    padding-top: 100%;
+    background: #f9fafb;
     overflow: hidden;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    display: block;
 }
 .product-card-img-wrapper img {
     position: absolute;
@@ -619,74 +656,119 @@ button, input, select, textarea {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding: 20px;
-    transition: transform var(--transition-premium);
+    padding: 12px;
+    transition: transform 0.3s ease;
 }
 .product-card:hover .product-card-img-wrapper img {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
+
 .product-card-info {
-    padding: 20px;
+    padding: 12px 14px;
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 6px;
 }
-.product-card-prices {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-}
-.product-card-sale-price {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--accent);
-}
-.product-card-compare-price {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-}
+
 .product-card-title {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--text-main);
-    line-height: 1.4;
-    margin-bottom: 18px;
+    color: #1f2937;
+    line-height: 1.35;
+    margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 2.8em;
-    transition: color var(--transition-fast);
+    height: 2.7em;
 }
 .product-card-title a {
     color: inherit;
-    transition: color var(--transition-fast);
+    text-decoration: none;
 }
 .product-card-title a:hover {
-    color: var(--accent);
+    color: #0c831f;
 }
-.product-card-actions {
-    margin-top: auto;
+
+.card-rating-row {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
+    font-size: 0.72rem;
 }
-.add-to-cart-btn {
-    flex: 1;
-    background-color: #00875a;
-    color: white;
-    border: 1px solid #00875a;
-    padding: 10px 16px;
+.stars-gold {
+    color: #f59e0b;
+    letter-spacing: 1px;
+}
+.rating-count {
+    color: #9ca3af;
+    font-size: 0.68rem;
+    font-weight: 500;
+}
+
+.product-card-prices {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+.product-card-sale-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #111827;
+}
+.product-card-compare-price {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+.discount-pill {
+    font-size: 0.65rem;
     font-weight: 700;
-    font-size: 0.88rem;
-    border-radius: 8px; /* Jio Action Button Radius */
+    color: #15803d;
+    background: #f0fdf4;
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.delivery-tag {
+    font-size: 0.68rem;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.product-card-actions {
+    margin-top: auto;
+    width: 100%;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 2px solid #0c831f;
+    background: #ffffff;
+    color: #0c831f;
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition-premium);
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 135, 90, 0.2);
+    transition: all 0.2s ease;
+}
+.add-to-cart-btn:hover {
+    background: #0c831f;
+    color: #ffffff;
+}
+.add-to-cart-btn:disabled {
+    border-color: #d1d5db;
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
 }
 .add-to-cart-btn:hover:not(:disabled) {
     background-color: #00704a;
