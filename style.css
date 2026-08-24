@@ -561,7 +561,6 @@ button, input, select, textarea {
 }
 
 /* --- PRODUCT GRID --- */
-.storefront-section {
 .storefront-section, .storefront-main {
     max-width: 1360px;
     margin: 20px auto 60px;
