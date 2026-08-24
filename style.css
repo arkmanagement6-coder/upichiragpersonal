@@ -3189,19 +3189,24 @@ button, input, select, textarea {
 }
 
 /* --- NEW JIOMART HEADER STYLES --- */
+.header-top-blue-strip {
+    height: 4px;
+    background-color: #0c529c;
+    width: 100%;
+}
 .main-header {
     background-color: #ffffff !important;
     color: #1e293b !important;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e5e7eb;
 }
 .header-container {
     max-width: 1360px;
     margin: 0 auto;
-    padding: 10px 16px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -3210,95 +3215,96 @@ button, input, select, textarea {
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 8px;
     text-decoration: none;
 }
-.logo-badge-icon {
-    background: #e11d48;
-    color: #ffffff;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.jiomart-header-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
-.logo-text {
-    font-family: var(--font-heading);
-    font-size: 1.55rem;
-    font-weight: 900;
-    color: #0f172a;
-    letter-spacing: -0.5px;
+
+@media (max-width: 768px) {
+    #header-search-container {
+        display: none;
+    }
 }
-.logo-text-bold {
-    color: #0c831f;
-}
-.search-form {
-    display: flex;
-    background-color: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-radius: 14px;
-    overflow: hidden;
-    height: 42px;
-    transition: all 0.2s ease;
-}
-.search-form:focus-within {
-    border-color: #0c831f;
-    box-shadow: 0 0 0 3px rgba(12, 131, 31, 0.15);
-    background-color: #ffffff;
-}
-.search-form input {
-    width: 100%;
-    padding: 10px 16px;
+
+.search-trigger-btn {
     background: transparent;
     border: none;
-    outline: none;
-    color: #0f172a;
-    font-size: 0.88rem;
-    font-weight: 500;
-}
-.search-btn {
-    background-color: #0c831f;
-    border: none;
-    width: 50px;
-    color: #ffffff;
     cursor: pointer;
+    padding: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0;
-    transition: background-color 0.2s ease;
+    border-radius: 50%;
+    transition: background 0.2s ease;
 }
-.search-btn:hover {
-    background-color: #055e14;
+.search-trigger-btn:hover {
+    background-color: #f3f4f6;
 }
+
 .cart-toggle-btn {
     background-color: #ffffff !important;
     border: 2px solid #0c831f !important;
     color: #0c831f !important;
     border-radius: 12px !important;
-    padding: 8px 16px !important;
-    width: auto !important;
+    padding: 6px 12px !important;
+    min-width: 44px;
     height: 40px !important;
-    font-weight: 800 !important;
-    font-size: 0.85rem !important;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(12, 131, 31, 0.08);
 }
 .cart-toggle-btn:hover {
-    background-color: #0c831f !important;
-    color: #ffffff !important;
+    background-color: rgba(12, 131, 31, 0.05) !important;
 }
 .cart-badge {
     background: #e11d48;
     color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 2px 6px;
     border-radius: 10px;
+    line-height: 1;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border: 2px solid #ffffff;
+}
+
+.mobile-search-expand {
+    display: none;
+    padding: 8px 16px 12px;
+    background: #ffffff;
+    border-top: 1px solid #f3f4f6;
+}
+.search-form-mobile {
+    display: flex;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.search-form-mobile input {
+    flex: 1;
+    padding: 8px 14px;
+    border: none;
+    outline: none;
+    font-size: 0.85rem;
+}
+.search-form-mobile button {
+    background: #0c831f;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
 }
 
 /* --- HERO SLIDER EXACT STYLING --- */

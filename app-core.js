@@ -1402,6 +1402,17 @@ function parsePrice(priceStr) {
 
 // Header and Footer Rendering
 // Header and Footer Rendering
+function toggleMobileSearch() {
+    const mobileSearch = document.getElementById('mobile-search-expand');
+    if (mobileSearch) {
+        mobileSearch.style.display = mobileSearch.style.display === 'block' ? 'none' : 'block';
+        if (mobileSearch.style.display === 'block') {
+            const input = document.getElementById('mobile-header-search');
+            if (input) input.focus();
+        }
+    }
+}
+
 function renderHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
@@ -1409,30 +1420,38 @@ function renderHeader() {
     const cartCount = getCartCount();
     
     headerPlaceholder.innerHTML = `
+        <div class="header-top-blue-strip"></div>
         <header class="main-header">
             <div class="header-container">
                 <a href="index.html" class="logo-link">
-                    <span class="logo-badge-icon">🛍️</span>
-                    <span class="logo-text">Jio<span class="logo-text-bold">Mart</span></span>
+                    <img src="https://jubimart.vercel.app/assets/logo-BDwwMpVg.png" alt="JioMart" class="jiomart-header-logo" onerror="this.onerror=null; this.src='https://jubimart.vercel.app/assets/round_logo-BHlE3zVg.png';">
                 </a>
                 
-                <div class="search-bar-container">
+                <div class="search-bar-container" id="header-search-container">
                     <form action="index.html" method="GET" class="search-form" onsubmit="event.preventDefault();">
                         <input type="text" id="header-search" placeholder='Search "atta, milk, eggs..."' autocomplete="off">
                         <button type="submit" class="search-btn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </button>
                     </form>
                     <div id="search-results-dropdown" class="search-results-dropdown"></div>
                 </div>
                 
                 <div class="header-actions">
+                    <button class="search-trigger-btn" onclick="toggleMobileSearch()" title="Search">
+                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#1f2937" stroke-width="2.2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
                     <button class="header-action-btn cart-toggle-btn" onclick="openCartDrawer()" title="View Cart">
-                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                        <span>My Cart</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="#0c831f" stroke-width="2.2" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                         <span class="cart-badge" id="cart-badge-count">${cartCount}</span>
                     </button>
                 </div>
+            </div>
+            <div class="mobile-search-expand" id="mobile-search-expand">
+                <form action="index.html" method="GET" class="search-form-mobile" onsubmit="event.preventDefault();">
+                    <input type="text" id="mobile-header-search" placeholder='Search "atta, milk, eggs..."' autocomplete="off">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
             </div>
         </header>
     `;
