@@ -1407,22 +1407,20 @@ function renderHeader() {
     if (!headerPlaceholder) return;
     
     const cartCount = getCartCount();
-    const customer = JSON.parse(localStorage.getItem('ikko_customer'));
-    const accountText = customer ? 'ACCOUNT' : 'LOGIN';
     
     headerPlaceholder.innerHTML = `
         <header class="main-header">
             <div class="header-container">
                 <a href="index.html" class="logo-link">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    IKKO DIGITAL
+                    <span class="logo-badge-icon">🛍️</span>
+                    <span class="logo-text">Jio<span class="logo-text-bold">Mart</span></span>
                 </a>
                 
                 <div class="search-bar-container">
                     <form action="index.html" method="GET" class="search-form" onsubmit="event.preventDefault();">
-                        <input type="text" id="header-search" placeholder="Search for Smart Phones, Tablets & Audio..." autocomplete="off">
+                        <input type="text" id="header-search" placeholder='Search "atta, milk, eggs..."' autocomplete="off">
                         <button type="submit" class="search-btn">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </button>
                     </form>
                     <div id="search-results-dropdown" class="search-results-dropdown"></div>
@@ -1430,17 +1428,13 @@ function renderHeader() {
                 
                 <div class="header-actions">
                     <button class="header-action-btn cart-toggle-btn" onclick="openCartDrawer()" title="View Cart">
-                        <div class="cart-icon-wrapper">
-                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                            <span class="cart-badge" id="cart-badge-count">${cartCount}</span>
-                        </div>
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span>My Cart</span>
+                        <span class="cart-badge" id="cart-badge-count">${cartCount}</span>
                     </button>
                 </div>
             </div>
         </header>
-        <div class="announcement-bar">
-            <div class="announcement-bar__text">⚡ Express Shipping 2 to 3 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store &nbsp;&nbsp;|&nbsp;&nbsp; ⚡ Express Shipping 2 to 3 Days Delivery &nbsp;&nbsp;|&nbsp;&nbsp; 🎁 BUY 2 GET 1 FREE &nbsp;&nbsp;|&nbsp;&nbsp; 🛡️ 100% Genuine Products &nbsp;&nbsp;|&nbsp;&nbsp; Flat ₹999 Store</div>
-        </div>
     `;
     
     // Hook up search dropdown handler

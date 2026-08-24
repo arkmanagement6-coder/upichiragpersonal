@@ -49,7 +49,7 @@
         }
     });
     </script>
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
     <!-- Firebase SDKs for fast parallel loading and caching -->
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-    <!-- Header will be rendered here by app-core.js?v=2400.0 -->
+    <!-- Header will be rendered here by app-core.js?v=2500.0 -->
     <div id="header-placeholder"></div>
 
     <!-- Hero Slider Section -->
@@ -84,60 +84,54 @@
         <button class="slider-arrow slider-arrow-next" onclick="nextSlide()">&rsaquo;</button>
         
         <div class="hero-slider-track" id="hero-slider-track">
-            <!-- Slide 1: Grocery Combo Offer -->
+            <!-- Slide 1: 4 Hours Express Delivery -->
             <div class="hero-slide hero-slide-1">
                 <div class="hero-slide-container">
                     <div class="hero-slide-text">
-                        <span class="hero-slide-tag">🔥 TODAY'S BEST DEALS &nbsp;|&nbsp; MEGA SAVER</span>
-                        <h2>Jio Mart Grocery Combo Packs</h2>
-                        <p>20kg Aashirvaad Atta + 1kg Besan + 5kg Sugar + 5L Mustard Oil</p>
-                        <div class="hero-slide-price-pill">
-                            <span>Rs. 499.00</span>
-                        </div>
-                        <div>
-                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('grocery-combos'); scrollToProducts(event)">ORDER NOW &rsaquo;</a>
+                        <span class="hero-slide-tag tag-green">⚡ FASTEST DELIVERY</span>
+                        <h2>Groceries at your door in <span class="text-yellow">4 hours</span></h2>
+                        <p>Fresh vegetables, dairy, snacks & more — delivered faster than ever.</p>
+                        <div class="hero-slide-actions">
+                            <a href="#store-listings" class="hero-btn-yellow" onclick="scrollToProducts(event)">Order Now</a>
+                            <a href="#store-listings" class="hero-btn-outline" onclick="scrollToProducts(event)">Browse All</a>
                         </div>
                     </div>
-                    <div class="hero-slide-img-wrap">
-                        <img src="https://jubimart.vercel.app/assets/1720600667-wg3b558v.jpg" alt="Jio Mart Grocery Offer">
+                    <div class="hero-slide-graphic">
+                        <span class="graphic-emoji">🛒</span>
                     </div>
                 </div>
             </div>
-            <!-- Slide 2: Dry Fruits Combo -->
+            <!-- Slide 2: Combo Offers Starting at ₹499 -->
             <div class="hero-slide hero-slide-2">
                 <div class="hero-slide-container">
                     <div class="hero-slide-text">
-                        <span class="hero-slide-tag">🎁 67% OFF &nbsp;|&nbsp; DRY FRUIT FESTIVAL</span>
-                        <h2>Premium Kaju & Badam Combo</h2>
-                        <p>1kg Premium Kaju + 1kg American Badam | Limited Stock</p>
-                        <div class="hero-slide-price-pill">
-                            <span>Rs. 299.00</span>
-                        </div>
-                        <div>
-                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('dry-fruits'); scrollToProducts(event)">EXPLORE DEALS &rsaquo;</a>
+                        <span class="hero-slide-tag tag-red">🔥 TODAY'S DEALS</span>
+                        <h2>Combo offers starting at just <span class="text-yellow">₹499</span></h2>
+                        <p>Atta, sugar, oil & besan — massive savings on everyday essentials.</p>
+                        <div class="hero-slide-actions">
+                            <a href="#store-listings" class="hero-btn-yellow" onclick="scrollToProducts(event)">Shop Combos</a>
+                            <a href="#store-listings" class="hero-btn-outline" onclick="scrollToProducts(event)">Browse All</a>
                         </div>
                     </div>
-                    <div class="hero-slide-img-wrap">
-                        <img src="https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg" alt="Kaju Badam Combo">
+                    <div class="hero-slide-graphic">
+                        <span class="graphic-emoji">🎁</span>
                     </div>
                 </div>
             </div>
-            <!-- Slide 3: 9 Combo Mega Offer -->
+            <!-- Slide 3: Farm Fresh Stocked -->
             <div class="hero-slide hero-slide-3">
                 <div class="hero-slide-container">
                     <div class="hero-slide-text">
-                        <span class="hero-slide-tag">⚡ 72% OFF &nbsp;|&nbsp; 9 ITEM COMBO PACK</span>
-                        <h2>10kg Atta + 5kg Basmati + 5L Oil</h2>
-                        <p>Complete Monthly Ration Combo Direct to Doorstep</p>
-                        <div class="hero-slide-price-pill">
-                            <span>Rs. 699.00</span>
-                        </div>
-                        <div>
-                            <a href="#store-listings" class="hero-slide-btn" onclick="filterTab('grocery-combos'); scrollToProducts(event)">SHOP NOW &rsaquo;</a>
+                        <span class="hero-slide-tag tag-teal">🌿 FARM FRESH</span>
+                        <h2>Fresh fruits & vegetables <span class="text-mint">daily stocked</span></h2>
+                        <p>Sourced directly from farms. No preservatives, no compromise.</p>
+                        <div class="hero-slide-actions">
+                            <a href="#store-listings" class="hero-btn-mint" onclick="scrollToProducts(event)">Explore Fresh</a>
+                            <a href="#store-listings" class="hero-btn-outline" onclick="scrollToProducts(event)">Browse All</a>
                         </div>
                     </div>
-                    <div class="hero-slide-img-wrap">
-                        <img src="https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg" alt="9 Combo Pack">
+                    <div class="hero-slide-graphic">
+                        <span class="graphic-emoji">🥬</span>
                     </div>
                 </div>
             </div>
@@ -275,7 +269,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=2400.0"></script>
+    <script src="app-core.js?v=2500.0"></script>
     <script>
         let currentTab = 'all';
 
