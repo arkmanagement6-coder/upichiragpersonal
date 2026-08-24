@@ -49,7 +49,7 @@
         }
     });
     </script>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=4.0">
     <!-- Firebase SDKs for fast parallel loading and caching -->
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-    <!-- Header will be rendered here by app-core.js?v=2300.0 -->
+    <!-- Header will be rendered here by app-core.js?v=2400.0 -->
     <div id="header-placeholder"></div>
 
     <!-- Hero Slider Section -->
@@ -150,11 +150,118 @@
         </div>
     </section>
 
-    <!-- Category Filter Tabs -->
-    <div class="tabs-container" id="store-listings">
-        <button class="tab-btn active" id="tab-all" onclick="filterTab('all')">All Deals</button>
-        <button class="tab-btn" id="tab-grocery-combos" onclick="filterTab('grocery-combos')">Grocery Combos</button>
-        <button class="tab-btn" id="tab-dry-fruits" onclick="filterTab('dry-fruits')">Dry Fruits & Oils</button>
+    <!-- Yellow Ticker Bar -->
+    <div class="ticker-bar">
+        <div class="ticker-content">
+            <span>⚡ FREE DELIVERY</span>
+            <span>·</span>
+            <span>4 HOURS EXPRESS</span>
+            <span>·</span>
+            <span>BEST PRICES GUARANTEED</span>
+            <span>·</span>
+            <span>7-DAY EASY RETURNS ⚡</span>
+        </div>
+    </div>
+
+    <!-- Category Icon Chips Row -->
+    <div class="category-chips-wrapper">
+        <div class="category-chips-container">
+            <div class="chip-item" onclick="filterTab('all'); scrollToProducts(event)">
+                <div class="chip-icon">🥛</div>
+                <span class="chip-label">Dairy</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🍎</div>
+                <span class="chip-label">Fruits</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🥦</div>
+                <span class="chip-label">Veggies</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🍪</div>
+                <span class="chip-label">Snacks</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('dry-fruits'); scrollToProducts(event)">
+                <div class="chip-icon">🧴</div>
+                <span class="chip-label">Personal Care</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🧹</div>
+                <span class="chip-label">Household</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🍳</div>
+                <span class="chip-label">Breakfast</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🥤</div>
+                <span class="chip-label">Beverages</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('dry-fruits'); scrollToProducts(event)">
+                <div class="chip-icon">🍫</div>
+                <span class="chip-label">Chocolates</span>
+            </div>
+            <div class="chip-item" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="chip-icon">🧊</div>
+                <span class="chip-label">Frozen</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Banner Grid Section -->
+    <div class="promo-grid-wrapper">
+        <div class="promo-grid-container">
+            <!-- Big Flash Deal Card -->
+            <div class="promo-card-big" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                <div class="promo-big-text">
+                    <span class="promo-flash-badge">FLASH DEAL</span>
+                    <h2>Combo Offer Up to 55% OFF</h2>
+                    <p>Atta + Besan + Sugar + Oil</p>
+                    <button class="promo-shop-btn">Shop Now &rarr;</button>
+                </div>
+                <div class="promo-big-icon">🎁</div>
+            </div>
+
+            <!-- Right Side 2 Mini Cards -->
+            <div class="promo-side-column">
+                <div class="promo-mini-card promo-mini-yellow" onclick="filterTab('grocery-combos'); scrollToProducts(event)">
+                    <div class="promo-mini-icon">🥛</div>
+                    <div class="promo-mini-info">
+                        <h3>Fresh Dairy</h3>
+                        <p>From ₹29 onwards</p>
+                        <span class="promo-mini-link">Shop &rarr;</span>
+                    </div>
+                </div>
+                <div class="promo-mini-card promo-mini-blue" onclick="filterTab('dry-fruits'); scrollToProducts(event)">
+                    <div class="promo-mini-icon">🧴</div>
+                    <div class="promo-mini-info">
+                        <h3>Personal Care</h3>
+                        <p>Min. 30% off on top brands</p>
+                        <span class="promo-mini-link">Shop &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Today's Best Deals Header & Filter Pills -->
+    <div class="deals-header-wrapper" id="store-listings">
+        <div class="deals-header-container">
+            <div class="deals-header-left">
+                <div class="deals-title-row">
+                    <span class="fire-icon">🔥</span>
+                    <h2>Today's Best Deals</h2>
+                </div>
+                <p class="deals-subtitle">14 products · Fresh combos, daily essentials & more</p>
+            </div>
+            <div class="deals-filter-pills">
+                <button class="deal-pill active" id="tab-all" onclick="filterTab('all')">All</button>
+                <button class="deal-pill" id="tab-grocery-combos" onclick="filterTab('grocery-combos')">Best Sellers</button>
+                <button class="deal-pill" id="tab-dry-fruits" onclick="filterTab('dry-fruits')">Top Rated</button>
+                <button class="deal-pill" id="tab-biggest-deals" onclick="filterTab('all')">Biggest Deals</button>
+            </div>
+        </div>
     </div>
 
     <!-- Main Storefront Section -->
@@ -168,7 +275,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=2300.0"></script>
+    <script src="app-core.js?v=2400.0"></script>
     <script>
         let currentTab = 'all';
 
@@ -229,7 +336,7 @@
             currentTab = category;
             
             // Update Tab UI
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.deal-pill').forEach(btn => btn.classList.remove('active'));
             const activeTabBtn = document.getElementById('tab-' + category);
             if (activeTabBtn) activeTabBtn.classList.add('active');
 
