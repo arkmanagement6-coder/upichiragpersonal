@@ -1064,38 +1064,48 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-// Product Database Helpers (Firestore Async with local Cache fallback)
+const IKKO_BUILD_VER = '3200.0';
+
+// Auto-purge stale cache if build version changed
+(function checkBuildCacheBust() {
+    try {
+        const storedVer = localStorage.getItem('ikko_build_version');
+        if (storedVer !== IKKO_BUILD_VER) {
+            localStorage.removeItem('ikko_products');
+            localStorage.removeItem('ikko_products_last_updated');
+            sessionStorage.removeItem('ikko_products_synced');
+            localStorage.setItem('ikko_build_version', IKKO_BUILD_VER);
+            console.log("⚡ New build detected (" + IKKO_BUILD_VER + "). Purged stale browser cache!");
+        }
+    } catch(e){}
+})();
+
+// Product Database Helpers (Firestore Async with instant background revalidation)
 async function getProducts(forceSync = false) {
     const cached = localStorage.getItem('ikko_products');
-    const alreadySynced = sessionStorage.getItem('ikko_products_synced');
+
+    // Always trigger background sync so any server/admin changes propagate instantly
+    syncProductsBackground(forceSync).catch(err => console.error("Background sync error:", err));
 
     if (cached && !forceSync) {
         try {
             let products = JSON.parse(cached);
             if (products && products.length > 0) {
                 products = products.filter(p => String(p.id) !== '1000000000001' && String(p.id) !== '8270415000000_demo' && !String(p.title || '').toLowerCase().includes('demo testing'));
-                products = products.map(p => {
-                    
-                    return p;
-                });
                 const hasVisible = products.some(p => !p.hiddenOnWebsite && p.stockStatus !== 'hidden');
                 if (hasVisible) {
-                    localStorage.setItem('ikko_products', JSON.stringify(products));
-                    if (!alreadySynced) {
-                        sessionStorage.setItem('ikko_products_synced', 'true');
-                        syncProductsBackground(false).catch(err => console.error("Background sync error:", err));
-                    }
                     return products;
                 }
             }
         } catch (e) {}
     }
-    sessionStorage.setItem('ikko_products_synced', 'true');
-    return await syncProductsBackground(forceSync);
+    return await syncProductsBackground(true);
 }
 
 async function saveProducts(products, changedProduct = null) {
     localStorage.setItem('ikko_products', JSON.stringify(products));
+    const updateTimestamp = Date.now();
+    localStorage.setItem('ikko_products_last_updated', String(updateTimestamp));
 
     const db = await initFirebase();
     if (db) {
@@ -1113,36 +1123,25 @@ async function saveProducts(products, changedProduct = null) {
             // Clean up any stale chunks
             const snapshot = await db.collection('products_chunks').get();
             snapshot.forEach(doc => {
-                const idx = parseInt(doc.id);
+                const idx = parseInt(doc.id) || 0;
                 if (idx >= newChunkCount) {
                     db.collection('products_chunks').doc(doc.id).delete().catch(() => {});
                 }
             });
 
-            // Set new productsLastUpdated timestamp in Firestore settings document
-            const updateTimestamp = Date.now();
+            // Set new productsLastUpdated timestamp in Firestore settings document to notify all clients
             await db.collection('settings').doc('global').set({ productsLastUpdated: updateTimestamp }, { merge: true });
-            
-            // Cache timestamp locally to avoid self-re-syncing immediately
-            localStorage.setItem('ikko_products_last_updated', String(updateTimestamp));
             
             console.log("Synced all products in chunks to Firestore successfully. Catalog version: " + updateTimestamp);
 
-            // Backward compatibility: write individual products to the legacy collection in the background
             if (changedProduct) {
-                db.collection('products').doc(String(changedProduct.id)).set(cleanUndefinedFields(changedProduct)).catch(e => {
-                    console.warn("Legacy single-product write failed (non-blocking):", e);
-                });
-            } else {
-                for (const p of products) {
-                    db.collection('products').doc(String(p.id)).set(cleanUndefinedFields(p)).catch(() => {});
-                }
+                db.collection('products').doc(String(changedProduct.id)).set(cleanUndefinedFields(changedProduct)).catch(() => {});
             }
         } catch (e) {
             console.error("Failed to save products to Firestore:", e);
-            throw new Error("Firestore Database Write Failed: " + e.message);
         }
     }
+    window.dispatchEvent(new CustomEvent('products-synced', { detail: products }));
 }
 
 async function deleteProduct(productId) {
