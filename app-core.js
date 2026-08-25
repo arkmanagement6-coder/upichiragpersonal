@@ -198,7 +198,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/wznxv8z",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -228,7 +228,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1720600900-Bq3k49i-.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/xzx9xx7",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -258,7 +258,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/wh3mkln",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -288,7 +288,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722696423-Cs-KGap3.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/xzx9xx7",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -318,7 +318,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700076-BKN2_81Q.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/dafz2es",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -348,7 +348,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700182-Cx6BP6WC.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/xk0evmb",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -378,7 +378,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700324-B7a9_A2G.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/dafz2es",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -408,7 +408,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700435-Cervrfo5.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/7uduwrr",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -438,7 +438,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700753-BbmOAGSP.png"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/kurhb7x",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -498,7 +498,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -528,7 +528,7 @@ const INITIAL_PRODUCTS = [
       "https://jubimart.vercel.app/assets/299-fq7XbP8h.jpg"
     ],
     "stockStatus": "in-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/wznxv8z",
     "hiddenOnWebsite": false,
     "specs": [
       {
@@ -612,7 +612,7 @@ const INITIAL_PRODUCTS = [
   },
   {
     "id": "8270415000000",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "category": "mobile",
     "price": "Rs. 999.00",
     "badge": "",
@@ -781,7 +781,7 @@ const INITIAL_PRODUCTS = [
       }
     ],
     "description": "<div class=\"a-row\">\n<div class=\"a-column a-span6\">\n<h1 class=\"a-size-medium a-spacing-small\">Technical Details</h1>\n</div>\n</div>\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-extend-content\">\n<div class=\"a-row a-expander-container a-expander-inline-container\">\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-section-content a-section-expander-inner\">\n<table id=\"productDetails_techSpec_section_1\" class=\"a-keyvalue prodDetTable\" role=\"presentation\">\n<tbody>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung, Dixon Technologies (India) Ltd., Plot no.6, Sector 90, Noida, Gautam Buddha Nagar, U.P. India – 201305</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Series</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung Galaxy Tab S10+</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Colour</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Gray | WiFi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Standing screen display size</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12.4 Inches</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2800 x 1752 Pixels</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Package Dimensions</th>\n<td class=\"a-size-base prodDetAttrValue\">‎30.2 x 20.3 x 2.1 cm; 571 g</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Batteries</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1 Lithium Ion batteries required. (included)</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item model number</th>\n<td class=\"a-size-base prodDetAttrValue\">‎SM-X820</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎MediaTek</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Speed</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2 GHz</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Speaker Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Dolby Speakers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Chipset Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Card Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Integrated</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Connectivity Type</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Wi-Fi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Wireless Carrier</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Unlocked for All Carriers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Rear Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎13 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Front Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Operating System</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Android 14</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Are Batteries Included</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Yes</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Lithium Battery Energy Content</th>\n<td class=\"a-size-base prodDetAttrValue\">‎42.21 Watt Hours</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Number of Lithium Ion Cells</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Included Components</th>\n<td class=\"a-size-base prodDetAttrValue\">‎USB Type C Cable, Tablet, S Pen, Ejection PIN, Quick Start Guide</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Country of Origin</th>\n<td class=\"a-size-base prodDetAttrValue\">‎India</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item Weight</th>\n<td class=\"a-size-base prodDetAttrValue\">‎571 g</td>\n</tr>\n</tbody>\n</table>\n<p><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/1.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/2.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/3.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/4.webp\"></p>\n</div>\n</div>\n</div>",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
@@ -790,7 +790,7 @@ const INITIAL_PRODUCTS = [
     "id": "8270415000007",
     "price": "Rs. 999.00",
     "category": "mobile",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "descriptionImages": [
       "Image/Apple%20iPad%20mini%20(6th%20Gen)%20256%20GB%20ROM%208.3%20inch%20with%20Wi-Fi%2B5G/1.webp",
       "Image/Apple%20iPad%20mini%20(6th%20Gen)%20256%20GB%20ROM%208.3%20inch%20with%20Wi-Fi%2B5G/2.webp",
@@ -835,7 +835,7 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/222_a31333ca-5a60-4f70-8cf4-f8d0ab6e9ae1_512x512.jpg?v=1781259494",
     "price": "Rs. 999.00",
     "category": "mobile",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "descriptionImages": [
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/1.webp",
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/2.webp",
@@ -864,7 +864,7 @@ const INITIAL_PRODUCTS = [
     "url": "/products/apple-ipad-air-11-m2-liquid-retina-display-256gb-landscape-12mp-front-camera-12mp-back-camera-wi-fi-6e-touch-id-all-day-battery-life-gray",
     "category": "mobile",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "descriptionImages": [
       "Image/Apple%20iPad%20Air%2011%E2%80%B3%20(M2)%20Liquid%20Retina%20Display%2C%20256GB%2C%20Landscape%2012MP%20Front%20Camera%20%2012MP%20Back%20Camera%2C%20Wi-Fi%206E%2C%20Touch%20ID%2C%20All-Day%20Battery%20Life-Gray/4.jpg",
       "Image/Apple%20iPad%20Air%2011%E2%80%B3%20(M2)%20Liquid%20Retina%20Display%2C%20256GB%2C%20Landscape%2012MP%20Front%20Camera%20%2012MP%20Back%20Camera%2C%20Wi-Fi%206E%2C%20Touch%20ID%2C%20All-Day%20Battery%20Life-Gray/1.jpg",
@@ -887,7 +887,7 @@ const INITIAL_PRODUCTS = [
     "comparePrice": "Rs. 33,900.00",
     "handle": "apple-ipad-10th-generation-with-a14-bionic-chip-256gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-yellow",
     "stockStatus": "out-of-stock",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "price": "Rs. 999.00",
     "category": "mobile",
     "hiddenOnWebsite": true
@@ -896,7 +896,7 @@ const INITIAL_PRODUCTS = [
     "id": "8270415000002",
     "category": "mobile",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "description": "<h1></h1>",
     "handle": "apple-ipad-10th-generation-with-a14-bionic-chip-256gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-silver",
     "stockStatus": "out-of-stock",
@@ -927,14 +927,14 @@ const INITIAL_PRODUCTS = [
     "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life",
     "category": "mobile",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "hiddenOnWebsite": true
   },
   {
     "id": "8270415000004",
     "price": "Rs. 999.00",
     "category": "mobile",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 1,69,900.00",
     "stockStatus": "out-of-stock",
@@ -953,7 +953,7 @@ const INITIAL_PRODUCTS = [
     "id": "8270415000006",
     "price": "Rs. 999.00",
     "category": "mobile",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 62,649.00",
     "stockStatus": "out-of-stock",
@@ -978,7 +978,7 @@ const INITIAL_PRODUCTS = [
       "https://picsum.photos/600/400",
       "https://picsum.photos/600/400"
     ],
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "stockStatus": "out-of-stock",
     "handle": "apple-ipad-air-11-m2-liquid-retina-display-256gb-landscape-12mp-front-camera-12mp-back-camera-wi-fi-6e-touch-id-all-day-battery-life-blue",
     "comparePrice": "Rs. 59,900.00",
@@ -1013,7 +1013,7 @@ const INITIAL_PRODUCTS = [
     "url": "/products/airdopes-411-anc-with-10mm-drivers-asaptm-charge-technology-up-to-25db-anc-enx%E2%84%A2-technology-17-5-hours-playback",
     "category": "accessories",
     "price": "Rs. 999.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "hiddenOnWebsite": true
   },
   {
@@ -1032,14 +1032,14 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/A175Packaging.1807_512x512.png?v=1781259432",
     "price": "Rs. 999.00",
     "category": "accessories",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "hiddenOnWebsite": true
   },
   {
     "id": "8270415000013",
     "price": "Rs. 999.00",
     "category": "accessories",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 14,98,500.00",
     "handle": "boat-airdopes-148-with-8mm-drivers-iwp-enxtm-technology-asap-fast-charge-upto-42-hours-playback-ipx4-sweat-water-resistance",
@@ -1067,7 +1067,7 @@ const INITIAL_PRODUCTS = [
     "handle": "airdopes-441-pro-special-batman-edition-2600-mah-carry-case-6mm-drivers-upto-20h-nonstop-music-ipx7-sweat-water-resistance",
     "comparePrice": "Rs. 14,98,500.00",
     "description": "<h1></h1>",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "category": "accessories",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
@@ -1087,7 +1087,7 @@ const INITIAL_PRODUCTS = [
     "image": "https://look-10287.myshopify.com/cdn/shop/files/03_7a776f40-34f7-4fc0-a708-bf715f327c6f_512x512.jpg?v=1781259435",
     "price": "Rs. 999.00",
     "category": "accessories",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "hiddenOnWebsite": true
   },
   {
@@ -1104,7 +1104,7 @@ const INITIAL_PRODUCTS = [
     "stockStatus": "out-of-stock",
     "comparePrice": "Rs. 33,900.00",
     "description": "<h1></h1>",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
@@ -1123,7 +1123,7 @@ const INITIAL_PRODUCTS = [
     "stockStatus": "out-of-stock",
     "handle": "apple-ipad-10th-generation-with-a14-bionic-chip-256gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-yellow",
     "comparePrice": "Rs. 33,900.00",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/eqipjvn",
     "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
@@ -1847,7 +1847,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '24000.0';
+const IKKO_BUILD_VER = '25000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {

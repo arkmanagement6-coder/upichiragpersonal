@@ -695,7 +695,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=24000.0"></script>
+    <script src="app-core.js?v=25000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
@@ -735,19 +735,19 @@
             const amountNum = Math.round(currentTotal);
             let sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/1haejzi';
 
-            if (amountNum === 99) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/5fowmc9';
-            } else if (amountNum === 199) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/1haejzi';
-            } else if (amountNum === 399) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/wh3mkln';
-            } else if (amountNum === 499) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/gxoyfsp';
-            } else if (amountNum === 599) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/my6xtrf';
-            } else if (amountNum === 899) {
-                sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/seoitap';
-            }
+            if (amountNum === 99) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/5fowmc9';
+            else if (amountNum === 199) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/1haejzi';
+            else if (amountNum === 298) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/7uduwrr';
+            else if (amountNum === 299) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/wznxv8z';
+            else if (amountNum === 369) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/dafz2es';
+            else if (amountNum === 386) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/kurhb7x';
+            else if (amountNum === 399) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/wh3mkln';
+            else if (amountNum === 499) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/gxoyfsp';
+            else if (amountNum === 595) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/xk0evmb';
+            else if (amountNum === 599) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/my6xtrf';
+            else if (amountNum === 699) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/xzx9xx7';
+            else if (amountNum === 899) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/seoitap';
+            else if (amountNum === 999) sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/eqipjvn';
 
             let cust = {};
             try { cust = JSON.parse(localStorage.getItem('ikko_customer')) || {}; } catch(e){}
