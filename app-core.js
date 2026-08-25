@@ -1064,7 +1064,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '3600.0';
+const IKKO_BUILD_VER = '3700.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
