@@ -117,10 +117,15 @@
 
         /* Top View Details & Price Card */
         .price-summary-card {
+            padding: 16px 18px;
+            transition: all 0.3s ease;
+        }
+        .price-summary-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 18px;
+            cursor: pointer;
+            user-select: none;
         }
         .view-details-link {
             font-size: 0.95rem;
@@ -130,11 +135,109 @@
             align-items: center;
             gap: 4px;
             cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .view-details-link:hover {
+            color: #0080ff;
         }
         .top-total-amount {
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--text-heading);
+        }
+
+        /* Order Details Expandable Drawer */
+        .order-details-drawer {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed #cbd5e1;
+        }
+        .order-details-drawer.open {
+            display: block;
+            animation: fadeInDrawer 0.25s ease-out forwards;
+        }
+
+        @keyframes fadeInDrawer {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .details-item-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .details-item-img {
+            width: 46px;
+            height: 46px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #f8fafc;
+        }
+        .details-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .details-item-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+        .details-item-qty {
+            font-size: 0.78rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .details-item-price {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .details-price-table {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid #f1f5f9;
+        }
+        .details-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+        .details-price-row.discount-row {
+            color: #16a34a;
+            font-weight: 700;
+        }
+        .details-price-row.free-tag {
+            color: #16a34a;
+            font-weight: 800;
+        }
+        .details-price-row.total-row {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #0f172a;
+            padding-top: 8px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4px;
         }
 
         /* Cashback Green Box */
@@ -417,11 +520,40 @@
 
         <!-- Top Price Summary Card -->
         <div class="ui-card price-summary-card">
-            <div class="view-details-link">
-                View Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 2px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <div class="price-summary-header" onclick="toggleOrderDetails()">
+                <div class="view-details-link">
+                    <span id="view-details-label">View Details</span>
+                    <svg id="view-details-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px; transition: transform 0.25s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="top-total-amount" id="top-payment-total">
+                    ₹499.00
+                </div>
             </div>
-            <div class="top-total-amount" id="top-payment-total">
-                ₹1.00
+
+            <!-- Expandable Order Details Drawer -->
+            <div class="order-details-drawer" id="order-details-drawer">
+                <div class="details-product-list" id="details-product-list">
+                    <!-- Dynamic Product List -->
+                </div>
+
+                <div class="details-price-table">
+                    <div class="details-price-row">
+                        <span>Item Total (MSRP)</span>
+                        <span id="details-msrp-total">₹1,099.00</span>
+                    </div>
+                    <div class="details-price-row discount-row">
+                        <span>Promotional Discount</span>
+                        <span id="details-discount-amount">-₹600.00</span>
+                    </div>
+                    <div class="details-price-row">
+                        <span>Delivery Charge</span>
+                        <span class="free-tag">FREE</span>
+                    </div>
+                    <div class="details-price-row total-row">
+                        <span>Total Payable</span>
+                        <span id="details-final-total">₹499.00</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -550,7 +682,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=2800.0"></script>
+    <script src="app-core.js?v=8000.0"></script>
     <script>
         let selectedMethod = 'phonepe'; // 'phonepe', 'paytm', 'qr'
         let currentOrderId = '';
@@ -710,6 +842,84 @@
             window.location.href = `order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&utr=${encodeURIComponent(utr)}`;
         }
 
+        function toggleOrderDetails() {
+            const drawer = document.getElementById('order-details-drawer');
+            const label = document.getElementById('view-details-label');
+            const arrow = document.getElementById('view-details-arrow');
+
+            if (!drawer) return;
+
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) {
+                drawer.classList.remove('open');
+                if (label) label.innerText = 'View Details';
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            } else {
+                drawer.classList.add('open');
+                if (label) label.innerText = 'Hide Details';
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function renderOrderDetailsDrawer() {
+            const listEl = document.getElementById('details-product-list');
+            if (!listEl) return;
+
+            let cart = getCart();
+            if (!cart || cart.length === 0) {
+                const products = typeof getProductsSync === 'function' ? getProductsSync() : [];
+                const firstProd = products[0] || {};
+                cart = [{
+                    id: firstProd.id || 'JUBI-1',
+                    title: firstProd.title || 'Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil',
+                    price: currentTotal || 499,
+                    comparePrice: 1099,
+                    quantity: 1,
+                    image: firstProd.image || 'assets/product_1_JUBI-1.jpg'
+                }];
+            }
+
+            let itemsHtml = '';
+            let totalMsrp = 0;
+            let totalPaid = 0;
+
+            cart.forEach(item => {
+                const itemPrice = parsePrice(item.price) || currentTotal || 499;
+                const itemCompare = parsePrice(item.comparePrice) || Math.round(itemPrice * 2.2);
+                const qty = item.quantity || 1;
+
+                totalPaid += itemPrice * qty;
+                totalMsrp += itemCompare * qty;
+
+                const rawImg = item.image || 'assets/product_1_JUBI-1.jpg';
+                const imgUrl = rawImg.split('?')[0] + '?v=4000.0';
+
+                itemsHtml += `
+                    <div class="details-item-row">
+                        <img src="${imgUrl}" alt="${item.title}" class="details-item-img">
+                        <div class="details-item-info">
+                            <div class="details-item-title">${item.title}</div>
+                            <div class="details-item-qty">Qty: ${qty}</div>
+                        </div>
+                        <div class="details-item-price">₹${(itemPrice * qty).toFixed(2)}</div>
+                    </div>
+                `;
+            });
+
+            listEl.innerHTML = itemsHtml;
+
+            const discount = totalMsrp - totalPaid;
+
+            const msrpEl = document.getElementById('details-msrp-total');
+            if (msrpEl) msrpEl.innerText = `₹${totalMsrp.toFixed(2)}`;
+
+            const discountEl = document.getElementById('details-discount-amount');
+            if (discountEl) discountEl.innerText = `-₹${discount.toFixed(2)}`;
+
+            const finalEl = document.getElementById('details-final-total');
+            if (finalEl) finalEl.innerText = `₹${totalPaid.toFixed(2)}`;
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = getQueryParam('orderId') || `IKKO-${Math.floor(100000 + Math.random() * 900000)}`;
             const totalParam = getQueryParam('total');
@@ -722,6 +932,7 @@
             document.getElementById('top-payment-total').innerText = `₹${currentTotal.toFixed(2)}`;
             document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
 
+            renderOrderDetailsDrawer();
             selectPaymentOption('paytm');
         });
     </script>
