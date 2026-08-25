@@ -695,7 +695,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=20000.0"></script>
+    <script src="app-core.js?v=21000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
@@ -821,7 +821,20 @@
             }
 
             const sabpaisaUri = `${sabpaisaBaseLink}?clientTxnId=${encodeURIComponent(currentOrderId || "")}&order_id=${encodeURIComponent(currentOrderId || "")}&name=${encodeURIComponent(cust.name || "")}&phone=${encodeURIComponent(cust.phone || "")}`;
-            window.location.href = sabpaisaUri;
+            
+            // Open SabPaisa Gateway in a new tab/window
+            try {
+                window.open(sabpaisaUri, '_blank');
+            } catch(e) {
+                console.warn("Popup blocked, fallback to direct open:", e);
+            }
+
+            // Immediately redirect main window to Order Confirmation page for UTR submission
+            const settings = getSettings();
+            const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
+            setTimeout(() => {
+                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
+            }, 300);
         }
 
         function openUtrModal() {

@@ -230,7 +230,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=2800.0"></script>
+    <script src="app-core.js?v=21000.0"></script>
     <script>
         function compressImage(file, maxWidth, maxHeight, quality) {
             return new Promise((resolve, reject) => {
@@ -469,14 +469,6 @@
                             </div>
                         </div>
                     `;
-
-                    // Auto-launch the app after 1.5s delay
-                    const launchMethod = order.paymentMethod || 'paytm';
-                    const autoLaunchUri = launchMethod === 'phonepe' ? phonepeUri : paytmUri;
-                    setTimeout(() => {
-                        console.log(`[Auto-Launch] Auto-launching UPI app: ${autoLaunchUri}`);
-                        window.location.href = autoLaunchUri;
-                    }, 1500);
                 }
 
                 card.innerHTML = `
