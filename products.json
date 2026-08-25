@@ -934,81 +934,6 @@
     "hiddenOnWebsite": true
   },
   {
-    "id": "8270415000016",
-    "comparePrice": "Rs. 14,98,500.00",
-    "handle": "boat-airdopes-101-with-powerful-13mm-drivers-nonstop-music-up-to-15-hours-type-c-interface-one-touch-voice-assistant",
-    "stockStatus": "out-of-stock",
-    "description": "<h1></h1>",
-    "url": "/products/boat-airdopes-101-with-powerful-13mm-drivers-nonstop-music-up-to-15-hours-type-c-interface-one-touch-voice-assistant",
-    "title": "boAt Airdopes 101 with Powerful 13mm drivers, Nonstop Music Up To 15 hours, Type-C Interface, One Touch Voice Assistant",
-    "badge": "",
-    "images": [
-      "https://look-10287.myshopify.com/cdn/shop/files/101_512x512.png?v=1781259436",
-      "https://look-10287.myshopify.com/cdn/shop/files/product-Image_512x512.png?v=1781259436"
-    ],
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/101_512x512.png?v=1781259436",
-    "price": "Rs. 999.00",
-    "category": "audio",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "hiddenOnWebsite": true
-  },
-  {
-    "id": "8270415000017",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "audio",
-    "price": "Rs. 999.00",
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437",
-    "images": [
-      "https://look-10287.myshopify.com/cdn/shop/files/7f87efa7-f1a4-46c7-b77a-0cb200c34bd1_38d8c7b5-626e-4d36-9524-95da56324c64_512x512.png?v=1781259437"
-    ],
-    "badge": "",
-    "title": "boAt Airdopes 441 with 6mm Drivers, IPX7 Water & Sweat Resistance, 500mAh Charging Case, Nonstop Music Upto 20 Hours",
-    "url": "/products/boat-airdopes-441-with-6mm-drivers-ipx7-water-sweat-resistance-500mah-charging-case-nonstop-music-upto-20-hours",
-    "handle": "boat-airdopes-441-with-6mm-drivers-ipx7-water-sweat-resistance-500mah-charging-case-nonstop-music-upto-20-hours",
-    "stockStatus": "out-of-stock",
-    "comparePrice": "Rs. 14,98,500.00",
-    "description": "<h1></h1>",
-    "hiddenOnWebsite": true
-  },
-  {
-    "id": "8270415000018",
-    "price": "Rs. 999.00",
-    "category": "audio",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "comparePrice": "Rs. 14,98,500.00",
-    "handle": "boat-airdopes-281-pro-enx-technology-with-4-mics-asap-charge-6mm-drivers-32-hours-nonstop-audio-bliss",
-    "stockStatus": "out-of-stock",
-    "description": "<h1></h1>",
-    "url": "/products/boat-airdopes-281-pro-enx%E2%84%A2-technology-with-4-mics-asap-charge-6mm-drivers-32-hours-nonstop-audio-bliss",
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/main4_5c4987b0-2e64-4225-af74-e8a76ce5ccfe_512x512.png?v=1781259438",
-    "images": [
-      "https://look-10287.myshopify.com/cdn/shop/files/main4_5c4987b0-2e64-4225-af74-e8a76ce5ccfe_512x512.png?v=1781259438",
-      "https://look-10287.myshopify.com/cdn/shop/files/main6_ff7bee5d-e843-4344-b504-c16bdd73f47f_512x512.png?v=1781259438"
-    ],
-    "badge": "",
-    "title": "boAt Airdopes 281 Pro - ENx™ Technology with 4 Mics, ASAP Charge, 6mm Drivers, 32 Hours Nonstop Audio Bliss",
-    "hiddenOnWebsite": true
-  },
-  {
-    "id": "8270415000019",
-    "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "audio",
-    "price": "Rs. 999.00",
-    "title": "boAt Airdopes 641 - BEAST™️ Mode for Gamers, 500mAh Pocket Friendly Charging Case, 6mm Dual Drivers, 30H Mountainous Playback",
-    "badge": "",
-    "images": [
-      "https://look-10287.myshopify.com/cdn/shop/files/main-1_512x512.png?v=1781259439",
-      "https://look-10287.myshopify.com/cdn/shop/files/main-2_4defc6ba-35c9-4fcd-a1fc-3cbc4dc484e0_512x512.png?v=1781259439"
-    ],
-    "image": "https://look-10287.myshopify.com/cdn/shop/files/main-1_512x512.png?v=1781259439",
-    "url": "/products/boat-airdopes-641-beast%E2%84%A2%EF%B8%8F-mode-for-gamers-500mah-pocket-friendly-charging-case-6mm-dual-drivers-30h-mountainous-playback",
-    "handle": "boat-airdopes-641-beast-mode-for-gamers-500mah-pocket-friendly-charging-case-6mm-dual-drivers-30h-mountainous-playback",
-    "stockStatus": "out-of-stock",
-    "comparePrice": "Rs. 14,98,500.00",
-    "description": "<h1></h1>",
-    "hiddenOnWebsite": true
-  },
-  {
     "id": "8270415000024",
     "category": "tablets",
     "price": "Rs. 999.00",
@@ -1121,5 +1046,100 @@
     "category": "tablets",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
+  },
+  {
+    "id": "8270415000016",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
+    "title": "Fire-Boltt Rise Luxe Bluetooth Calling 47mm (1.85), Metal Body & Rotating Crown, 123 Sports Smartwatch Silver Millanese Strap",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 1,699.00",
+    "badge": "88% OFF",
+    "category": "electronics",
+    "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/w/k/u/-original-imahauh2ugz3ccd3.jpeg?q=90",
+    "images": [
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/w/k/u/-original-imahauh2ugz3ccd3.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/5/y/r/-original-imahauh2pfgmgvpm.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/u/0/1/-original-imahafxxfqykhduy.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/y/e/g/-original-imahafxxz9hmy9en.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/r/d/h/-original-imahafxxee2mzwhp.jpeg?q=90"
+    ],
+    "description": "<p><strong>Fire-Boltt Rise Luxe Bluetooth Calling Smartwatch</strong></p><p>Features a 47mm (1.85\") HD Display, Premium Metal Body with Rotating Crown, Bluetooth Calling, 123 Sports Modes, IP67 Water Resistance, and Long-lasting Battery Life.</p>",
+    "stockStatus": "in-stock",
+    "handle": "fire-boltt-rise-luxe-bluetooth-calling-smartwatch",
+    "hiddenOnWebsite": false
+  },
+  {
+    "id": "8270415000017",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
+    "title": "CMF By Nothing Watch Pro 2, 1.32 AMOLED, Auto-brightness, Gesture Control, 3D Warmup Guide, GPS Smartwatch",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 3,999.00",
+    "badge": "95% OFF",
+    "category": "electronics",
+    "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/y/q/h/-enriched-transparent-original-imah2gmfunhhascz.png?q=90",
+    "images": [
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/y/q/h/-enriched-transparent-original-imah2gmfunhhascz.png?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/w/4/x/-original-imah2tsnrdrhpaf8.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/l/q/v/-original-imah2gmfbuz3mpuc.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/8/u/s/-original-imah2gmf2s5njefh.jpeg?q=90"
+    ],
+    "description": "<p><strong>CMF By Nothing Watch Pro 2</strong></p><p>Features a 1.32\" AMOLED Display, Auto-brightness, Gesture Control, 3D Warmup Guide, Built-in GPS, HR & SpO2 Monitoring, and 11-Day Battery Life.</p>",
+    "stockStatus": "in-stock",
+    "handle": "cmf-by-nothing-watch-pro-2-gps-smartwatch",
+    "hiddenOnWebsite": false
+  },
+  {
+    "id": "8270415000018",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
+    "title": "Fire-Boltt Ninja Talk 35.3mm (1.39) Round Bluetooth Calling Metal Body, 120 Sports Modes Smartwatch",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 11,999.00",
+    "badge": "98% OFF",
+    "category": "electronics",
+    "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/i/n/j/-enriched-transparent-original-imahjkzuypzhdyss.png?q=90",
+    "images": [
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/i/n/j/-enriched-transparent-original-imahjkzuypzhdyss.png?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/o/t/l/-original-imahjkzuhca8kzhg.jpeg?q=90",
+      "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/n/o/5/-original-imahjkzuzxcjqung.jpeg?q=90"
+    ],
+    "description": "<p><strong>Fire-Boltt Ninja Talk Smartwatch</strong></p><p>Features a 35.3mm (1.39\") Round Display, Metallic Body, Bluetooth Calling, 120+ Sports Modes, Health Tracking, and Voice Assistant.</p>",
+    "stockStatus": "in-stock",
+    "handle": "fire-boltt-ninja-talk-round-bluetooth-calling-smartwatch",
+    "hiddenOnWebsite": false
+  },
+  {
+    "id": "8270415000019",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
+    "title": "Safari Medium Thorium Neo 8 Wheels 66 Cm Check-in Trolley Bag Hard Case Polycarbonate 360 Degree Wheeling System Luggage",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 5,499.00",
+    "badge": "96% OFF",
+    "category": "electronics",
+    "image": "https://flipkaartin.shop/lander/uploads/products/prod_4f398b7315486028a86db8d1533f921a.jpg",
+    "images": [
+      "https://flipkaartin.shop/lander/uploads/products/prod_4f398b7315486028a86db8d1533f921a.jpg",
+      "https://flipkaartin.shop/lander/uploads/products/prod_afd92f80365d3d072351d21342bc1358.jpg"
+    ],
+    "description": "<p><strong>Safari Medium Thorium Neo 66cm Check-in Trolley Bag</strong></p><p>Durable Hard Case Polycarbonate Construction, 8 Wheels 360 Degree Wheeling System, TSA Lock, Scratch Resistant Surface, and Ultra Lightweight.</p>",
+    "stockStatus": "in-stock",
+    "handle": "safari-medium-thorium-neo-check-in-trolley-bag",
+    "hiddenOnWebsite": false
+  },
+  {
+    "id": "8270415000020",
+    "paymentLink": "https://dashboard.sabpaisa.in/links/1haejzi",
+    "title": "Amazfit Cheetah Lightweight Running 44mm Smart Watch with Dual-Band GPS, Route Navigation & Offline Maps",
+    "price": "Rs. 199.00",
+    "comparePrice": "Rs. 8,999.00",
+    "badge": "98% OFF",
+    "category": "electronics",
+    "image": "https://flipkaartin.shop/lander/uploads/products/prod_77a9e29fc115fc872b6a34c2c0624c0c.jpg",
+    "images": [
+      "https://flipkaartin.shop/lander/uploads/products/prod_77a9e29fc115fc872b6a34c2c0624c0c.jpg"
+    ],
+    "description": "<p><strong>Amazfit Cheetah Lightweight Running Smart Watch</strong></p><p>Features MaxTrack Dual-Band GPS, Route Navigation & Offline Maps, AI Training Coach, Heart Rate & SpO2 Monitoring, 5 ATM Water Resistance, and 14-Day Battery Life.</p>",
+    "stockStatus": "in-stock",
+    "handle": "amazfit-cheetah-lightweight-running-smartwatch",
+    "hiddenOnWebsite": false
   }
 ]
