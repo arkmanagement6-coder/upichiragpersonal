@@ -578,29 +578,28 @@
                 <div class="section-subtitle">Pay via UPI for instant cashback</div>
             </div>
 
-            <!-- Option 1: Paytm UPI (Default & Recommended) -->
-            <div class="payment-option-row selected" id="opt-paytm" onclick="selectPaymentOption('paytm')">
+            <!-- Option 1: PhonePe (Default & Recommended) -->
+            <div class="payment-option-row selected" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
                 <div class="option-left-content">
                     <div class="app-logo-box">
-                        <img src="Image/paytm-logo.svg" alt="Paytm">
+                        <img src="Image/phonepe-logo.svg" alt="PhonePe">
                     </div>
                     <div class="app-title-text">
-                        Paytm UPI
+                        PhonePe
                         <span class="fastest-pill">⚡ Fastest & Recommended</span>
                     </div>
                 </div>
                 <div class="custom-radio-circle"></div>
             </div>
 
-            <!-- Option 2: PhonePe / GPay (Server Down) -->
-            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
+            <!-- Option 2: Paytm UPI -->
+            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm')">
                 <div class="option-left-content">
                     <div class="app-logo-box">
-                        <img src="Image/phonepe-logo.svg" alt="PhonePe">
+                        <img src="Image/paytm-logo.svg" alt="Paytm">
                     </div>
                     <div class="app-title-text">
-                        PhonePe / GPay
-                        <span style="background: #fffbebf5; color: #d97706; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; border: 1px solid #fef3c7;">⚠️ Server Down</span>
+                        Paytm UPI
                     </div>
                 </div>
                 <div class="custom-radio-circle"></div>
@@ -682,7 +681,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=8000.0"></script>
+    <script src="app-core.js?v=9000.0"></script>
     <script>
         let selectedMethod = 'phonepe'; // 'phonepe', 'paytm', 'qr'
         let currentOrderId = '';
@@ -694,11 +693,6 @@
         }
 
         function selectPaymentOption(method) {
-            if (method === 'phonepe' || method === 'gpay') {
-                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Please use Paytm for instant payment.');
-                method = 'paytm';
-            }
-
             selectedMethod = method;
             document.querySelectorAll('.payment-option-row').forEach(el => el.classList.remove('selected'));
             
@@ -709,12 +703,6 @@
         }
 
         async function executePayment() {
-            if (selectedMethod === 'phonepe' || selectedMethod === 'gpay') {
-                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Switching to Paytm for instant payment.');
-                selectPaymentOption('paytm');
-                return;
-            }
-
             const settings = getSettings();
             const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
             const payeeName = settings.phonepeClientId || 'PhonePe';
@@ -757,7 +745,7 @@
                 console.error("Error syncing order to Firestore:", e);
             }
 
-            // Track Meta Pixel AddPaymentInfo event (Purchase event fires on order confirmation / admin approval)
+            // Track Meta Pixel AddPaymentInfo event
             try {
                 if (typeof fbq === 'function') {
                     fbq('track', 'AddPaymentInfo', {
@@ -768,21 +756,47 @@
             } catch(e){}
 
             if (selectedMethod === 'qr' || !isMobile) {
-                // Show QR & UTR Modal
+                // Show QR & UTR Modal for desktop or QR option
                 openUtrModal();
                 return;
             }
 
-            // ONLY Paytm redirects to app directly
-            const paytmUri = isAndroid 
-                ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
+            if (selectedMethod === 'phonepe') {
+                // Deep Intent Launch for PhonePe
+                const phonepeUri = isAndroid
+                    ? `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "Store Order")}#Intent;scheme=phonepe;package=com.phonepe.app;end`
+                    : `phonepe://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "Store Order")}`;
 
-            // Launch Paytm app directly and redirect to confirmation after 800ms
-            window.location.href = paytmUri;
-            setTimeout(() => {
-                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
-            }, 800);
+                const genericUpiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "Store Order")}`;
+
+                // Launch PhonePe Deep Intent
+                window.location.href = phonepeUri;
+
+                // Fallback for devices requiring upi://
+                setTimeout(() => {
+                    if (document.hidden || document.webkitHidden) return;
+                    window.location.href = genericUpiUri;
+                }, 400);
+
+                // Auto redirect to order confirmation page
+                setTimeout(() => {
+                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
+                }, 1000);
+                return;
+            }
+
+            if (selectedMethod === 'paytm') {
+                // Paytm Intent URI
+                const paytmUri = isAndroid 
+                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
+
+                window.location.href = paytmUri;
+                setTimeout(() => {
+                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
+                }, 800);
+                return;
+            }
         }
 
         function openUtrModal() {
@@ -933,7 +947,7 @@
             document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
 
             renderOrderDetailsDrawer();
-            selectPaymentOption('paytm');
+            selectPaymentOption('phonepe');
         });
     </script>
 </body>
