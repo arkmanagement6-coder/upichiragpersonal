@@ -695,7 +695,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=14000.0"></script>
+    <script src="app-core.js?v=15000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
@@ -802,8 +802,9 @@
                 return;
             }
 
-            // Default: SabPaisa QuickPages Dynamic Link Redirection
-            const sabpaisaUri = `https://quickpages.sabpaisa.in/links/knisxpt?amount=${cleanAmount}&amt=${cleanAmount}&price=${cleanAmount}&order_id=${encodeURIComponent(currentOrderId || "")}&name=${encodeURIComponent(cust.name || "")}&phone=${encodeURIComponent(cust.phone || "")}`;
+            // SabPaisa QuickPages Dynamic Link Redirection for Rs 499 orders
+            let sabpaisaBaseLink = 'https://dashboard.sabpaisa.in/links/gxoyfsp';
+            const sabpaisaUri = `${sabpaisaBaseLink}?clientTxnId=${encodeURIComponent(currentOrderId || "")}&order_id=${encodeURIComponent(currentOrderId || "")}&name=${encodeURIComponent(cust.name || "")}&phone=${encodeURIComponent(cust.phone || "")}`;
             window.location.href = sabpaisaUri;
         }
 
