@@ -593,7 +593,7 @@
             </div>
 
             <!-- Option 2: Paytm UPI -->
-            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm', true)">
+            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm', true)" style="display: none !important;">
                 <div class="option-left-content">
                     <div class="app-logo-box">
                         <img src="Image/paytm-logo.svg" alt="Paytm">
@@ -606,7 +606,7 @@
             </div>
 
             <!-- Option 3: PhonePe / GPay (Server Down) -->
-            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe', true)">
+            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe', true)" style="display: none !important;">
                 <div class="option-left-content">
                     <div class="app-logo-box">
                         <img src="Image/phonepe-logo.svg" alt="PhonePe">
@@ -620,7 +620,7 @@
             </div>
 
             <!-- Option 4: Scan QR Code -->
-            <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr', true)">
+            <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr', true)" style="display: none !important;">
                 <div class="option-left-content">
                     <div class="app-logo-box" style="background: #ffeef0; color: var(--brand-color); font-size: 1.2rem; font-weight: 800;">
                         ☴
@@ -635,7 +635,7 @@
         </div>
 
         <!-- Unavailable Payment Methods Section -->
-        <div class="ui-card">
+        <div class="ui-card" style="display: none !important;">
             
             <div class="disabled-option-row">
                 <div class="option-left-content">
@@ -695,7 +695,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=18000.0"></script>
+    <script src="app-core.js?v=20000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
