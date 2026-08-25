@@ -208,6 +208,10 @@
                 <div class="chip-icon">🧊</div>
                 <span class="chip-label">Frozen</span>
             </div>
+            <div class="chip-item" onclick="filterTab('electronics'); scrollToProducts(event)">
+                <div class="chip-icon">📱</div>
+                <span class="chip-label">Electronics</span>
+            </div>
         </div>
     </div>
 
@@ -255,11 +259,12 @@
                     <span class="fire-icon">🔥</span>
                     <h2>Today's Best Deals</h2>
                 </div>
-                <p class="deals-subtitle">14 products · Fresh combos, daily essentials & more</p>
+                <p class="deals-subtitle">15 products · Fresh combos, daily essentials & electronics</p>
             </div>
             <div class="deals-filter-pills">
                 <button class="deal-pill active" id="tab-all" onclick="filterTab('all')">All</button>
                 <button class="deal-pill" id="tab-grocery-combos" onclick="filterTab('grocery-combos')">Best Sellers</button>
+                <button class="deal-pill" id="tab-electronics" onclick="filterTab('electronics')">Electronics</button>
                 <button class="deal-pill" id="tab-dry-fruits" onclick="filterTab('dry-fruits')">Top Rated</button>
                 <button class="deal-pill" id="tab-biggest-deals" onclick="filterTab('all')">Biggest Deals</button>
             </div>
