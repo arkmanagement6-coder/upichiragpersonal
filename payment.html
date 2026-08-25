@@ -668,7 +668,7 @@
     <!-- Bottom Fixed Pay Action Bar -->
     <div class="bottom-pay-bar">
         <button type="button" class="pay-securely-btn" id="btn-pay-securely" onclick="executePayment()">
-            Pay Securely <span id="btn-pay-price">₹1.00</span> <span>›</span>
+            Pay Securely <span id="btn-pay-price">₹499.00</span> <span>›</span>
         </button>
         <div class="secure-subtext">
             <span>🔒</span> 100% Safe & Secure Payment
@@ -695,11 +695,11 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=21000.0"></script>
+    <script src="app-core.js?v=22000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
-        let currentTotal = 1.00;
+        let currentTotal = 499.00;
 
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -975,14 +975,23 @@
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = getQueryParam('orderId') || `IKKO-${Math.floor(100000 + Math.random() * 900000)}`;
             const totalParam = getQueryParam('total');
-            if (totalParam) {
-                currentTotal = parseFloat(totalParam) || 1.00;
+            if (totalParam && !isNaN(parseFloat(totalParam)) && parseFloat(totalParam) > 0) {
+                currentTotal = parseFloat(totalParam);
             } else {
-                currentTotal = getCartTotal() || 1.00;
+                const cTotal = getCartTotal();
+                if (cTotal && cTotal > 0) {
+                    currentTotal = cTotal;
+                } else {
+                    currentTotal = 499.00;
+                }
             }
 
-            document.getElementById('top-payment-total').innerText = `₹${currentTotal.toFixed(2)}`;
-            document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
+            const formattedPrice = `₹${currentTotal.toFixed(2)}`;
+            const topTotalEl = document.getElementById('top-payment-total');
+            if (topTotalEl) topTotalEl.innerText = formattedPrice;
+
+            const btnPayPriceEl = document.getElementById('btn-pay-price');
+            if (btnPayPriceEl) btnPayPriceEl.innerText = formattedPrice;
 
             renderOrderDetailsDrawer();
             selectPaymentOption('sabpaisa', false);
