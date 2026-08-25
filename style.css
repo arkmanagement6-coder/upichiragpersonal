@@ -2965,22 +2965,48 @@ button, input, select, textarea {
 
 /* --- JUBIMART HOMEPAGE SECTIONS --- */
 
-/* Yellow Ticker Bar */
+/* Yellow Smooth Running Line Ticker Bar */
 .ticker-bar {
     background-color: #f8c42a;
     color: #1c1c1c;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 800;
-    padding: 10px 16px;
-    text-align: center;
-    letter-spacing: 0.5px;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
 }
-.ticker-content {
+.ticker-track {
+    display: flex;
+    width: max-content;
+    animation: tickerRun 22s linear infinite;
+}
+.ticker-bar:hover .ticker-track {
+    animation-play-state: paused;
+}
+.ticker-group {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 16px;
+    padding-right: 16px;
+    white-space: nowrap;
+}
+.ticker-group span {
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+@keyframes tickerRun {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media (min-width: 769px) {
+    .ticker-bar {
+        font-size: 0.82rem;
+        padding: 10px 0;
+    }
 }
 
 /* Category Chips */
