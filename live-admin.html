@@ -911,8 +911,8 @@
                 }
             }
 
-            // Fire Meta Pixel & Conversions API tracking if approved
-            const approvalStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
+            // Fire Meta Pixel & Conversions API tracking ONLY when explicitly Approved by Admin
+            const approvalStatuses = ['approved'];
             if (approvalStatuses.includes(newStatus)) {
                 console.log(`[Pixel & CAPI] Firing Purchase event for approved order: ${orderId}`);
                 if (typeof window.trackPurchaseEvent === 'function') {

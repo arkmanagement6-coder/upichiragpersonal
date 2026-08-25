@@ -669,24 +669,11 @@
                 const hasUtr = order.utr && order.utr.trim() !== '' && !order.utr.toLowerCase().includes('pending') && order.utr !== 'Payment Failed';
                 
                 // Fire Meta Pixel & Server Conversions API (CAPI) Purchase tracking ONLY when Admin approves
-                const validPurchaseStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
-                if (validPurchaseStatuses.includes(status)) {
+                const validPurchaseStatuses = ['approved'];
+                if (validPurchaseStatuses.includes(status) && !order.pixelFired) {
+                    order.pixelFired = true;
                     if (typeof window.trackPurchaseEvent === 'function') {
                         window.trackPurchaseEvent(order);
-                    }
-                    if (!order.pixelFired) {
-                        console.log(`[CAPI] Firing Conversions API Purchase tracking from confirmation for: ${order.id}`);
-                        fetch('/api/track-purchase', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ order: order })
-                        }).then(res => res.json())
-                          .then(resData => {
-                              if (resData.success) {
-                                  order.pixelFired = true;
-                                  console.log("[CAPI] Server Purchase tracked successfully.");
-                              }
-                          }).catch(e => console.error("[CAPI] Confirmation tracking error:", e));
                     }
                 }
 

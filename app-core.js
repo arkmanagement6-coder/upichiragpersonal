@@ -83,15 +83,32 @@
     }
 })();
 
-// Expose global helper to track purchase event dynamically on demand
+// Expose global helper to track purchase event dynamically on demand (ONLY FOR APPROVED ORDERS)
 window.trackPurchaseEvent = function(order) {
     if (!order) return;
     const targetId = order.id || order.orderId || order.order_id || ('ORD-' + Date.now());
     order.id = targetId;
+
+    // Strict status check: MUST ONLY fire for explicitly approved orders
+    const status = (order.status || '').toLowerCase();
+    if (status !== 'approved') {
+        console.log(`[Pixel & CAPI] Order ${order.id} status is '${status}'. Purchase event will NOT fire until Admin approves.`);
+        return;
+    }
+
+    // Strict deduplication check: Prevent firing multiple times for the same order
+    const sessionKey = 'pixel_purchase_fired_' + order.id;
+    if (sessionStorage.getItem(sessionKey) || order.pixelFired) {
+        console.log(`[Pixel & CAPI] Purchase event already fired for order ${order.id}. Skipping duplicate tracking.`);
+        return;
+    }
+
+    sessionStorage.setItem(sessionKey, 'true');
+    order.pixelFired = true;
     
-    // Always trigger Server Conversions API (CAPI)
+    // Trigger Server Conversions API (CAPI)
     try {
-        console.log(`[CAPI] Dispatching Conversions API purchase for order: ${order.id}`);
+        console.log(`[CAPI] Dispatching Conversions API purchase for approved order: ${order.id}`);
         fetch('/api/track-purchase', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -100,8 +117,6 @@ window.trackPurchaseEvent = function(order) {
           .then(resData => {
               if (resData.success) {
                   console.log(`[CAPI] Server purchase event successfully logged for order ${order.id}`);
-              } else {
-                  console.warn(`[CAPI] Meta CAPI response:`, resData);
               }
           }).catch(err => {
               console.error("[CAPI] Server tracking error:", err);
@@ -110,13 +125,7 @@ window.trackPurchaseEvent = function(order) {
         console.error("[CAPI] Error calling track-purchase endpoint:", e);
     }
 
-    // Check session storage per order ID so browser pixel doesn't spam on page reloads
-    const sessionKey = 'pixel_purchase_fired_' + order.id;
-    if (sessionStorage.getItem(sessionKey)) {
-        console.log(`[Pixel] Browser Purchase event already fired for order ${order.id} in this session.`);
-        return;
-    }
-
+    // Trigger Browser Meta Pixel
     const firePurchase = () => {
         if (typeof fbq === 'function') {
             let totalVal = 1.00;
@@ -130,15 +139,13 @@ window.trackPurchaseEvent = function(order) {
                 ? order.items.map(item => String(item.id))
                 : ['8270415000000'];
 
-            console.log(`[Pixel] Firing Browser Purchase event for order ${order.id} with value Rs. ${totalVal}`);
+            console.log(`[Pixel] Firing Browser Purchase event for approved order ${order.id} with value Rs. ${totalVal}`);
             fbq('track', 'Purchase', {
                 value: totalVal,
                 currency: 'INR',
                 content_type: 'product',
                 content_ids: contentIds
             }, { eventID: order.id });
-            
-            sessionStorage.setItem(sessionKey, 'true');
         } else {
             console.warn('[Pixel] fbq function not found yet. Retrying in 300ms...');
             setTimeout(firePurchase, 300);
@@ -1064,7 +1071,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '10000.0';
+const IKKO_BUILD_VER = '11000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
