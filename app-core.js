@@ -1774,7 +1774,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '15000.0';
+const IKKO_BUILD_VER = '16000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
@@ -2002,29 +2002,24 @@ function saveCart(cart) {
 }
 
 async function addToCart(productId, qty = 1) {
-    const cart = getCart();
     const products = await getProducts();
     const product = products.find(p => String(p.id) === String(productId));
     
     if (!product) return;
     
-    const existingItem = cart.find(item => String(item.id) === String(productId));
-    if (existingItem) {
-        existingItem.qty += qty;
-    } else {
-        cart.push({
-            id: product.id,
-            title: product.title,
-            price: product.price,
-            comparePrice: product.comparePrice,
-            image: product.image,
-            qty: qty
-        });
-    }
+    // Force Single Item Cart: Overwrite cart array to contain ONLY this 1 item with Qty = 1
+    const singleItemCart = [{
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        comparePrice: product.comparePrice,
+        image: product.image,
+        qty: 1
+    }];
     
     // Meta Pixel AddToCart Event
     if (typeof fbq === 'function') {
-        let priceVal = 999;
+        let priceVal = 499;
         if (product.price) {
             const cleaned = String(product.price).replace(/[^\d.]/g, '');
             const parsed = parseFloat(cleaned);
@@ -2039,8 +2034,8 @@ async function addToCart(productId, qty = 1) {
         });
     }
 
-    saveCart(cart);
-    openCartDrawer();
+    saveCart(singleItemCart);
+    window.location.href = 'checkout.html';
 }
 
 function removeFromCart(productId) {
@@ -2049,16 +2044,11 @@ function removeFromCart(productId) {
     saveCart(cart);
 }
 
-// Update cart quantity
+// Update cart quantity: Locked at 1 for fixed payment links
 function updateCartQty(productId, qty) {
     const cart = getCart();
     const item = cart.find(item => String(item.id) === String(productId));
     if (item) {
-        item.qty = parseInt(qty) || 1;
-        if (item.qty <= 0) {
-            removeFromCart(productId);
-            return;
-        }
     }
     saveCart(cart);
 }

@@ -646,7 +646,7 @@
                     <span class="item-count-badge" id="items-count-tag">1 items</span>
                 </div>
 
-                <div class="offer-dashed-banner" id="offer-dashed-banner-el">
+                <div class="offer-dashed-banner" id="offer-dashed-banner-el" style="display: none !important;">
                     <span>Add 2 more items for <b>BUY 2 GET 1 FREE</b></span>
                     <span>🎁</span>
                 </div>
@@ -655,7 +655,7 @@
                     <!-- Populated dynamically -->
                 </div>
 
-                <button class="add-more-dashed-btn" onclick="window.location.href='index.html'">
+                <button class="add-more-dashed-btn" onclick="window.location.href='index.html'" style="display: none !important;">
                     <span>+ Add more items</span>
                 </button>
             </div>
@@ -706,7 +706,7 @@
     </main>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=2800.0"></script>
+    <script src="app-core.js?v=16000.0"></script>
     <script>
         let currentStep = 1;
 
@@ -795,8 +795,17 @@
             document.getElementById('summary-name-text').innerText = cust.name || 'Customer';
             document.getElementById('summary-address-text').innerText = cust.fullAddressText || `${cust.address || ''}, ${cust.city || ''}, ${cust.state || ''} - ${cust.pin || ''}`;
 
+            // Enforce single item cart for fixed amount links
+            if (cart.length > 1) {
+                cart = [cart[cart.length - 1]];
+            }
+            if (cart.length > 0) {
+                cart[0].qty = 1;
+            }
+            saveCart(cart);
+
             // Fill Items list
-            document.getElementById('items-count-tag').innerText = `${cart.length} items`;
+            document.getElementById('items-count-tag').innerText = `1 Item`;
 
             const container = document.getElementById('cart-items-list-container');
             container.innerHTML = cart.map((item, idx) => {
@@ -806,15 +815,13 @@
                         <img src="${item.image}" alt="${item.title}" class="item-img">
                         <div class="item-info">
                             <div class="item-title-text">${item.title}</div>
-                            <div class="item-variant-text">Qty: ${item.qty} Unit</div>
+                            <div class="item-variant-text">Qty: 1 Unit</div>
                             <div class="item-price-wrap">
                                 <span class="item-current-price">₹${priceNum.toFixed(2)}</span>
                             </div>
                         </div>
-                        <div class="qty-stepper">
-                            <button type="button" class="qty-btn" onclick="updateQty(${idx}, -1)">-</button>
-                            <span class="qty-value">${item.qty}</span>
-                            <button type="button" class="qty-btn" onclick="updateQty(${idx}, 1)">+</button>
+                        <div class="single-qty-badge" style="background:#e8f8ee; color:#16a34a; font-weight:800; font-size:0.8rem; padding:6px 12px; border-radius:6px; border:1px solid #bbf7d0;">
+                            Qty: 1
                         </div>
                     </div>
                 `;
