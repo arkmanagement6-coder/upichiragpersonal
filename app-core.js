@@ -192,7 +192,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 299.00",
     "comparePrice": "Rs. 899.00",
     "badge": "67% Off",
-    "category": "dry-fruits",
+    "category": "grocery-combos",
     "image": "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg",
     "images": [
       "https://jubimart.vercel.app/assets/1720600784-DpRpsDcN.jpg"
@@ -252,7 +252,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 399.00",
     "comparePrice": "Rs. 999.00",
     "badge": "60% Off",
-    "category": "dry-fruits",
+    "category": "grocery-combos",
     "image": "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg",
     "images": [
       "https://jubimart.vercel.app/assets/1720600938-9eGnO6Cc.jpg"
@@ -492,7 +492,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 1988.00",
     "badge": "90% Off",
-    "category": "dry-fruits",
+    "category": "grocery-combos",
     "image": "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg",
     "images": [
       "https://jubimart.vercel.app/assets/1722700947-DRiVOVhB.jpg"
@@ -588,7 +588,7 @@ const INITIAL_PRODUCTS = [
       "Image/MindOne%20Pro%20Card-Sized%20AI%20Smartphone/ikko_22.webp"
     ],
     "price": "Rs. 499.00",
-    "category": "electronics",
+    "category": "mobile",
     "url": "/products/mindone-pro-card-sized-ai-smartphone-copy",
     "images": [
       "https://look-10287.myshopify.com/cdn/shop/files/ikko-mindone-pro-black1_512x512.png?v=1781259499",
@@ -613,7 +613,7 @@ const INITIAL_PRODUCTS = [
   {
     "id": "8270415000000",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "badge": "",
     "title": "Apple iPad Air 11″ (M2): Liquid Retina Display, 256GB, Landscape 12MP Front Camera / 12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray",
@@ -782,14 +782,14 @@ const INITIAL_PRODUCTS = [
     ],
     "description": "<div class=\"a-row\">\n<div class=\"a-column a-span6\">\n<h1 class=\"a-size-medium a-spacing-small\">Technical Details</h1>\n</div>\n</div>\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-extend-content\">\n<div class=\"a-row a-expander-container a-expander-inline-container\">\n<div data-expanded=\"true\" class=\"a-expander-content a-expander-section-content a-section-expander-inner\">\n<table id=\"productDetails_techSpec_section_1\" class=\"a-keyvalue prodDetTable\" role=\"presentation\">\n<tbody>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung, Dixon Technologies (India) Ltd., Plot no.6, Sector 90, Noida, Gautam Buddha Nagar, U.P. India – 201305</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Series</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung Galaxy Tab S10+</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Colour</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Gray | WiFi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Standing screen display size</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12.4 Inches</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2800 x 1752 Pixels</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Package Dimensions</th>\n<td class=\"a-size-base prodDetAttrValue\">‎30.2 x 20.3 x 2.1 cm; 571 g</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Batteries</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1 Lithium Ion batteries required. (included)</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item model number</th>\n<td class=\"a-size-base prodDetAttrValue\">‎SM-X820</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎MediaTek</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Processor Speed</th>\n<td class=\"a-size-base prodDetAttrValue\">‎2 GHz</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Speaker Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Dolby Speakers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Chipset Brand</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Graphics Card Description</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Integrated</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Connectivity Type</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Wi-Fi</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Wireless Carrier</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Unlocked for All Carriers</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Rear Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎13 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Front Webcam Resolution</th>\n<td class=\"a-size-base prodDetAttrValue\">‎12 MP</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Operating System</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Android 14</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Are Batteries Included</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Yes</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Lithium Battery Energy Content</th>\n<td class=\"a-size-base prodDetAttrValue\">‎42.21 Watt Hours</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Number of Lithium Ion Cells</th>\n<td class=\"a-size-base prodDetAttrValue\">‎1</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Included Components</th>\n<td class=\"a-size-base prodDetAttrValue\">‎USB Type C Cable, Tablet, S Pen, Ejection PIN, Quick Start Guide</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Manufacturer</th>\n<td class=\"a-size-base prodDetAttrValue\">‎Samsung</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Country of Origin</th>\n<td class=\"a-size-base prodDetAttrValue\">‎India</td>\n</tr>\n<tr>\n<th class=\"a-color-secondary a-size-base prodDetSectionEntry\">Item Weight</th>\n<td class=\"a-size-base prodDetAttrValue\">‎571 g</td>\n</tr>\n</tbody>\n</table>\n<p><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/1.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/2.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/3.webp\"><img alt=\"\" src=\"Image/Samsung Galaxy Tab S10 Plus, S Pen in-Box, 31.5 cm (12.4 inch) Dynamic AMOLED 2X Display, 12 GB RAM, 256 GB Storage, Wi-Fi Tablet, Moonstone Gray/4.webp\"></p>\n</div>\n</div>\n</div>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
   },
   {
     "id": "8270415000007",
     "price": "Rs. 999.00",
-    "category": "tablets",
+    "category": "mobile",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "descriptionImages": [
       "Image/Apple%20iPad%20mini%20(6th%20Gen)%20256%20GB%20ROM%208.3%20inch%20with%20Wi-Fi%2B5G/1.webp",
@@ -834,7 +834,7 @@ const INITIAL_PRODUCTS = [
     ],
     "image": "https://look-10287.myshopify.com/cdn/shop/files/222_a31333ca-5a60-4f70-8cf4-f8d0ab6e9ae1_512x512.jpg?v=1781259494",
     "price": "Rs. 999.00",
-    "category": "tablets",
+    "category": "mobile",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "descriptionImages": [
       "Image/Apple%20iPad%20(10th%20Generation)%20with%20A14%20Bionic%20chip,%20256GB,%20Wi-Fi%206,%2012MP%20front12MP%20Back%20Camera,%20Touch%20ID,%20All-Day%20Battery%20Life-Pink/1.webp",
@@ -862,7 +862,7 @@ const INITIAL_PRODUCTS = [
     "title": "Apple iPad Air 11″ (M2): Liquid Retina Display, 256GB, Landscape 12MP Front Camera / 12MP Back Camera, Wi-Fi 6E, Touch ID, All-Day Battery Life-Gray",
     "badge": "",
     "url": "/products/apple-ipad-air-11-m2-liquid-retina-display-256gb-landscape-12mp-front-camera-12mp-back-camera-wi-fi-6e-touch-id-all-day-battery-life-gray",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "descriptionImages": [
@@ -889,12 +889,12 @@ const INITIAL_PRODUCTS = [
     "stockStatus": "out-of-stock",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "price": "Rs. 999.00",
-    "category": "tablets",
+    "category": "mobile",
     "hiddenOnWebsite": true
   },
   {
     "id": "8270415000002",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "description": "<h1></h1>",
@@ -925,7 +925,7 @@ const INITIAL_PRODUCTS = [
       "https://look-10287.myshopify.com/cdn/shop/files/1_f41f3d5f-ada1-4e80-af35-0a9e6a44c042_512x512.webp?v=1781259485"
     ],
     "url": "/products/apple-ipad-10th-generation-with-a14-bionic-chip-27-69-cm-10-9-liquid-retina-display-64gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "hiddenOnWebsite": true
@@ -933,7 +933,7 @@ const INITIAL_PRODUCTS = [
   {
     "id": "8270415000004",
     "price": "Rs. 999.00",
-    "category": "tablets",
+    "category": "mobile",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 1,69,900.00",
@@ -952,7 +952,7 @@ const INITIAL_PRODUCTS = [
   {
     "id": "8270415000006",
     "price": "Rs. 999.00",
-    "category": "tablets",
+    "category": "mobile",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 62,649.00",
@@ -970,7 +970,7 @@ const INITIAL_PRODUCTS = [
   },
   {
     "id": "8270415000009",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "descriptionImages": [
       "https://picsum.photos/600/400",
@@ -1011,7 +1011,7 @@ const INITIAL_PRODUCTS = [
     ],
     "image": "https://look-10287.myshopify.com/cdn/shop/files/main3_53b8f759-5b8e-4a66-8938-907d45f55b62_512x512.png?v=1781259431",
     "url": "/products/airdopes-411-anc-with-10mm-drivers-asaptm-charge-technology-up-to-25db-anc-enx%E2%84%A2-technology-17-5-hours-playback",
-    "category": "audio",
+    "category": "accessories",
     "price": "Rs. 999.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "hiddenOnWebsite": true
@@ -1031,14 +1031,14 @@ const INITIAL_PRODUCTS = [
     ],
     "image": "https://look-10287.myshopify.com/cdn/shop/files/A175Packaging.1807_512x512.png?v=1781259432",
     "price": "Rs. 999.00",
-    "category": "audio",
+    "category": "accessories",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "hiddenOnWebsite": true
   },
   {
     "id": "8270415000013",
     "price": "Rs. 999.00",
-    "category": "audio",
+    "category": "accessories",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "description": "<h1></h1>",
     "comparePrice": "Rs. 14,98,500.00",
@@ -1068,7 +1068,7 @@ const INITIAL_PRODUCTS = [
     "comparePrice": "Rs. 14,98,500.00",
     "description": "<h1></h1>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "audio",
+    "category": "accessories",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
   },
@@ -1086,7 +1086,7 @@ const INITIAL_PRODUCTS = [
     ],
     "image": "https://look-10287.myshopify.com/cdn/shop/files/03_7a776f40-34f7-4fc0-a708-bf715f327c6f_512x512.jpg?v=1781259435",
     "price": "Rs. 999.00",
-    "category": "audio",
+    "category": "accessories",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
     "hiddenOnWebsite": true
   },
@@ -1105,7 +1105,7 @@ const INITIAL_PRODUCTS = [
     "comparePrice": "Rs. 33,900.00",
     "description": "<h1></h1>",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
   },
@@ -1124,7 +1124,7 @@ const INITIAL_PRODUCTS = [
     "handle": "apple-ipad-10th-generation-with-a14-bionic-chip-256gb-wi-fi-6-12mp-front-12mp-back-camera-touch-id-all-day-battery-life-yellow",
     "comparePrice": "Rs. 33,900.00",
     "paymentLink": "https://rzp.io/rzp/tHlmofq",
-    "category": "tablets",
+    "category": "mobile",
     "price": "Rs. 999.00",
     "hiddenOnWebsite": true
   },
@@ -1135,7 +1135,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 1,699.00",
     "badge": "88% OFF",
-    "category": "electronics",
+    "category": "mobile",
     "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/w/k/u/-original-imahauh2ugz3ccd3.jpeg?q=90",
     "images": [
       "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/w/k/u/-original-imahauh2ugz3ccd3.jpeg?q=90",
@@ -1156,7 +1156,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 3,999.00",
     "badge": "95% OFF",
-    "category": "electronics",
+    "category": "mobile",
     "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/y/q/h/-enriched-transparent-original-imah2gmfunhhascz.png?q=90",
     "images": [
       "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/y/q/h/-enriched-transparent-original-imah2gmfunhhascz.png?q=90",
@@ -1176,7 +1176,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 11,999.00",
     "badge": "98% OFF",
-    "category": "electronics",
+    "category": "mobile",
     "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/i/n/j/-enriched-transparent-original-imahjkzuypzhdyss.png?q=90",
     "images": [
       "https://rukminim2.flixcart.com/image/800/1070/xif0q/smartwatch/i/n/j/-enriched-transparent-original-imahjkzuypzhdyss.png?q=90",
@@ -1195,7 +1195,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 5,499.00",
     "badge": "96% OFF",
-    "category": "electronics",
+    "category": "luggage",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_4f398b7315486028a86db8d1533f921a.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_4f398b7315486028a86db8d1533f921a.jpg",
@@ -1213,7 +1213,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 199.00",
     "comparePrice": "Rs. 8,999.00",
     "badge": "98% OFF",
-    "category": "electronics",
+    "category": "mobile",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_77a9e29fc115fc872b6a34c2c0624c0c.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_77a9e29fc115fc872b6a34c2c0624c0c.jpg"
@@ -1230,7 +1230,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 99.00",
     "comparePrice": "Rs. 1,169.00",
     "badge": "91% OFF",
-    "category": "electronics",
+    "category": "accessories",
     "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/headphone/r/c/j/-original-imahae3ea2j4mhkt.jpeg?q=90",
     "images": [
       "https://rukminim2.flixcart.com/image/800/1070/xif0q/headphone/r/c/j/-original-imahae3ea2j4mhkt.jpeg?q=90",
@@ -1249,7 +1249,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 99.00",
     "comparePrice": "Rs. 2,999.00",
     "badge": "97% OFF",
-    "category": "electronics",
+    "category": "accessories",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_7af0c8aa6154890acf1a240c6084d6ee.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_7af0c8aa6154890acf1a240c6084d6ee.jpg",
@@ -1268,7 +1268,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 599.00",
     "comparePrice": "Rs. 14,999.00",
     "badge": "96% OFF",
-    "category": "electronics",
+    "category": "luggage",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_d6cdad3a0d9aec2c5e29482e7b301a70.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_d6cdad3a0d9aec2c5e29482e7b301a70.jpg",
@@ -1287,7 +1287,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 599.00",
     "comparePrice": "Rs. 16,999.00",
     "badge": "96% OFF",
-    "category": "electronics",
+    "category": "luggage",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_20f1f9d0b7625c5edb6ba30bbf106526.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_20f1f9d0b7625c5edb6ba30bbf106526.jpg",
@@ -1305,7 +1305,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 899.00",
     "comparePrice": "Rs. 32,999.00",
     "badge": "97% OFF",
-    "category": "electronics",
+    "category": "mobile",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_a588a67db4f834939af6884d4f1e8967.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_a588a67db4f834939af6884d4f1e8967.jpg",
@@ -1324,7 +1324,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 399.00",
     "comparePrice": "Rs. 3,499.00",
     "badge": "88% OFF",
-    "category": "electronics",
+    "category": "home-appliances",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_cbfea3491b12a7f506a6e343d818dee2.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_cbfea3491b12a7f506a6e343d818dee2.jpg",
@@ -1342,7 +1342,7 @@ const INITIAL_PRODUCTS = [
     "price": "Rs. 399.00",
     "comparePrice": "Rs. 4,999.00",
     "badge": "92% OFF",
-    "category": "electronics",
+    "category": "home-appliances",
     "image": "https://flipkaartin.shop/lander/uploads/products/prod_d476e4f3901976cf11525c2d95ecf9e3.jpg",
     "images": [
       "https://flipkaartin.shop/lander/uploads/products/prod_d476e4f3901976cf11525c2d95ecf9e3.jpg"
@@ -1847,7 +1847,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '18000.0';
+const IKKO_BUILD_VER = '19000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
