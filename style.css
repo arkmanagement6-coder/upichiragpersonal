@@ -501,30 +501,55 @@ button, input, select, textarea {
     border-radius: 12px;
 }
 @media (max-width: 768px) {
+    .hero-slide {
+        padding: 22px 18px 45px !important;
+        min-height: 290px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
     .hero-slide-container {
-        flex-direction: column-reverse !important;
-        text-align: center !important;
-        gap: 12px !important;
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 0 !important;
+        width: 100% !important;
     }
     .hero-slide-text {
-        text-align: center !important;
+        text-align: left !important;
+        width: 100% !important;
+    }
+    .hero-slide-tag {
+        margin-bottom: 8px !important;
     }
     .hero-slide h2 {
-        font-size: 1.35rem !important;
+        font-size: 1.65rem !important;
+        font-weight: 900 !important;
+        line-height: 1.25 !important;
+        text-align: left !important;
+        margin-bottom: 8px !important;
     }
     .hero-slide p {
         font-size: 0.85rem !important;
-        margin-bottom: 10px !important;
+        text-align: left !important;
+        margin-bottom: 16px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
     }
-    .hero-slide-img-wrap {
-        width: 130px !important;
-        height: 130px !important;
-        padding: 8px !important;
-        border-radius: 12px !important;
+    .hero-slide-actions {
+        display: flex !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
     }
-    .hero-slide {
-        padding: 15px 15px 35px !important;
-        min-height: 290px !important;
+    .hero-btn-yellow, .hero-btn-mint {
+        padding: 9px 18px !important;
+        font-size: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+    .hero-btn-outline {
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+    .hero-slide-graphic {
+        display: none !important;
     }
 }
 
