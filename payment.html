@@ -579,7 +579,7 @@
             </div>
 
             <!-- Option 1: Paytm UPI (Default & Recommended) -->
-            <div class="payment-option-row selected" id="opt-paytm" onclick="selectPaymentOption('paytm')">
+            <div class="payment-option-row selected" id="opt-paytm" onclick="selectPaymentOption('paytm', true)">
                 <div class="option-left-content">
                     <div class="app-logo-box">
                         <img src="Image/paytm-logo.svg" alt="Paytm">
@@ -593,7 +593,7 @@
             </div>
 
             <!-- Option 2: PhonePe / GPay (Server Down) -->
-            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe')">
+            <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe', true)">
                 <div class="option-left-content">
                     <div class="app-logo-box">
                         <img src="Image/phonepe-logo.svg" alt="PhonePe">
@@ -607,7 +607,7 @@
             </div>
 
             <!-- Option 3: Scan QR Code -->
-            <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr')">
+            <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr', true)">
                 <div class="option-left-content">
                     <div class="app-logo-box" style="background: #ffeef0; color: var(--brand-color); font-size: 1.2rem; font-weight: 800;">
                         ☴
@@ -682,7 +682,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=9500.0"></script>
+    <script src="app-core.js?v=10000.0"></script>
     <script>
         let selectedMethod = 'paytm'; // 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
@@ -693,9 +693,11 @@
             return urlParams.get(param);
         }
 
-        function selectPaymentOption(method) {
-            if (method === 'phonepe' || method === 'gpay') {
+        function selectPaymentOption(method, isUserClick = false) {
+            if ((method === 'phonepe' || method === 'gpay') && isUserClick) {
                 alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Please use Paytm for instant payment.');
+                method = 'paytm';
+            } else if (method === 'phonepe' || method === 'gpay') {
                 method = 'paytm';
             }
 
@@ -933,7 +935,7 @@
             document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
 
             renderOrderDetailsDrawer();
-            selectPaymentOption('phonepe');
+            selectPaymentOption('paytm', false);
         });
     </script>
 </body>
