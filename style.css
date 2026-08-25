@@ -798,35 +798,28 @@ button, input, select, textarea {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-.add-to-cart-btn:hover:not(:disabled) {
-    background: #f0fdf4;
-    border-color: #055e14;
-    color: #055e14;
-    box-shadow: 0 4px 12px rgba(12, 131, 31, 0.15);
-}
 .add-to-cart-btn svg {
     stroke: #0c831f;
     transition: stroke 0.2s ease;
 }
-.add-to-cart-btn:hover:not(:disabled) svg {
-    stroke: #055e14;
+.add-to-cart-btn:hover:not(:disabled),
+.add-to-cart-btn:active:not(:disabled),
+.add-to-cart-btn:focus:not(:disabled) {
+    background-color: #0c831f !important;
+    border-color: #0c831f !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(12, 131, 31, 0.35) !important;
+    transform: translateY(-1px);
+}
+.add-to-cart-btn:hover:not(:disabled) svg,
+.add-to-cart-btn:active:not(:disabled) svg,
+.add-to-cart-btn:focus:not(:disabled) svg {
+    stroke: #ffffff !important;
 }
 .add-to-cart-btn:disabled {
     border-color: #d1d5db;
-    background: #f3f4f6;
+    background-color: #f3f4f6;
     color: #9ca3af;
-    cursor: not-allowed;
-}
-.add-to-cart-btn:hover:not(:disabled) {
-    background-color: #00704a;
-    border-color: #00704a;
-    box-shadow: 0 4px 12px rgba(0, 135, 90, 0.35);
-    transform: translateY(-1px);
-}
-.add-to-cart-btn:disabled {
-    background-color: #e2e8f0;
-    border-color: #e2e8f0;
-    color: #a0aec0;
     cursor: not-allowed;
 }
 .view-details-btn {
