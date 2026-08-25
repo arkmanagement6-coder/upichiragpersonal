@@ -3483,16 +3483,53 @@ button, input, select, textarea {
 }
 
 .hero-slide-graphic {
-    width: 220px;
-    height: 220px;
+    width: 280px;
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    flex-shrink: 0;
 }
 .graphic-emoji {
-    font-size: 8.5rem;
+    font-size: 11rem;
     line-height: 1;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+    animation: floatHeroGraphic 3s ease-in-out infinite alternate;
+}
+@keyframes floatHeroGraphic {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-12px) rotate(4deg); }
+}
+
+@media (min-width: 769px) {
+    .hero-slide {
+        min-height: 480px !important;
+        padding: 60px 80px !important;
+    }
+    .hero-slide-container {
+        max-width: 1280px !important;
+    }
+    .hero-slide h2 {
+        font-size: 3.2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 14px !important;
+    }
+    .hero-slide p {
+        font-size: 1.15rem !important;
+        margin-bottom: 28px !important;
+    }
+    .hero-slide-actions {
+        gap: 16px !important;
+    }
+    .hero-btn-yellow, .hero-btn-mint {
+        padding: 12px 30px !important;
+        font-size: 1rem !important;
+    }
+    .hero-btn-outline {
+        padding: 11px 28px !important;
+        font-size: 1rem !important;
+    }
 }
 
 /* --- EXACT JUBIMART DARK FOOTER STYLES --- */
