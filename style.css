@@ -97,12 +97,14 @@ button, input, select, textarea {
 
 /* --- HEADER --- */
 .main-header {
-    background: linear-gradient(135deg, #0a4687 0%, #0c529c 100%);
-    color: #ffffff;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(10, 70, 135, 0.25);
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid #e5e7eb;
     transition: var(--transition-premium);
 }
 .header-container {
@@ -3201,7 +3203,8 @@ button, input, select, textarea {
 }
 
 .main-header {
-    background-color: #ffffff;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
     position: sticky;
     top: 0;
     z-index: 1000;
