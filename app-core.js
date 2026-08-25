@@ -181,7 +181,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -211,7 +211,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -241,7 +241,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -271,7 +271,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>May Offer - Get 4Kg Dry Fruit Mix Combo</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -301,7 +301,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -331,7 +331,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer Today 9 Combo packs ' 10 kg Ashirwaad atta , 5 kg india gate basmati rice , fortune oil 5 L , Surf Excel 5 kg and more 5Kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -361,7 +361,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>4 combo pack' india basmati 10kg 'tata agni 500g ashirwaad atta 10kg fortune sugar 5kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -391,7 +391,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Aashirvaad Atta 5kg, India gate basmati rice 5kg, Fortune Suger 5kg, Lipton 1kg TATA Agni 1Kg, Super Sarvottam Refined Rice Bran Oil 1L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -421,7 +421,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today: Combo of 5 kg Fortune oil+ 5 kg sugar+ 5 kg Basmati rice</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -451,7 +451,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Get Combo of 5 liter Fortune Oil and 5 Litre Mustard Oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -481,7 +481,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Buy 20kg ashirwad atta+1 kg Besan + 5 kg sugar + 5 kg mustard oil</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -511,7 +511,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Get Combo of 1kg Kaju and 1 kg Badam</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -541,7 +541,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Offer today online: Get Basmati Rice 5kg+ Fortune Oil 5L</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -571,7 +571,7 @@ const INITIAL_PRODUCTS = [
       },
       {
         "name": "Delivery",
-        "value": "Express Shipping (2-3 Days)"
+        "value": "Express Shipping (4 Hours)"
       }
     ],
     "description": "<p><strong>Jio Mart Combo: Fortune Basmati Rice 5kg, Oil 5L, Sugar 5kg & Besan 2kg</strong></p><p>Special promotional discount offer from Jio Mart India. Includes genuine high quality grocery staples directly from verified distributors with 100% Quality Assurance.</p>"
@@ -1847,7 +1847,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '25000.0';
+const IKKO_BUILD_VER = '26000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
@@ -2455,7 +2455,7 @@ function renderCartDrawer() {
                         <span>Subtotal:</span>
                         <span class="subtotal-amount">${formatPrice(total)}</span>
                     </div>
-                    <p class="shipping-info-text">🚚 Express Shipping 2 to 3 Days Delivery | 🛡️ 100% Original Guarantee</p>
+                    <p class="shipping-info-text">🚚 Express Shipping (4 Hours Delivery) | 🛡️ 100% Original Guarantee</p>
                     <a href="checkout.html" class="checkout-btn">Proceed to Checkout &rsaquo;</a>
                 </div>
             ` : ''}
