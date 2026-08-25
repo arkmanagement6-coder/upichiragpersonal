@@ -49,7 +49,7 @@
         }
     });
     </script>
-    <link rel="stylesheet" href="style.css?v=20.0">
+    <link rel="stylesheet" href="style.css?v=25.0">
     <!-- Firebase SDKs for fast parallel loading and caching -->
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-    <!-- Header will be rendered here by app-core.js?v=4000.0 -->
+    <!-- Header will be rendered here by app-core.js?v=5000.0 -->
     <div id="header-placeholder"></div>
 
     <!-- Hero Slider Section -->
@@ -277,7 +277,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=4000.0"></script>
+    <script src="app-core.js?v=5000.0"></script>
     <script>
         let currentTab = 'all';
 
@@ -390,6 +390,9 @@
                         <a href="product.html?id=${p.id}" class="product-card-img-wrapper">
                             ${badgeHtml}
                             <div class="card-badge-timer">⚡ 4 hours</div>
+                            <div class="jiomart-logo-overlay">
+                                <img src="https://jubimart.vercel.app/assets/logo-BDwwMpVg.png" alt="JioMart">
+                            </div>
                             <img src="${p.image}" alt="${p.title}" loading="lazy">
                         </a>
                         <div class="product-card-info">

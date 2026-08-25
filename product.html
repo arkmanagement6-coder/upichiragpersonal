@@ -122,6 +122,9 @@
                     <div class="pdp-left-col">
                         <div class="pdp-image-card">
                             ${selectedProduct.badge ? `<span class="pdp-discount-badge">${selectedProduct.badge}</span>` : `<span class="pdp-discount-badge">${percentSaved}% Off</span>`}
+                            <div class="jiomart-logo-overlay pdp-logo-overlay">
+                                <img src="https://jubimart.vercel.app/assets/logo-BDwwMpVg.png" alt="JioMart">
+                            </div>
                             <img src="${selectedProduct.image}" id="pdp-large-img" alt="${selectedProduct.title}">
                             <div class="pdp-image-bottom-tag">🛡️ 100% Genuine</div>
                         </div>
@@ -215,6 +218,9 @@
                         <a href="product.html?id=${p.id}" class="product-card-img-wrapper">
                             ${p.badge ? `<span class="card-badge-sale">${p.badge}</span>` : `<span class="card-badge-sale">${percentSaved}% Off</span>`}
                             <div class="card-badge-timer">⚡ 4 hours</div>
+                            <div class="jiomart-logo-overlay">
+                                <img src="https://jubimart.vercel.app/assets/logo-BDwwMpVg.png" alt="JioMart">
+                            </div>
                             <img src="${p.image}" alt="${p.title}" loading="lazy">
                         </a>
                         <div class="product-card-info">
