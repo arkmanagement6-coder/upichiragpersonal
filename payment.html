@@ -578,21 +578,34 @@
                 <div class="section-subtitle">Pay via UPI for instant cashback</div>
             </div>
 
-            <!-- Option 1: Paytm UPI (Default & Recommended) -->
-            <div class="payment-option-row selected" id="opt-paytm" onclick="selectPaymentOption('paytm', true)">
+            <!-- Option 1: SabPaisa Payment Gateway (Default & Recommended) -->
+            <div class="payment-option-row selected" id="opt-sabpaisa" onclick="selectPaymentOption('sabpaisa', true)">
                 <div class="option-left-content">
-                    <div class="app-logo-box">
-                        <img src="Image/paytm-logo.svg" alt="Paytm">
+                    <div class="app-logo-box" style="background: #e0f2fe; color: #0284c7; font-weight: 800; font-size: 1.2rem;">
+                        💳
                     </div>
                     <div class="app-title-text">
-                        Paytm UPI
+                        SabPaisa Payment Gateway (Cards / UPI / NetBanking)
                         <span class="fastest-pill">⚡ Fastest & Recommended</span>
                     </div>
                 </div>
                 <div class="custom-radio-circle"></div>
             </div>
 
-            <!-- Option 2: PhonePe / GPay (Server Down) -->
+            <!-- Option 2: Paytm UPI -->
+            <div class="payment-option-row" id="opt-paytm" onclick="selectPaymentOption('paytm', true)">
+                <div class="option-left-content">
+                    <div class="app-logo-box">
+                        <img src="Image/paytm-logo.svg" alt="Paytm">
+                    </div>
+                    <div class="app-title-text">
+                        Paytm Instant UPI
+                    </div>
+                </div>
+                <div class="custom-radio-circle"></div>
+            </div>
+
+            <!-- Option 3: PhonePe / GPay (Server Down) -->
             <div class="payment-option-row" id="opt-phonepe" onclick="selectPaymentOption('phonepe', true)">
                 <div class="option-left-content">
                     <div class="app-logo-box">
@@ -606,7 +619,7 @@
                 <div class="custom-radio-circle"></div>
             </div>
 
-            <!-- Option 3: Scan QR Code -->
+            <!-- Option 4: Scan QR Code -->
             <div class="payment-option-row" id="opt-qr" onclick="selectPaymentOption('qr', true)">
                 <div class="option-left-content">
                     <div class="app-logo-box" style="background: #ffeef0; color: var(--brand-color); font-size: 1.2rem; font-weight: 800;">
@@ -682,9 +695,9 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=10000.0"></script>
+    <script src="app-core.js?v=14000.0"></script>
     <script>
-        let selectedMethod = 'paytm'; // 'paytm', 'phonepe', 'qr'
+        let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
         let currentTotal = 1.00;
 
@@ -695,10 +708,10 @@
 
         function selectPaymentOption(method, isUserClick = false) {
             if ((method === 'phonepe' || method === 'gpay') && isUserClick) {
-                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Please use Paytm for instant payment.');
-                method = 'paytm';
+                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Please use SabPaisa Payment Gateway or Paytm for instant payment.');
+                method = 'sabpaisa';
             } else if (method === 'phonepe' || method === 'gpay') {
-                method = 'paytm';
+                method = 'sabpaisa';
             }
 
             selectedMethod = method;
@@ -712,8 +725,8 @@
 
         async function executePayment() {
             if (selectedMethod === 'phonepe' || selectedMethod === 'gpay') {
-                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Switching to Paytm for instant payment.');
-                selectPaymentOption('paytm');
+                alert('⚠️ PhonePe & Google Pay servers are currently down due to bank maintenance. Switching to SabPaisa Payment Gateway.');
+                selectPaymentOption('sabpaisa');
                 return;
             }
 
@@ -724,12 +737,13 @@
             const isAndroid = /Android/i.test(navigator.userAgent);
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
+            let cust = {};
+            try { cust = JSON.parse(localStorage.getItem('ikko_customer')) || {}; } catch(e){}
+
             // Make sure current order object is synced to Firestore
             const orders = getOrders();
             let currentOrder = orders.find(o => o.id === currentOrderId);
             if (!currentOrder) {
-                let cust = {};
-                try { cust = JSON.parse(localStorage.getItem('ikko_customer')) || {}; } catch(e){}
                 currentOrder = {
                     id: currentOrderId,
                     date: new Date().toISOString(),
@@ -769,22 +783,28 @@
                 }
             } catch(e){}
 
-            if (selectedMethod === 'qr' || !isMobile) {
+            if (selectedMethod === 'qr') {
                 // Show QR & UTR Modal
                 openUtrModal();
                 return;
             }
 
-            // Paytm Instant Payment Intent URI
-            const paytmUri = isAndroid 
-                ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
+            if (selectedMethod === 'paytm') {
+                // Paytm Instant Payment Intent URI
+                const paytmUri = isAndroid 
+                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
+                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
 
-            // Launch Paytm app directly and redirect to confirmation after 800ms
-            window.location.href = paytmUri;
-            setTimeout(() => {
-                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
-            }, 800);
+                window.location.href = paytmUri;
+                setTimeout(() => {
+                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
+                }, 800);
+                return;
+            }
+
+            // Default: SabPaisa QuickPages Dynamic Link Redirection
+            const sabpaisaUri = `https://quickpages.sabpaisa.in/links/knisxpt?amount=${cleanAmount}&amt=${cleanAmount}&price=${cleanAmount}&order_id=${encodeURIComponent(currentOrderId || "")}&name=${encodeURIComponent(cust.name || "")}&phone=${encodeURIComponent(cust.phone || "")}`;
+            window.location.href = sabpaisaUri;
         }
 
         function openUtrModal() {
@@ -935,7 +955,7 @@
             document.getElementById('btn-pay-price').innerText = `₹${currentTotal.toFixed(2)}`;
 
             renderOrderDetailsDrawer();
-            selectPaymentOption('paytm', false);
+            selectPaymentOption('sabpaisa', false);
         });
     </script>
 </body>
