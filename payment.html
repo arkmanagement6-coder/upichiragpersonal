@@ -695,7 +695,7 @@
     </div>
 
     <!-- Core Scripts -->
-    <script src="app-core.js?v=22000.0"></script>
+    <script src="app-core.js?v=23000.0"></script>
     <script>
         let selectedMethod = 'sabpaisa'; // 'sabpaisa', 'paytm', 'phonepe', 'qr'
         let currentOrderId = '';
@@ -766,12 +766,8 @@
                 currentOrder.status = 'pending_verification';
             }
 
-            // Await saveOrder so Firestore receives mobile order data BEFORE redirecting!
-            try {
-                await saveOrder(currentOrder);
-            } catch(e){
-                console.error("Error syncing order to Firestore:", e);
-            }
+            // Save order to localStorage & trigger sync
+            saveOrder(currentOrder).catch(e => console.error("Firestore sync error:", e));
 
             // Track Meta Pixel AddPaymentInfo event
             try {
@@ -782,25 +778,6 @@
                     });
                 }
             } catch(e){}
-
-            if (selectedMethod === 'qr') {
-                // Show QR & UTR Modal
-                openUtrModal();
-                return;
-            }
-
-            if (selectedMethod === 'paytm') {
-                // Paytm Instant Payment Intent URI
-                const paytmUri = isAndroid 
-                    ? `intent://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}&featuretype=money_transfer#Intent;scheme=paytmmp;package=net.one97.paytm;end`
-                    : `paytmmp://cash_wallet?pa=${encodeURIComponent(upiId)}&pn=Online%20Store&am=${cleanAmount}&cu=INR&tn=${encodeURIComponent(currentOrderId || "")}`;
-
-                window.location.href = paytmUri;
-                setTimeout(() => {
-                    window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
-                }, 800);
-                return;
-            }
 
             // SabPaisa QuickPages Dynamic Link Redirection mapping by order price
             const amountNum = Math.round(currentTotal);
@@ -822,19 +799,8 @@
 
             const sabpaisaUri = `${sabpaisaBaseLink}?clientTxnId=${encodeURIComponent(currentOrderId || "")}&order_id=${encodeURIComponent(currentOrderId || "")}&name=${encodeURIComponent(cust.name || "")}&phone=${encodeURIComponent(cust.phone || "")}`;
             
-            // Open SabPaisa Gateway in a new tab/window
-            try {
-                window.open(sabpaisaUri, '_blank');
-            } catch(e) {
-                console.warn("Popup blocked, fallback to direct open:", e);
-            }
-
-            // Immediately redirect main window to Order Confirmation page for UTR submission
-            const settings = getSettings();
-            const upiId = settings.phonepeMerchantId || 'ikkodigital@axl';
-            setTimeout(() => {
-                window.location.replace(`order-confirmation.html?orderId=${encodeURIComponent(currentOrderId)}&upi=${encodeURIComponent(upiId)}`);
-            }, 300);
+            // Direct 100% Reliable Location Redirection
+            window.location.href = sabpaisaUri;
         }
 
         function openUtrModal() {
