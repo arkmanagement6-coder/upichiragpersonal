@@ -1849,7 +1849,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '27000.0';
+const IKKO_BUILD_VER = '28000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
@@ -2026,8 +2026,26 @@ async function syncOrderToFirestoreRest(order) {
     }
 }
 
+function getCookie(name) {
+    try {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    } catch(e){}
+    return '';
+}
+
 async function saveOrder(order) {
     dbInit();
+    
+    // Auto-enrich order with Meta Pixel signals (_fbp, _fbc, userAgent) for 100% CAPI Ad Attribution Match
+    if (order) {
+        order.customer = order.customer || {};
+        if (!order.customer._fbp) order.customer._fbp = getCookie('_fbp') || '';
+        if (!order.customer._fbc) order.customer._fbc = getCookie('_fbc') || '';
+        if (!order.customer.userAgent) order.customer.userAgent = navigator.userAgent || '';
+    }
+
     const orders = JSON.parse(localStorage.getItem('ikko_orders')) || [];
     const idx = orders.findIndex(o => o.id === order.id);
     if (idx !== -1) {

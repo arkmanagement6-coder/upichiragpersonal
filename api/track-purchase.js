@@ -141,6 +141,23 @@ module.exports = async (req, res) => {
             // Hardcode country as India (Hashed 'in')
             userData.country = [hashData('in')];
 
+            // Extract Meta Pixel Cookies (_fbp & _fbc) & Browser Signals for 100% Facebook Ad Attribution Match
+            const custObj = order.customer || {};
+            const fbp = custObj._fbp || order._fbp || '';
+            if (fbp) userData.fbp = fbp;
+
+            const fbc = custObj._fbc || order._fbc || '';
+            if (fbc) userData.fbc = fbc;
+
+            const userAgent = custObj.userAgent || order.userAgent || (req.headers && req.headers['user-agent']) || '';
+            if (userAgent) userData.client_user_agent = userAgent;
+
+            const rawIp = (req.headers && (req.headers['x-forwarded-for'] || req.headers['x-real-ip'])) || (req.socket && req.socket.remoteAddress) || '';
+            if (rawIp) {
+                const cleanIp = String(rawIp).split(',')[0].trim();
+                userData.client_ip_address = cleanIp;
+            }
+
             // 2. Prepare Custom Data (Value & Items)
             let totalVal = 999;
             if (order.total) {
