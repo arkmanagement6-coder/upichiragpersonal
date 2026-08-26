@@ -93,7 +93,8 @@ window.trackPurchaseEvent = function(order) {
 
     // Strict status check: MUST ONLY fire for explicitly approved orders
     const status = (order.status || '').toLowerCase();
-    if (status !== 'approved') {
+    const validStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
+    if (!validStatuses.includes(status)) {
         console.log(`[Pixel & CAPI] Order ${order.id} status is '${status}'. Purchase event will NOT fire until Admin approves.`);
         return;
     }
@@ -1849,7 +1850,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '28000.0';
+const IKKO_BUILD_VER = '29000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {

@@ -663,7 +663,7 @@
                 const hasUtr = order.utr && order.utr.trim() !== '' && !order.utr.toLowerCase().includes('pending') && order.utr !== 'Payment Failed';
                 
                 // Fire Meta Pixel & Server Conversions API (CAPI) Purchase tracking ONLY when Admin approves
-                const validPurchaseStatuses = ['approved'];
+                const validPurchaseStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
                 if (validPurchaseStatuses.includes(status) && !order.pixelFired) {
                     order.pixelFired = true;
                     if (typeof window.trackPurchaseEvent === 'function') {

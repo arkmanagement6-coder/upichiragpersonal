@@ -898,7 +898,7 @@
                 let actionsHtml = '';
                 if (status === 'pending_verification' || status === 'pending_payment') {
                     actionsHtml = `
-                        <button class="btn btn-secondary" onclick="updateOrderStatus('${o.id}', 'pending')" style="background-color: var(--accent); color: white; border: none; margin-right: 5px; padding: 6px 12px;">Approve Payment</button>
+                        <button class="btn btn-secondary" onclick="updateOrderStatus('${o.id}', 'approved')" style="background-color: var(--accent); color: white; border: none; margin-right: 5px; padding: 6px 12px;">Approve Payment</button>
                         <button class="btn btn-danger" onclick="updateOrderStatus('${o.id}', 'cancelled')" style="padding: 6px 12px;">Cancel</button>
                     `;
                 } else if (status === 'pending') {
@@ -967,7 +967,7 @@
             }
 
             // Fire Meta Pixel & Conversions API Purchase tracking ONLY when explicitly Approved by Admin
-            const approvalStatuses = ['approved'];
+            const approvalStatuses = ['approved', 'pending', 'success', 'delivered', 'completed'];
             if (approvalStatuses.includes(newStatus)) {
                 console.log(`[Pixel & CAPI] Firing Purchase event for approved order: ${orderId}`);
                 if (typeof window.trackPurchaseEvent === 'function') {
