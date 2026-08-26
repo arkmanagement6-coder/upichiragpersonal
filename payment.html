@@ -18,6 +18,8 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('set', 'autoConfig', false, '1039324625032380');
+    fbq('set', 'autoConfig', false, '1790061685763294');
     fbq('init', '1039324625032380');
     fbq('init', '1790061685763294');
     fbq('track', 'PageView');
@@ -790,16 +792,6 @@
             }
 
             saveOrder(currentOrder).catch(e => console.error("Firestore sync error:", e));
-
-            // Track Meta Pixel AddPaymentInfo event
-            try {
-                if (typeof fbq === 'function') {
-                    fbq('track', 'AddPaymentInfo', {
-                        value: currentTotal,
-                        currency: 'INR'
-                    });
-                }
-            } catch(e){}
 
             // Immediately redirect main window to Order Confirmation page for UTR submission
             const settings = getSettings();

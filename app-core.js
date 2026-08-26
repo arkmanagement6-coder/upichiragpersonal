@@ -12,7 +12,9 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1039324625032380');
+        fbq('set', 'autoConfig', false, '1039324625032380');
+    fbq('set', 'autoConfig', false, '1790061685763294');
+    fbq('init', '1039324625032380');
         fbq('init', '1790061685763294');
         fbq('track', 'PageView');
     }
@@ -1847,7 +1849,7 @@ async function syncProductsBackground(forceSync = false) {
     return result;
 }
 
-const IKKO_BUILD_VER = '26000.0';
+const IKKO_BUILD_VER = '27000.0';
 
 // Auto-purge stale cache if build version changed
 (function checkBuildCacheBust() {
